@@ -15,7 +15,6 @@
     "xlsx": "^0.13.5",
     "react-easy-swipe": "0.0.16",
     "react-responsive-carousel": "^3.1.41",
-    "react-scripts": "1.1.5",
     "strap": "^0.1.0"
   },
   "scripts": {
