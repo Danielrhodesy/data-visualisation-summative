@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "cors": "^2.8.4",
     "express": "^4.16.3",
     "googleapis": "^33.0.0",
     "grunt": "^1.0.3",
@@ -10,13 +11,21 @@
     "nodemon": "^1.18.4",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+<<<<<<< HEAD
     "react-scripts": "1.1.5",
     "xlsx": "^0.13.5"
+=======
+    "react-easy-swipe": "0.0.16",
+    "react-responsive-carousel": "^3.1.41",
+    "react-scripts": "1.1.5",
+    "strap": "^0.1.0"
+>>>>>>> 090d35b14aaa4bbd8ae88d52a4a1385e00ec5968
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev:server": "nodemon -L"
   }
 }
