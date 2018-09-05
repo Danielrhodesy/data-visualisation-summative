@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { 
+import {
   Button,
   Container,
   Row,
@@ -15,7 +15,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Mental Health Foundation</h1>
         </header>
-        <img className="hero" />
+        <img className="hero" alt="Hero"/>
         <Button color="success" size="large">SEE THE STATS</Button>
         <Button color="success" size="large">FIND HELP</Button>
       </div>
