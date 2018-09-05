@@ -8,13 +8,12 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "googleapis": "^33.0.0",
-    "grunt": "^1.0.3",
     "grunt-contrib-csslint": "^2.0.0",
     "grunt-contrib-cssmin": "^2.2.1",
     "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "^4.0.0",
     "grunt-contrib-watch": "^1.1.0",
-    "grunt-sass": "^3.0.1",
     "jquery": "^3.3.1",
     "nodemon": "^1.18.4",
     "react": "^16.4.2",
@@ -35,6 +34,7 @@
     "dev:server": "nodemon -L"
   },
   "devDependencies": {
+    "grunt": "^1.0.3",
     "grunt-cli": "^1.3.1"
   }
 }

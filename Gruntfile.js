@@ -1,23 +1,39 @@
-module.exports = function(grunt) {
-
+module.exports = function (grunt) {
   grunt.initConfig({
-    jshint: {
-      files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
-      options: {
-        globals: {
-          jQuery: true
+    sass: {                              // Task
+      dist: {                            // Target
+        options: {                       // Target options
+          style: 'expanded'
+        },
+        files: {                         // Dictionary of files
+          'index.css': 'index.scss',       // 'destination': 'source'
+          'App.css': 'App.scss'
         }
       }
     },
+    cssmin: {
+      target: {
+        files: [{
+          expand: true,
+          cwd: 'src',
+          src: ['*.css', '!*.min.css'],
+          dest: 'src',
+          ext: '.min.css'
+        }]
+      }
+    },
     watch: {
-      files: ['<%= jshint.files %>'],
-      tasks: ['jshint']
+      css: {
+        files: ["src/index.css", 
+      "src/App.css"],
+        tasks: ["grunt-sass", "cssmin"]
+      }
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-
-  grunt.registerTask('default', ['jshint']);
-
+  // grunt.loadNpmTasks();
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks("grunt-contrib-cssmin");
+  grunt.loadNpmTasks("grunt-contrib-watch");
+  grunt.registerTask('default', ['sass']);
 };
