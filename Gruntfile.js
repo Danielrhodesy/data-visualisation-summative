@@ -6,8 +6,7 @@ module.exports = function (grunt) {
           style: 'expanded'
         },
         files: {                         // Dictionary of files
-          'index.css': 'index.scss',       // 'destination': 'source'
-          'App.css': 'App.scss'
+          'src/index.css': 'src/index.scss'   // 'destination': 'source
         }
       }
     },
@@ -26,7 +25,11 @@ module.exports = function (grunt) {
       css: {
         files: ["src/index.css", 
       "src/App.css"],
-        tasks: ["grunt-sass", "cssmin"]
+        tasks: ["cssmin"]
+      },
+      sass: {
+        files: ["src/index.scss", "src/App.scss"],
+        tasks: ["sass"]
       }
     }
   });
@@ -35,5 +38,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks("grunt-contrib-cssmin");
   grunt.loadNpmTasks("grunt-contrib-watch");
-  grunt.registerTask('default', ['sass']);
+  grunt.registerTask('w', ['watch']);
 };
