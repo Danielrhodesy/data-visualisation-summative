@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { 
+import {
   Button,
   Container,
   Row,
@@ -7,18 +7,23 @@ import {
   Carousel
  } from 'reactstrap';
 import './App.css';
+// import hero from './hero.jpg';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Mental Health Foundation</h1>
-        </header>
-        <img className="hero" />
-        <Button color="success" size="large">SEE THE STATS</Button>
-        <Button color="success" size="large">FIND HELP</Button>
+        <div className="image-container">
+          <header className="App-header">
+              <h1 className="App-title">Mental Health Foundation</h1>
+          </header>
+
+          {/* <img src={hero} className="hero"></img> */}
+          <Button className="button" color="success" size="large">CHECK OUT THE STATS</Button>
+          <Button className="button" color="success" size="large">FIND HELP NEAR YOU</Button>
+        </div>
       </div>
+
     );
   }
 }
