@@ -1,1 +1,1 @@
-body{background:#ef5d60}
+body:before{white-space:pre;font-family:monospace;content:"Error: Invalid CSS after \"...a07eab8befa63d0\": expected \"{\", was \"\"\A         on line 14 of src/index.scss\A \A 9: \A 10: body {\A 11:     background: $red;\A 12: }\A 13: >>>>>>> 8ec64aa34f05d90f03f467880a07eab8befa63d0"}
