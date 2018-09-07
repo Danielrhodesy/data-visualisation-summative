@@ -1,0 +1,83 @@
+$green: #95BB4D;
+$red: #EF5D60;
+$lightPurple: #866BB6;
+$darkPurple: #5A496A;
+
+.placeholder {
+    height: 55px;
+    width: 100%;
+
+    background-color: white;
+}
+
+.header {
+    position: absolute;
+  
+    width: 100%;
+    height: 10em;
+  
+    background-color: $lightPurple;
+   
+    .paragraph-position {
+  
+        margin-top: 2.2em;
+        margin-left: 1em;
+        margin-right: 1em;
+       
+        p {
+            font-size: 19px;
+            
+          }
+        
+        .headparagraph {
+        margin: 0px;
+        
+        font-weight: bold;
+        
+        color: white;
+        
+        }
+        
+        .paragraph {
+  
+            color: white;
+          
+          }
+      }
+  }
+  
+  .graph1 {
+  
+    width: 100%;
+    height: 26em;
+  
+    background-color: grey;
+  
+  }
+  
+  .carousel {
+  
+    width: 100%;
+    height: 4.5em;
+  
+    background-color: rgb(163, 162, 162);
+  }
+  
+  .footer {
+  
+    text-align: center;
+  
+    height: 10.2em;
+    width: 100%;
+  
+    background-color: $lightPurple;
+    
+    button {
+        margin-top: 2.7em;
+        position: relative;
+      }    
+
+  }
+  
+  
+  

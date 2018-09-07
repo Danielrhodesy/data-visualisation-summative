@@ -5,7 +5,8 @@ import WebFont from 'webfontloader';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-
+import { Carousel } from 'react-responsive-carousel';
+import CarouselPage from './carousel'
 
 WebFont.load({
     google: {
@@ -13,6 +14,9 @@ WebFont.load({
     }
 })
 
+// ReactDOM.render(<CarouselPage />, document.getElementById('root'));
+// registerServiceWorker();
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+ReactDOM.render(<CarouselPage />, document.getElementById('root'));
 registerServiceWorker();

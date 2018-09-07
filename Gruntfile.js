@@ -6,7 +6,8 @@ module.exports = function (grunt) {
           style: 'expanded'
         },
         files: {                         // Dictionary of files
-          'src/index.css': 'src/index.scss'   // 'destination': 'source
+          'src/index.css': 'src/index.scss',  // 'destination': 'source
+          'src/carousel.css': 'src/carousel.scss'
         }
       }
     },
@@ -24,27 +25,21 @@ module.exports = function (grunt) {
     watch: {
       css: {
         files: ["src/index.css", 
-      "src/App.css"],
+      "src/App.css",
+      "src/carousel.css"],
         tasks: ["cssmin"]
       },
       sass: {
-        files: ["src/index.scss", "src/App.scss"],
+        files: ["src/index.scss", "src/App.scss","src/carousel.scss"],
         tasks: ["sass"]
       }
     }
   });
 
-<<<<<<< HEAD
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-
-  grunt.registerTask('default', ['jshint']);
-
-=======
   // grunt.loadNpmTasks();
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks("grunt-contrib-cssmin");
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.registerTask('w', ['watch']);
->>>>>>> seb
+
 };
