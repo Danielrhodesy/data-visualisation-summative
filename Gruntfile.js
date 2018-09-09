@@ -6,7 +6,8 @@ module.exports = function (grunt) {
           style: 'expanded'
         },
         files: {                         // Dictionary of files
-          'src/index.css': 'src/index.scss' // 'destination': 'source
+          'src/index.css': 'src/index.scss',  // 'destination': 'source
+          'src/carousel/carousel.css': 'src/carousel/carousel.scss'
         }
       }
     },
@@ -24,11 +25,12 @@ module.exports = function (grunt) {
     watch: {
       css: {
         files: ["src/index.css",
-      "src/App.css"],
+      "src/App.css",
+      "src/carousel/carousel.css"],
         tasks: ["cssmin"]
       },
       sass: {
-        files: ["src/index.scss", "src/App.scss"],
+        files: ["src/index.scss", "src/App.scss","src/carousel/carousel.scss"],
         tasks: ["sass"]
       }
     }

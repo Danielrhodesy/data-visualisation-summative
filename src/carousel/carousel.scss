@@ -1,0 +1,132 @@
+$green: #95BB4D;
+$red: #EF5D60;
+$lightPurple: #866BB6;
+$darkPurple: #5A496A;
+
+.page1 {
+    display: none;
+}
+
+.page2 {
+    display: none;
+}
+
+.page3 {
+    display: none;
+}
+
+.page4 {
+    display: none;
+}
+
+
+
+// MAIN PAGE BUILD
+
+.placeholder {
+    height: 55px;
+    width: 100%;
+
+    background-color: white;
+}
+
+.header {
+    position: absolute;
+
+    width: 100%;
+    height: 9.5em;
+
+
+
+    .paragraph-position {
+
+        margin-top: 1.5em;
+        margin-left: 1em;
+        margin-right: 1em;
+
+        .headparagraph {
+        margin: 0px;
+
+        font-weight: bold;
+
+        color: white;
+
+        }
+        .paragraph {
+            color: white;
+        }
+
+      }
+  }
+
+  .graph-position {
+
+    margin-top: 35%;
+
+    width: 100%;
+    height: 17.8em;
+
+    background-color: grey;
+
+  }
+
+  .carousel {
+
+    width: 100%;
+    height: 4.5em;
+
+    background-color: rgb(163, 162, 162);
+  }
+
+  .footer {
+
+    text-align: center;
+
+    height: 7.75em;
+    width: 100%;
+
+    button {
+        margin-top: 2.7em;
+        position: relative;
+      }
+
+  }
+
+
+// PAGE 1
+
+.header-color1 {
+    background-color: $lightPurple;
+}
+
+.footer-color1 {
+    background-color: $lightPurple;
+}
+
+.paragraph1 {
+    font-size: 19px;
+
+
+  }
+
+// PAGE 2
+
+.header-color2 {
+    background-color: $red;
+}
+
+.footer-color2 {
+    background-color: $red;
+}
+
+
+
+// PAGE 3
+
+.header-color3 {
+    background-color: $darkPurple;
+}
+
+.footer-color3 {
+    background-color: $darkPurple
+}
