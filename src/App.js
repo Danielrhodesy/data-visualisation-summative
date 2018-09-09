@@ -7,24 +7,19 @@ import {
   Carousel
  } from 'reactstrap';
 import './App.css';
-// import hero from './hero.jpg';
+import { Chart } from "react-google-charts";
 
 class App extends Component {
   render() {
     return (
-
-
       <div className="App">
-        <div className="headLogo"></div>
-        <div className="image-container">
-          <header className="App-header">
-              <h1 className="App-title">Going<br></br> through it?<br/>You're not alone.</h1>
-          </header>
-          <Button className="button" color="success" size="large">CHECK OUT THE STATS</Button>
-          <Button className="button" color="success" size="large">FIND HELP NEAR YOU</Button>
-        </div>
+        <header className="App-header">
+          <h1 className="App-title">Mental Health Foundation</h1>
+        </header>
+        <img className="hero" alt="Hero"/>
+        <Button color="success" size="large">SEE THE STATS</Button>
+        <Button color="success" size="large">FIND HELP</Button>
       </div>
-
     );
   }
 }

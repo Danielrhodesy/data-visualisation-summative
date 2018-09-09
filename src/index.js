@@ -14,9 +14,9 @@ WebFont.load({
     }
 })
 
-// ReactDOM.render(<CarouselPage />, document.getElementById('root'));
+// ReactDOM.render(<App />, document.getElementById('root'));
 // registerServiceWorker();
 
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<CarouselPage />, document.getElementById('root'));
 registerServiceWorker();
