@@ -6,7 +6,7 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { Carousel } from 'react-responsive-carousel';
-import CarouselPage from './carousel'
+import CarouselPage from './carousel/carousel'
 
 WebFont.load({
     google: {

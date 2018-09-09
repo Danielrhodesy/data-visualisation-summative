@@ -3,6 +3,26 @@ $red: #EF5D60;
 $lightPurple: #866BB6;
 $darkPurple: #5A496A;
 
+.page1 {
+    // display: none;
+}
+
+.page2 {
+    display: none;
+}
+
+.page3 {
+    display: none;
+}
+
+.page4 {
+    display: none;
+}
+
+
+
+// MAIN PAGE BUILD
+
 .placeholder {
     height: 55px;
     width: 100%;
@@ -14,20 +34,15 @@ $darkPurple: #5A496A;
     position: absolute;
   
     width: 100%;
-    height: 10em;
+    height: 9.5em;
   
-    background-color: $lightPurple;
+    
    
     .paragraph-position {
   
-        margin-top: 2.2em;
+        margin-top: 1.5em;
         margin-left: 1em;
         margin-right: 1em;
-       
-        p {
-            font-size: 19px;
-            
-          }
         
         .headparagraph {
         margin: 0px;
@@ -37,16 +52,14 @@ $darkPurple: #5A496A;
         color: white;
         
         }
-        
         .paragraph {
-  
             color: white;
-          
-          }
+        }
+        
       }
   }
   
-  .graph1 {
+  .graph-position {
   
     width: 100%;
     height: 26em;
@@ -67,10 +80,8 @@ $darkPurple: #5A496A;
   
     text-align: center;
   
-    height: 10.2em;
+    height: 7.75em;
     width: 100%;
-  
-    background-color: $lightPurple;
     
     button {
         margin-top: 2.7em;
@@ -80,4 +91,41 @@ $darkPurple: #5A496A;
   }
   
   
+// PAGE 1
+
+.header-color1 {
+    background-color: $lightPurple;
+}
+
+.footer-color1 {
+    background-color: $lightPurple;
+}
+
+.paragraph1 {
+    font-size: 19px;
+    
   
+  }
+
+// PAGE 2
+
+.header-color2 {
+    background-color: $red;
+}
+
+.footer-color2 {
+    background-color: $red;
+}
+
+
+
+// PAGE 3
+
+.header-color3 {
+    background-color: $darkPurple;
+}
+
+.footer-color3 {
+    background-color: $darkPurple
+}
+
