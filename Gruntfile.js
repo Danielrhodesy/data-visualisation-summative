@@ -6,7 +6,7 @@ module.exports = function (grunt) {
           style: 'expanded'
         },
         files: {                         // Dictionary of files
-          'src/index.css': 'src/index.scss'   // 'destination': 'source
+          'src/index.css': 'src/index.scss' // 'destination': 'source
         }
       }
     },
