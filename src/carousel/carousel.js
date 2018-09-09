@@ -7,8 +7,8 @@ import {
   Col,
   Carousel
  } from 'reactstrap';
-// import { Carousel } from 'react-responsive-carousel';
-// import Chart from "react-google-charts";
+import { Chart } from "react-google-charts";
+
 
 class carousel extends Component {
   render() {
@@ -31,12 +31,13 @@ class carousel extends Component {
             </div>
           </div>
           <div className="graph1 graph-position">
-            {/* <Chart
-            chartType="ColumnChart"
-            width="100%"
-            height="400px"
-            data={data}
-            /> */}
+            <Chart
+              chartType="ScatterChart"
+              data={[["Age", "Weight"], [4, 5.5], [8, 12]]}
+              width="100%"
+              height="17.8em"
+              legendToggle
+            />
           </div>
           <div className="carousel">
           </div>
@@ -118,27 +119,7 @@ class carousel extends Component {
   }
 }
 
-// const data = [
-//   ["Element", "Density", { role: "style" }],
-//   ["Copper", 8.94, "#b87333"], // RGB value
-//   ["Silver", 10.49, "silver"], // English color name
-//   ["Gold", 19.3, "gold"],
-//   ["Platinum", 21.45, "color: #e5e4e2"] // CSS-style declaration
-// ];
-// class App extends React.Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <Chart
-//           chartType="ColumnChart"
-//           width="100%"
-//           height="400px"
-//           data={data}
-//         />
-//       </div>
-//     );
-//   }
-// }
+
 
 
 export default carousel
