@@ -6,19 +6,19 @@ import {
   Col,
   Carousel
  } from 'reactstrap';
-import './App.css';
-import { Chart } from "react-google-charts";
+import './index.css';
+// import hero from './hero.jpg';
+import Home from './components/home/home';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Mental Health Foundation</h1>
+
+      <div className="app">
+        <header className="app-header">
+          <div className="head-logo"></div>
         </header>
-        <img className="hero" alt="Hero"/>
-        <Button color="success" size="large">SEE THE STATS</Button>
-        <Button color="success" size="large">FIND HELP</Button>
+        <Home/>
       </div>
     );
   }
