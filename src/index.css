@@ -9,7 +9,8 @@ body, html, #root, .App {
   min-width: 100%;
   height: 8%;
 }
-.app-header .header-logo {
+
+.header-logo {
   background-image: url("./images/mhf-logo.png");
   background-position: center;
   background-repeat: no-repeat;
