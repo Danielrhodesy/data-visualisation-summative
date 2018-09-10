@@ -1,0 +1,94 @@
+.page2 {
+  display: none;
+}
+
+.page3 {
+  display: none;
+}
+
+.page4 {
+  display: none;
+}
+
+.placeholder {
+  height: 55px;
+  width: 100%;
+  background-color: white;
+}
+
+.header {
+  position: absolute;
+  width: 100%;
+  height: 9.5em;
+}
+.header .paragraph-position {
+  margin-top: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.header .paragraph-position .headparagraph {
+  margin: 0px;
+  font-weight: bold;
+  color: white;
+}
+.header .paragraph-position .paragraph {
+  color: white;
+}
+
+.graph-position {
+  margin-top: 35%;
+  width: 100%;
+  height: 17.8em;
+  background-color: grey;
+}
+
+.carousel {
+  width: 100%;
+  height: 4.5em;
+  background-color: #a3a2a2;
+}
+
+.footer {
+  text-align: center;
+  height: 7.75em;
+  width: 100%;
+}
+.footer button {
+  margin-top: 2.2em;
+  position: relative;
+  border-radius: 25px;
+  font-weight: 600;
+  background-color: #95BB4D;
+  border-color: #95BB4D;
+  padding: 15px 20px;
+}
+
+.header-color1 {
+  background-color: #866BB6;
+}
+
+.footer-color1 {
+  background-color: #866BB6;
+}
+
+.paragraph1 {
+  font-size: 19px;
+}
+
+.header-color2 {
+  background-color: #EF5D60;
+}
+
+.footer-color2 {
+  background-color: #EF5D60;
+}
+
+.header-color3 {
+  background-color: #5A496A;
+}
+
+.footer-color3 {
+  background-color: #5A496A;
+}
+
+/*# sourceMappingURL=carousel.css.map */
