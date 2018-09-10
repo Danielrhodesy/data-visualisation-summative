@@ -4,52 +4,18 @@ import {
   Button,
   Container,
   Row,
-  Col,
-  Carousel
+  Col
  } from 'reactstrap';
-import { Chart } from "react-google-charts";
+// import { Carousel } from 'react-responsive-carousel';
+import Carousel from './carousel-slider'
 
 
-// BAR CHART DATA
-
-const bardata = [
-  ["Age", "People", { role: "style" }],
-  ["Under 15", 20000, "#5A496A"],
-  ["16 - 24", 45000, " #5A496A"],
-  ["25 - 34", 37000, " #5A496A"],
-  ["35 - 44", 21000, " #5A496A"],
-  ["45 - 54", 19000, " #5A496A"],
-  ["55 - 64", 15000, "#5A496A"],
-  ["64+", 12000, " #5A496A"]
-];
-
-const baroptions = {
-  legend: {position: 'none'},
-  chartArea:{left:65,top:50,width:'75%',height:'65%'}
-}
-
-// LINE CHART DATA
-
-const linedata = [
-  ["Year", "Reports"],
-  ["2010", 45],
-  ["2011", 54],
-  ["2012", 58],
-  ["2013", 63]
-];
-
-const lineoptions = {
-  curveType: "function",
-  colors: ["#EF5D60"],
-  legend: {position: 'none'},
-  chartArea:{left:65,top:50,width:'70%',height:'65%'}
-};
 
 
-class carousel extends Component {
+class graphPage extends Component {
   render() {
     return (
-      <div className="carousel">
+      <div className="graphPage">
 
         {/* PAGE 1 - Age/Mental Health */}
 
@@ -66,15 +32,7 @@ class carousel extends Component {
               </p>
             </div>
           </div>
-          <div className="graph1 graph-position">
-            <Chart
-              chartType="ColumnChart"
-              width="100%"
-              height="17.8em"
-              data={bardata}
-              options={baroptions}
-            />
-          </div>
+          <Carousel />
           <div className="carousel">
           </div>
           <div className="footer footer-color1">
@@ -84,7 +42,7 @@ class carousel extends Component {
 
         {/* Page 2 - Mental Health/Year */}
 
-        <div className="page2">
+        {/* <div className="page2">
           <div className="placeholder">
           </div>
           <div className="header header-color2">
@@ -108,11 +66,11 @@ class carousel extends Component {
           <div className="footer footer-color2">
             <Button color="success" size="large">FIND HELP</Button>
           </div>
-        </div>
+        </div> */}
 
         {/* Page 3 - Mental Health/Ethnicity */}
 
-        <div className="page3">
+        {/* <div className="page3">
           <div className="placeholder">
           </div>
           <div className="header header-color3">
@@ -132,19 +90,19 @@ class carousel extends Component {
           <div className="footer footer-color3">
             <Button color="success" size="large">FIND HELP</Button>
           </div>
-        </div>
+        </div> */}
 
         {/* Page 4 - Metal Health/Sex */}
 
-        <div className="page4">
+        {/* <div className="page4">
           <div className="placeholder">
           </div>
           <div className="header header-color4">
-            <div className="paragraph-position">
+            <div className="paragraph-position"> */}
               {/* <p className="headparagraph">
                 Whos Getting Help?
               </p> */}
-              <p className="paragraph paragraph4">
+              {/* <p className="paragraph paragraph4">
                 Kiwis are reporting higher reates of psychological distress each year, meaning our <b>mental health care services are more important than ever.</b>
               </p>
             </div>
@@ -156,8 +114,8 @@ class carousel extends Component {
           <div className="footer footer-color4">
             <Button color="success" size="large">FIND HELP</Button>
           </div>
-        </div>
-      </div>
+        </div>*/}
+      </div> 
     )
   }
 }
@@ -165,4 +123,4 @@ class carousel extends Component {
 
 
 
-export default carousel
+export default graphPage
