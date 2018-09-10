@@ -2,21 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import WebFont from 'webfontloader';
-import './index.css';
+import './index.min.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import { Carousel } from 'react-responsive-carousel';
 import CarouselPage from './components/carousel/carousel'
 
 WebFont.load({
     google: {
-        families: ['Montserrat:400,700,900', 'sans-serif']
+        families: ['Montserrat:400,600,700', 'sans-serif']
     }
 })
 
-// ReactDOM.render(<App />, document.getElementById('root'));
 // registerServiceWorker();
 
 
-ReactDOM.render(<CarouselPage />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('home'));
+ReactDOM.render(<CarouselPage />, document.getElementById('carousel'));
 registerServiceWorker();

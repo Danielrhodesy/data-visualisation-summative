@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import {
-  Button,
-  Container,
-  Row,
-  Col,
-  Carousel
+  Button
  } from 'reactstrap';
-// import './App.css';
+
 
 class Home extends Component {
   render() {
     return (
-
 
       <div className="home">
         <div className="image-container">
