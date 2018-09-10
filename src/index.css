@@ -5,20 +5,27 @@ body, html, #root, .App {
   font-family: 'Montserrat', sans-serif;
 }
 
-.headLogo {
-  /* background-image: url("mh_logo.png"); */
+.app-header {
   min-width: 100%;
   height: 8%;
 }
 
-.logo {
-  background-image: url("mh_logo.png");
+.header-logo {
+  background-image: url("./images/mhf-logo.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.App-title {
+.image-container {
+  background-image: url("./images/hero-original.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.heading {
   font-size: 35px;
   font-weight: 700;
   color: white;
@@ -31,14 +38,6 @@ body, html, #root, .App {
   background-color: #95BB4D;
   border-color: #95BB4D;
   padding: 15px 20px;
-}
-
-.image-container {
-  background-image: url("heroOriginal.jpg");
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 /*# sourceMappingURL=index.css.map */

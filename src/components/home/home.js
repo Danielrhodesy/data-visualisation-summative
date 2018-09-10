@@ -1,21 +1,16 @@
 import React, { Component } from 'react';
 import {
-  Button,
-  Container,
-  Row,
-  Col,
-  Carousel
+  Button
  } from 'reactstrap';
-// import './App.css';
+
 
 class Home extends Component {
   render() {
     return (
 
-
       <div className="home">
         <div className="image-container">
-          <h1 className="app-title">Going<br></br> through it?<br/>You're not alone.</h1>
+          <h1 className="heading">Going<br></br> through it?<br/>You're not alone.</h1>
           <Button className="button" color="success" size="large">CHECK OUT THE STATS</Button>
           <Button className="button" color="success" size="large">FIND HELP NEAR YOU</Button>
         </div>

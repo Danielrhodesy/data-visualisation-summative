@@ -6,8 +6,6 @@ import {
   Col,
   Carousel
  } from 'reactstrap';
-import './index.css';
-// import hero from './hero.jpg';
 import Home from './components/home/home';
 
 class App extends Component {
@@ -16,7 +14,7 @@ class App extends Component {
 
       <div className="app">
         <header className="app-header">
-          <div className="head-logo"></div>
+          <div className="header-logo"></div>
         </header>
         <Home/>
       </div>
