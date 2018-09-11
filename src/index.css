@@ -21,9 +21,17 @@ body, html, #root {
   font-weight: 600;
   background-color: #95BB4D;
   border-color: #95BB4D;
-  margin: 10% 0 0 20%;
-  padding: 4% 5%;
+  padding: 4% 6%;
   position: relative;
+}
+
+.second-button {
+  margin: 0 0 0 18%;
+  padding: 4% 7%;
+}
+
+.first-button {
+  margin: 60% 0 8% 18%;
 }
 
 .home {
@@ -40,6 +48,7 @@ body, html, #root {
   font-weight: 700;
   color: white;
   text-shadow: 2px 2px 2px rgba(80, 80, 80, 0.5);
+  padding: 7% 6%;
 }
 
 /*# sourceMappingURL=index.css.map */

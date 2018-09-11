@@ -9,9 +9,9 @@ class Home extends Component {
     return (
 
       <div className="home">
-          <h1 className="heading">Going<br/> through it?<br/>You're not alone.</h1>
-          <Button className="button" color="success" size="large">CHECK OUT THE STATS</Button>
-          <Button className="button" color="success" size="large">FIND HELP NEAR YOU</Button>
+          <h1 className="heading">Going<br/> through it?<br/>You're not<br/> alone.</h1>
+          <Button className="first-button button" color="success" size="large">CHECK OUT THE STATS</Button>
+          <Button className="second-button button" color="success" size="large">FIND HELP NEAR YOU</Button>
         </div>
     );
   }
