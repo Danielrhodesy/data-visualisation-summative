@@ -1,4 +1,4 @@
-body, html, #root, .App {
+body, html, #root {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -11,25 +11,9 @@ body, html, #root, .App {
 }
 
 .header-logo {
+  width: 100%;
   background-image: url("./images/mhf-logo.png");
-  background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
-}
-
-.image-container {
-  background-image: url("./images/hero-original.jpg");
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.heading {
-  font-size: 35px;
-  font-weight: 700;
-  color: white;
-  text-shadow: 2px 2px 2px rgba(80, 80, 80, 0.5);
 }
 
 .button {
@@ -37,7 +21,25 @@ body, html, #root, .App {
   font-weight: 600;
   background-color: #95BB4D;
   border-color: #95BB4D;
-  padding: 15px 20px;
+  margin: 10% 0 0 20%;
+  padding: 4% 5%;
+  position: relative;
+}
+
+.home {
+  background-image: url("./images/hero-original.jpg");
+  height: 100vh;
+  width: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.heading {
+  font-size: 2em;
+  font-weight: 700;
+  color: white;
+  text-shadow: 2px 2px 2px rgba(80, 80, 80, 0.5);
 }
 
 /*# sourceMappingURL=index.css.map */

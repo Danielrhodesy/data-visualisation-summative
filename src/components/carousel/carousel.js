@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import './carousel.css';
 import {
-  Button,
-  Container,
-  Row,
-  Col,
-  Carousel
+  Button
  } from 'reactstrap';
 import { Chart } from "react-google-charts";
 
@@ -145,7 +141,7 @@ class carousel extends Component {
                 Whos Getting Help?
               </p> */}
               <p className="paragraph paragraph4">
-                Kiwis are reporting higher reates of psychological distress each year, meaning our <b>mental health care services are more important than ever.</b>
+                Kiwis are reporting higher rates of psychological distress each year, meaning our <b>mental health care services are more important than ever.</b>
               </p>
             </div>
           </div>
