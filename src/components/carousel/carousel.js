@@ -10,41 +10,6 @@ import {
  import { Chart } from "react-google-charts";
 
 
-// BAR CHART DATA
-
-const bardata = [
-  ["Age", "People", { role: "style" }],
-  ["Under 15", 20000, "#5A496A"],
-  ["16 - 24", 45000, " #5A496A"],
-  ["25 - 34", 37000, " #5A496A"],
-  ["35 - 44", 21000, " #5A496A"],
-  ["45 - 54", 19000, " #5A496A"],
-  ["55 - 64", 15000, "#5A496A"],
-  ["64+", 12000, " #5A496A"]
-];
-
-const baroptions = {
-  legend: {position: 'none'},
-  chartArea:{left:65,top:50,width:'75%',height:'65%'}
-}
-
-// LINE CHART DATA
-
-const linedata = [
-  ["Year", "Reports"],
-  ["2010", 45],
-  ["2011", 54],
-  ["2012", 58],
-  ["2013", 63]
-];
-
-const lineoptions = {
-  curveType: "function",
-  colors: ["#EF5D60"],
-  legend: {position: 'none'},
-  chartArea:{left:65,top:50,width:'70%',height:'65%'}
-};
-
 
 
 
@@ -98,9 +63,25 @@ class graphPage extends Component {
                   options={lineoptions}
               />
             </div>
+            <div className="graph3 graph-position">
+              <Chart
+                chartType="PieChart"
+                width="100%"
+                height="400px"
+                data={donutdata1}
+                options={donutoptions1}
+              />
+            </div>
+            <div className="graph4 graph-position">
+              <Chart
+                chartType="PieChart"
+                width="100%"
+                height="400px"
+                data={donutdata2}
+                options={donutoptions2}
+              />
+            </div>
           </Slider>
-          <div className="carousel">
-          </div>
           <div className="footer footer-color1">
             <Button color="success" size="large">FIND HELP</Button>
           </div>
@@ -187,6 +168,76 @@ class graphPage extends Component {
 }
 
 
+
+
+// BAR CHART DATA
+
+const bardata = [
+  ["Age", "People", { role: "style" }],
+  ["Under 15", 20000, "#5A496A"],
+  ["16 - 24", 45000, " #5A496A"],
+  ["25 - 34", 37000, " #5A496A"],
+  ["35 - 44", 21000, " #5A496A"],
+  ["45 - 54", 19000, " #5A496A"],
+  ["55 - 64", 15000, "#5A496A"],
+  ["64+", 12000, " #5A496A"]
+];
+
+const baroptions = {
+  legend: {position: 'none'},
+  chartArea:{left:65,top:50,width:'75%',height:'65%'}
+}
+
+// LINE CHART DATA
+
+const linedata = [
+  ["Year", "Reports"],
+  ["2010", 45],
+  ["2011", 54],
+  ["2012", 58],
+  ["2013", 63]
+];
+
+const lineoptions = {
+  curveType: "function",
+  colors: ["#EF5D60"],
+  legend: {position: 'none'},
+  chartArea:{left:65,top:50,width:'70%',height:'65%'}
+};
+
+// PIE CHART DATA
+
+const donutdata1 = [
+  ["Task", "Hours per Day"],
+  ["Work", 11],
+  ["Eat", 2],
+  ["Commute", 2],
+  ["Watch TV", 2],
+  ["Sleep", 7] // CSS-style declaration
+];
+const donutoptions1 = {
+  pieHole: 0.32,
+  chartArea:{left:60,top:50,width:'70%',height:'50%'},
+  legend: {position: 'none'}
+
+  
+};
+
+const donutdata2 = [
+  ["Task", "Hours per Day"],
+  ["Work", 11],
+  ["Eat", 2],
+  ["Commute", 2],
+  ["Watch TV", 2],
+  ["Sleep", 7] // CSS-style declaration
+];
+const donutoptions2 = {
+  pieHole: 0.32,
+  chartArea:{left:60,top:50,width:'70%',height:'50%'},
+  legend: {position: 'none'}
+
+  
+};
 
 
 export default graphPage
