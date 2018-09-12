@@ -11,13 +11,12 @@
 }
 
 .placeholder {
-  height: 55px;
+  height: 45px;
   width: 100%;
   background-color: white;
 }
 
 .header {
-  position: absolute;
   width: 100%;
   height: 9.5em;
 }
@@ -25,6 +24,7 @@
   margin-top: 1em;
   margin-left: 1em;
   margin-right: 1em;
+  padding-top: 5%;
 }
 .header .paragraph-position .headparagraph {
   margin: 0px;
@@ -36,7 +36,7 @@
 }
 
 .graph-position {
-  margin-top: 35%;
+  margin-top: 0em;
   width: 100%;
   height: 17.8em;
   background-color: grey;
@@ -49,6 +49,7 @@
 }
 
 .footer {
+  margin-top: 10%;
   text-align: center;
   height: 7.75em;
   width: 100%;

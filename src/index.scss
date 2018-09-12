@@ -17,7 +17,10 @@ body, html, #root, .App {
     font-family: 'Montserrat', sans-serif;
 }
 
-.app-header {
+
+
+.headLogo{
+  /* background-image: url("mhf-logo.png"); */
   min-width: 100%;
   height: 8%;
 
@@ -30,9 +33,15 @@ body, html, #root, .App {
   background-size: cover;
 }
 
+
 .image-container {
   background-image: url("./images/hero-original.jpg");
   height: 100%;
+}
+
+.logo{
+  background-image: url("./images/mhf-logo.png");
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -56,5 +65,10 @@ body, html, #root, .App {
 }
 
 
-
-
+.image-container {
+    background-image: url("./images/hero-original.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
