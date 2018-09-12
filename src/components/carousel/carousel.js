@@ -18,13 +18,10 @@ class graphPage extends Component {
   constructor(){
     super();
     this.state = {
-
       currentPage: 'page1'
     }
     this.changeClass = this.changeClass.bind(this);
   }
-
-
   
   render() {
 
@@ -39,35 +36,33 @@ class graphPage extends Component {
 
     return (
       <div className="graphPage">
-
         {/* PAGE 1 - Age/Mental Health */}
 
         <div className="page1">
           <div className="placeholder">
           </div>
           <div className="header header-color1">
-            <div className="paragraph-position">
-              <p className="headparagraph">
-                Whos Getting Help?
-              </p>
-              <p className="paragraph paragraph1">
-                171,033 people accessed mental health care and addiction services in 2015 - 16.
-              </p>
-            </div>
+            {page}
           </div>
-          <Slider {...settings} >
-            <div className="graph1 graph-position">
-              
-              {page}  
-          
+          <Slider {...settings} onSwipe={this.changePage.bind(this, 'page2')}>
+            
+            <div className="graph1 graph-position" onSwipe={this.changePage.bind(this, 'page2')}>
+              <Chart 
+                chartType="ColumnChart"
+                width="100%"
+                height="17.8em"
+                data={bardata}
+                options={baroptions}
+                
+              />
             </div>
             <div className="graph2 graph-position">
               <Chart
-                  chartType="LineChart"
-                  width="100%"
-                  height="17.8em"
-                  data={linedata}
-                  options={lineoptions}
+                chartType="LineChart"
+                width="100%"
+                height="17.8em"
+                data={linedata}
+                options={lineoptions}
               />
             </div>
             <div className="graph3 graph-position">
@@ -93,87 +88,12 @@ class graphPage extends Component {
             <Button color="success" size="large">FIND HELP</Button>
           </div>
         </div>
-
-        {/* Page 2 - Mental Health/Year */}
-
-        {/* <div className="page2">
-          <div className="placeholder">
-          </div>
-          <div className="header header-color2">
-            <div className="paragraph-position">
-              <p className="paragraph paragraph2">
-                Kiwis are reporting higher reates of psychological distress each year, meaning our <b>mental health care services are more important than ever.</b>
-              </p>
-            </div>
-          </div>
-          <div className="graph2 graph-position">
-            <Chart
-              chartType="LineChart"
-              width="100%"
-              height="17.8em"
-              data={linedata}
-              options={lineoptions}
-            />
-          </div>
-          <div className="carousel">
-          </div>
-          <div className="footer footer-color2">
-            <Button color="success" size="large">FIND HELP</Button>
-          </div>
-        </div> */}
-
-        {/* Page 3 - Mental Health/Ethnicity */}
-
-        {/* <div className="page3">
-          <div className="placeholder">
-          </div>
-          <div className="header header-color3">
-            <div className="paragraph-position">
-              <p className="headparagraph">
-                Whos Getting Help?
-              </p>
-              <p className="paragraph paragraph3">
-                Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
-              </p>
-            </div>
-          </div>
-          <div className="graph3 graph-position">
-          </div>
-          <div className="carousel">
-          </div>
-          <div className="footer footer-color3">
-            <Button color="success" size="large">FIND HELP</Button>
-          </div>
-        </div> */}
-
-        {/* Page 4 - Metal Health/Sex */}
-
-        {/* <div className="page4">
-          <div className="placeholder">
-          </div>
-          <div className="header header-color4">
-            <div className="paragraph-position"> */}
-              {/* <p className="headparagraph">
-                Whos Getting Help?
-              </p> */}
-              {/* <p className="paragraph paragraph4">
-                Kiwis are reporting higher reates of psychological distress each year, meaning our <b>mental health care services are more important than ever.</b>
-              </p>
-            </div>
-          </div>
-          <div className="graph4 graph-position">
-          </div>
-          <div className="carousel">
-          </div>
-          <div className="footer footer-color4">
-            <Button color="success" size="large">FIND HELP</Button>
-          </div>
-        </div>*/}
       </div> 
     )
   }
 
-  changeClass(){
+
+changeClass(){
     this.setState({
         appClass: 'alt-header'
     })
@@ -198,7 +118,7 @@ var settings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
-  className: 'slides'
+  className: 'slides',
 };
 
 
@@ -268,20 +188,20 @@ const donutoptions2 = {
   pieHole: 0.32,
   chartArea:{left:60,top:50,width:'70%',height:'50%'},
   legend: {position: 'none'}
-
   
 };
 
 class Page1 extends Component {
   render() {
     return (
-      <Chart onSwipe={this.changePage.bind(this, 'page1')}>
-        chartType="ColumnChart"
-        width="100%"
-        height="17.8em"
-        data={bardata}
-        options={baroptions}
-      </Chart>
+      <div className="paragraph-position">
+        <p className="headparagraph">
+          Whos Getting Help?
+        </p>
+        <p className="paragraph paragraph1">
+          171,033 people accessed mental health care and addiction services in 2015 - 16.
+        </p>
+      </div>
     )
   }
 }
@@ -289,16 +209,45 @@ class Page1 extends Component {
 class Page2 extends Component {
   render() {
     return (
-      <Chart
-        chartType="LineChart"
-        width="100%"
-        height="17.8em"
-        data={linedata}
-        options={lineoptions}
-      />
+      <div className="paragraph-position">
+        <p className="paragraph paragraph2">
+          Kiwis are reporting higher reates of psychological distress each year, meaning our <b>mental health care services are more important than ever.</b>
+        </p>
+      </div>
     );
   }
 }
 
+
+class Page3 extends Component {
+  render() {
+    return (
+      <div className="paragraph-position">
+        <p className="headparagraph">
+          Whos Getting Help?
+        </p>
+        <p className="paragraph paragraph3">
+          Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
+        </p>
+      </div>
+    );
+  }
+}
+
+
+class Page4 extends Component {
+  render() {
+    return (
+      <div className="paragraph-position">
+        <p className="headparagraph">
+          Whos Getting Help?
+        </p>
+        <p className="paragraph paragraph3">
+          Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
+        </p>
+      </div>
+    );
+  }
+}
 
 export default graphPage
