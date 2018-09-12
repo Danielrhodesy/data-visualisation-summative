@@ -14,17 +14,28 @@ import {
 
 
 class graphPage extends Component {
+  
+  constructor(){
+    super();
+    this.state = {
+
+      currentPage: 'page1'
+    }
+    this.changeClass = this.changeClass.bind(this);
+  }
+
+
+  
   render() {
 
-    var settings = {
-      dots: true,
-      dotClass: 'carouselDots',
-      infinite: false,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      className: 'slides'
-    };
+    var currentPage = this.state.currentPage;
+    let page;
+
+    if(currentPage === 'page1'){
+      page = <Page1/>
+  } else if(currentPage === 'page2'){
+      page = <Page2/>
+  }
 
     return (
       <div className="graphPage">
@@ -44,15 +55,11 @@ class graphPage extends Component {
               </p>
             </div>
           </div>
-          <Slider {...settings}>
+          <Slider {...settings} >
             <div className="graph1 graph-position">
-              <Chart
-                  chartType="ColumnChart"
-                  width="100%"
-                  height="17.8em"
-                  data={bardata}
-                  options={baroptions}
-              />
+              
+              {page}  
+          
             </div>
             <div className="graph2 graph-position">
               <Chart
@@ -165,8 +172,34 @@ class graphPage extends Component {
       </div> 
     )
   }
+
+  changeClass(){
+    this.setState({
+        appClass: 'alt-header'
+    })
 }
 
+changePage(pageNumber){
+    this.setState({
+        currentPage: pageNumber
+    })
+}
+
+
+}
+
+
+//CAROUSEL 
+
+var settings = {
+  dots: true,
+  dotClass: 'carouselDots',
+  infinite: false,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  className: 'slides'
+};
 
 
 
@@ -238,6 +271,34 @@ const donutoptions2 = {
 
   
 };
+
+class Page1 extends Component {
+  render() {
+    return (
+      <Chart onSwipe={this.changePage.bind(this, 'page1')}>
+        chartType="ColumnChart"
+        width="100%"
+        height="17.8em"
+        data={bardata}
+        options={baroptions}
+      </Chart>
+    )
+  }
+}
+
+class Page2 extends Component {
+  render() {
+    return (
+      <Chart
+        chartType="LineChart"
+        width="100%"
+        height="17.8em"
+        data={linedata}
+        options={lineoptions}
+      />
+    );
+  }
+}
 
 
 export default graphPage
