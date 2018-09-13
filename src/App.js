@@ -59,7 +59,7 @@ class HomePage extends Component {
 class CarouselPage extends Component {
     render() {
       return (
-        <carousel/>
+        <Carousel/>
       );
     }
 }
