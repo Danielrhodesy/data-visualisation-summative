@@ -10,9 +10,6 @@ import {
  import { Chart } from "react-google-charts";
 
 
-
-
-
 class graphPage extends Component {
   
   constructor(){
@@ -160,6 +157,7 @@ const lineoptions = {
 
 // PIE CHART DATA
 
+
 const donutdata1 = [
   ["Task", "Hours per Day"],
   ["Work", 11],
@@ -172,9 +170,7 @@ const donutoptions1 = {
   pieHole: 0.32,
   chartArea:{left:60,top:50,width:'70%',height:'50%'},
   legend: {position: 'none'}
-
-  
-};
+}
 
 const donutdata2 = [
   ["Task", "Hours per Day"],
@@ -182,7 +178,7 @@ const donutdata2 = [
   ["Eat", 2],
   ["Commute", 2],
   ["Watch TV", 2],
-  ["Sleep", 7] // CSS-style declaration
+  ["Sleep", 7] 
 ];
 const donutoptions2 = {
   pieHole: 0.32,
@@ -253,5 +249,3 @@ class Page4 extends Component {
 
 
 export default graphPage
-
-
