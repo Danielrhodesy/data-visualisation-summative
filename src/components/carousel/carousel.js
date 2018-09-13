@@ -10,7 +10,7 @@ import {
  import { Chart } from "react-google-charts";
 
 
-class GraphPage extends Component {
+class Carousel extends Component {
   
   constructor(){
     super();
@@ -247,4 +247,4 @@ class Page4 extends Component {
 }
 
 
-export default GraphPage
+export default Carousel

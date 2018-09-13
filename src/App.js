@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Home from './components/home/home';
-import GraphPage from './components/carousel/carousel';
+import Carousel from './components/carousel/carousel';
 // import Carousel from ''
 
 class App extends Component {
   constructor(){
         super();
         this.state = {
-            currentPage: 'homePage'
+            currentPage: 'carouselPage'
         }
         // this.changeClass = this.changeClass.bind(this);
     }
@@ -52,7 +52,7 @@ class HomePage extends Component {
 class CarouselPage extends Component {
     render() {
       return (
-        <carousel/>
+        <Carousel/>
       );
     }
 }
