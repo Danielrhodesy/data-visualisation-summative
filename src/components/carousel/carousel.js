@@ -219,6 +219,7 @@ class Page2 extends Component {
 }
 
 
+
 class Page3 extends Component {
   render() {
     return (
@@ -250,4 +251,7 @@ class Page4 extends Component {
   }
 }
 
+
 export default graphPage
+
+

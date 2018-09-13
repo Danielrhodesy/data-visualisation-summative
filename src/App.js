@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
-import {
-  Button,
-  Container,
-  Row,
-  Col,
-  Carousel
- } from 'reactstrap';
 import Home from './components/home/home';
+{/* import CarouselPage from './components/carousel/carousel'; */}
 
 class App extends Component {
   render() {
     return (
 
       <div className="app">
-        <header className="app-header">
+      {/*  <header className="app-header">
           <div className="header-logo"></div>
-        </header>
+        </header> */}
         <Home/>
+        {/* <CarouselPage/> */}
       </div>
     );
   }

@@ -8,6 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 import GraphPage from './components/carousel/carousel'
 
+// import CarouselPage from './components/carousel/carousel'
 
 WebFont.load({
     google: {
@@ -17,8 +18,7 @@ WebFont.load({
 
 // registerServiceWorker();
 
-
-
-ReactDOM.render(<App />, document.getElementById('home'));
+ReactDOM.render(<App />, document.getElementById('root'));
 
 // ReactDOM.render(<GraphPage />, document.getElementById('root'));
+

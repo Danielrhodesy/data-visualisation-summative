@@ -8,9 +8,9 @@ $darkPurple: #5A496A;
 // Mixins
 
 
-// Page structure
+// Page structure and static content
 
-body, html, #root, .App {
+body, html, #root {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -23,15 +23,16 @@ body, html, #root, .App {
   /* background-image: url("mhf-logo.png"); */
   min-width: 100%;
   height: 8%;
-
 }
 
 .header-logo {
+  width: 100%;
   background-image: url("./images/mhf-logo.png");
-  background-position: center;
-  background-repeat: no-repeat;
+  // background-position: center;
+  // background-repeat: no-repeat;
   background-size: cover;
 }
+
 
 
 .image-container {
@@ -42,27 +43,51 @@ body, html, #root, .App {
 .logo{
   background-image: url("./images/mhf-logo.png");
 
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
-
-//Page content
-
-.heading{
-  font-size: 35px;
-  font-weight: 700;
-  color: white;
-  text-shadow: 2px 2px 2px rgba(80, 80, 80, 0.5);
-}
+//Shared styling
 
 .button {
   border-radius: 25px;
   font-weight: 600;
   background-color: $green;
   border-color: $green;
-  padding: 15px 20px;
+  // margin: 10% 0 0 20%;
+  padding: 4% 6%; //use percentage for padding and margins
+  position:relative;
 }
+
+.second-button{
+  margin: 0 0 0 18%;
+  padding: 4% 7%
+}
+
+.first-button{
+  margin: 60% 0 8% 18%;
+}
+
+//px only for border-radius and text-shadow
+
+
+//Home component
+
+.home {
+  background-image: url("./images/hero-original.jpg");
+  height: 100vh;
+  width: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.heading{
+  font-size: 2em; //use rem or em
+  font-weight: 700;
+  color: white;
+  text-shadow: 2px 2px 2px rgba(80, 80, 80, 0.5);
+  padding: 7% 6%;
+}
+
+//Carousel component
 
 
 .image-container {
@@ -72,3 +97,5 @@ body, html, #root, .App {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+

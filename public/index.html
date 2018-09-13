@@ -22,18 +22,24 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Mental Health Foundation</title>
-    <link rel="stylesheet" href="css/index.min.css">
+    <link rel="stylesheet" href="./src/index.min.css">
   </head>
   <body>
+    <!-- Static header BEGINS-->
+    <header class="app-header">
+       <div class="header-logo"></div>
+     </header>
+     <!-- Static header ENDS -->
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
+    <!-- App component BEGINS -->
     <div id="root">
-      <div id="home"></div>
-      <div id="carousel"></div>
+      <!-- <div class="home-container" id="home"></div> -->
+      <!-- <div id="carousel"></div> -->
     </div>
+    <!-- App component ENDS -->
 
-    <script src="js/map.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="./src/carousel/carousel.js"></script>
   </body>
