@@ -50,7 +50,6 @@ class graphPage extends Component {
                 height="17.8em"
                 data={bardata}
                 options={baroptions}
-                
               />
             </div>
             <div className="graph2 graph-position">
