@@ -5,7 +5,7 @@ import WebFont from 'webfontloader';
 import './index.min.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import CarouselPage from './components/carousel/carousel'
+// import CarouselPage from './components/carousel/carousel'
 
 WebFont.load({
     google: {
@@ -13,9 +13,6 @@ WebFont.load({
     }
 })
 
-// registerServiceWorker();
-
-
-ReactDOM.render(<App />, document.getElementById('home'));
-ReactDOM.render(<CarouselPage />, document.getElementById('carousel'));
+ReactDOM.render(<App/>, document.getElementById('root'));
+// ReactDOM.render(<CarouselPage/>, document.getElementById('carousel'));
 registerServiceWorker();
