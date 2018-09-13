@@ -1,135 +1,74 @@
+// This example adds a search box to a map, using the Google Place Autocomplete
+// feature. People can enter geographical searches. The search box will return a
+// pick list containing a mix of places and predicted search terms.
 
-// // global variable
-// var mapData;
+// This example requires the Places library. Include the libraries=places
+// parameter when you first load the API. For example:
+// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
-// // Start ajax request
-// $.ajax({
-//     type: 'get',
-//     url: 'js/map-data.json',
-//     dataType: 'json',
-//     success: function (jsonData) {
-
-//         initMap();
-//         // Pushing the data we recieved into our global variable
-//         mapData = jsonData;
-//         console.log(mapData);
-
-//         //Dynamically populate class select form
-//         function populateFilterList() {
-//             for (var i = 0; i < mapData.length; i++) {
-//                 $("#selectSuburb").append("<option id='" + mapData[i].suburb + "' value='" + mapData[i].suburb + "'>" + mapData[i].suburb + "</option>");
-//             }
-//         }
-//         populateFilterList();
-//     },
-//     error: function (error) {
-//         console.log(error);
-//     }
-// });
-// // End ajax request
-
-// // Function that initialises the map once the json data is successfully retrieved
-// function initMap() {
-
-//     var directionsService = new google.maps.DirectionsService;
-//     var directionsDisplay = new google.maps.DirectionsRenderer;
-//     var yoobee = new google.maps.LatLng(-41.279113, 174.780283);
-//     var map = new google.maps.Map(document.getElementById('map'), {
-//         zoom: 13,
-//         center: yoobee,
-//         mapTypeControl: false,
-//         streetViewControl: false,
-//         fullscreenControl: false
-//     });
-
-//     directionsDisplay.setMap(map);
-
-//     var onChangeHandler = function () {
-//         calculateAndDisplayRoute(directionsService, directionsDisplay);
-//     };
-//     //event listener    
-//     $("#selectSuburb").change(onChangeHandler);
-
-
-//     function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-//         //Get selected suburb's name
-//         var suburbName = $("#selectSuburb").val();
-//         //Find the mode of transport for trips from that suburb 
-//         for (var i = 0; i < mapData.length; i++) {
-//             var transportType = mapData[i].transport;
-//             //when found, stop loop
-//             if (suburbName == mapData[i].suburb) {
-//                 break;
-//             }
-//         };
-
-//         directionsService.route({
-//             //call route with variables   
-//             origin: suburbName,
-//             destination: yoobee,
-//             travelMode: transportType
-//         },
-
-//             function (response, status) {
-//                 if (status === 'OK') {
-//                     directionsDisplay.setDirections(response);
-//                     //convert transportType to lower case and output string to DOM
-//                     var transportOutput = transportType.toLowerCase();
-//                     $("#mapInfo").text("Students travel from " + suburbName + " by " + transportOutput + ".");
-//                 } else {
-//                     window.alert('Directions request failed due to ' + status);
-//                 }
-//             });
-//     } //calculateAndDisplayRoute ENDS
-// } //initMap ENDS
-
-
-// //iife ENDS
-
-console.log('script ready');
-var map;
-var infowindow;
-
-function initMap() {
-    var wellington = { lat: -41.288, lng: 174.777 };
-
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: wellington,
-        zoom: 15
+function initAutocomplete() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: -33.8688, lng: 151.2195 },
+        zoom: 13,
+        mapTypeId: 'roadmap'
     });
 
-    var request = {
-        query: 'Yoobee School of Design',
-        fields: ['photos', 'formatted_address', 'name', 'rating', 'opening_hours', 'geometry']
-    };
+    // Create the search box and link it to the UI element.
+    var input = document.getElementById('pac-input');
+    var searchBox = new google.maps.places.SearchBox(input);
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-    infowindow = new google.maps.InfoWindow();
-    var service = new google.maps.places.PlacesService(map);
-    service.findPlaceFromQuery(request, callback);
-    // service.nearbySearch({
-    //     location: wellington,
-    //     radius: 500,
-    //     type: ['store']
-    // }, callback);
-}
+    // Bias the SearchBox results towards current map's viewport.
+    map.addListener('bounds_changed', function () {
+        searchBox.setBounds(map.getBounds());
+    });
 
-function callback(results, status) {
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-        for (var i = 0; i < results.length; i++) {
-            createMarker(results[i]);
+    var markers = [];
+    // Listen for the event fired when the user selects a prediction and retrieve
+    // more details for that place.
+    searchBox.addListener('places_changed', function () {
+        var places = searchBox.getPlaces();
+
+        if (places.length == 0) {
+            return;
         }
-    }
-}
 
-function createMarker(place) {
-    var placeLoc = place.geometry.location;
-    var marker = new google.maps.Marker({
-        map: map,
-        position: placeLoc
-    });
+        // Clear out the old markers.
+        markers.forEach(function (marker) {
+            marker.setMap(null);
+        });
+        markers = [];
 
-    google.maps.event.addListener(marker, 'click', function () {
-        infowindow.setContent(place.name);
-        infowindow.open(map, this);
+        // For each place, get the icon, name and location.
+        var bounds = new google.maps.LatLngBounds();
+        places.forEach(function (place) {
+            if (!place.geometry) {
+                console.log("Returned place contains no geometry");
+                return;
+            }
+            var icon = {
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(25, 25)
+            };
+
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+                map: map,
+                icon: icon,
+                title: place.name,
+                position: place.geometry.location
+            }));
+
+            if (place.geometry.viewport) {
+                // Only geocodes have viewport.
+                bounds.union(place.geometry.viewport);
+            } else {
+                bounds.extend(place.geometry.location);
+            }
+        });
+        map.fitBounds(bounds);
     });
 }
