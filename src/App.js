@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Home from './components/home/home';
-import carousel from './components/carousel/carousel';
+import GraphPage from './components/carousel/carousel';
 // import Carousel from ''
 
 class App extends Component {
@@ -10,7 +10,6 @@ class App extends Component {
             currentPage: 'homePage'
         }
         // this.changeClass = this.changeClass.bind(this);
-
     }
   render() {
 
@@ -21,8 +20,6 @@ class App extends Component {
           page = <HomePage/>
       } else if(currentPage === 'carouselPage'){
           page = <CarouselPage/>
-      // } else if(currentPage === 'mapPage'){
-      //     page = <MapPage/>
       }
 
 
@@ -30,11 +27,7 @@ class App extends Component {
     return (
 
       <div className="app">
-      {/*  <header className="app-header">
-          <div className="header-logo"></div>
-        </header> */}
         {page}
-        {/* <CarouselPage/> */}
       </div>
     );
   }
