@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { 
-  Button,
-  Container,
-  Row,
-  Col,
-  Carousel
+  Button
  } from 'reactstrap';
-import './App.css';
+import Home from './components/home/home';
+{/* import CarouselPage from './components/carousel/carousel'; */}
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Mental Health Foundation</h1>
-        </header>
-        <img className="hero" />
-        <Button color="success" size="large">SEE THE STATS</Button>
-        <Button color="success" size="large">FIND HELP</Button>
+
+      <div className="app">
+      {/*  <header className="app-header">
+          <div className="header-logo"></div>
+        </header> */}
+        <Home/>
+        {/* <CarouselPage/> */}
       </div>
     );
   }
 }
+
 
 export default App;
