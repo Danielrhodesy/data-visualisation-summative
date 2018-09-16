@@ -88,13 +88,6 @@ class Carousel extends Component {
     )
   }
 
-
-changeClass(){
-    this.setState({
-        appClass: 'alt-header'
-    })
-}
-
 changePage(pageNumber){
     this.setState({
         currentPage: pageNumber
