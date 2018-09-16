@@ -26,9 +26,13 @@ class Carousel extends Component {
 
     if(currentPage === 'page1'){
       page = <Page1/>
-  } else if(currentPage === 'page2'){
+    } else if(currentPage === 'page2'){
       page = <Page2/>
-  }
+    } else if(currentPage === 'page3'){
+        page = <Page3/>
+    } else if(currentPage === 'page4'){
+        page = <Page4/>
+    }
 
     return (
       <div className="graphPage">
@@ -40,9 +44,10 @@ class Carousel extends Component {
           <div className="header header-color1">
             {page}
           </div>
-          <Slider {...settings} onSwipe={this.changePage.bind(this, 'page2')}>
-            
-            <div className="graph1 graph-position" onSwipe={this.changePage.bind(this, 'page2')}>
+          <Slider {...settings} >
+           
+            <div className="graph1 graph-position" >
+            {/* onSwipe={this.changePage.bind(this, 'page2')} */}
               <Chart 
                 chartType="ColumnChart"
                 width="100%"
@@ -51,6 +56,7 @@ class Carousel extends Component {
                 options={baroptions}
               />
             </div>
+          
             <div className="graph2 graph-position">
               <Chart
                 chartType="LineChart"
@@ -97,6 +103,67 @@ changePage(pageNumber){
 }
 
 
+class Page1 extends Component {
+  render() {
+    return (
+      <div className="paragraph-position">
+        <p className="headparagraph">
+          Whos Getting Help?
+        </p>
+        <p className="paragraph paragraph1">
+          171,033 people accessed mental health care and addiction services in 2015 - 16.
+        </p>
+      </div>
+    )
+  }
+}
+
+class Page2 extends Component {
+  render() {
+    return (
+      <div className="paragraph-position">
+        <p className="paragraph paragraph2">
+          Kiwis are reporting higher reates of psychological distress each year, meaning our <b>mental health care services are more important than ever.</b>
+        </p>
+      </div>
+    );
+  }
+}
+
+
+
+class Page3 extends Component {
+  render() {
+    return (
+      <div className="paragraph-position">
+        <p className="headparagraph">
+          Whos Getting Help?
+        </p>
+        <p className="paragraph paragraph3">
+          Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
+        </p>
+      </div>
+    );
+  }
+}
+
+
+class Page4 extends Component {
+  render() {
+    return (
+      <div className="paragraph-position">
+        <p className="headparagraph">
+          Whos Getting Help?
+        </p>
+        <p className="paragraph paragraph3">
+          Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
+        </p>
+      </div>
+    );
+  }
+}
+
+
 //CAROUSEL 
 
 var settings = {
@@ -105,8 +172,7 @@ var settings = {
   infinite: false,
   speed: 500,
   slidesToShow: 1,
-  slidesToScroll: 1,
-  className: 'slides',
+  slidesToScroll: 1
 };
 
 
@@ -175,68 +241,7 @@ const donutoptions2 = {
   pieHole: 0.32,
   chartArea:{left:60,top:50,width:'70%',height:'50%'},
   legend: {position: 'none'}
-  
 };
-
-class Page1 extends Component {
-  render() {
-    return (
-      <div className="paragraph-position">
-        <p className="headparagraph">
-          Whos Getting Help?
-        </p>
-        <p className="paragraph paragraph1">
-          171,033 people accessed mental health care and addiction services in 2015 - 16.
-        </p>
-      </div>
-    )
-  }
-}
-
-class Page2 extends Component {
-  render() {
-    return (
-      <div className="paragraph-position">
-        <p className="paragraph paragraph2">
-          Kiwis are reporting higher reates of psychological distress each year, meaning our <b>mental health care services are more important than ever.</b>
-        </p>
-      </div>
-    );
-  }
-}
-
-
-
-class Page3 extends Component {
-  render() {
-    return (
-      <div className="paragraph-position">
-        <p className="headparagraph">
-          Whos Getting Help?
-        </p>
-        <p className="paragraph paragraph3">
-          Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
-        </p>
-      </div>
-    );
-  }
-}
-
-
-class Page4 extends Component {
-  render() {
-    return (
-      <div className="paragraph-position">
-        <p className="headparagraph">
-          Whos Getting Help?
-        </p>
-        <p className="paragraph paragraph3">
-          Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
-        </p>
-      </div>
-    );
-  }
-}
 
 
 export default Carousel

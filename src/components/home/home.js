@@ -18,11 +18,7 @@ class Home extends Component {
     this.setState({
         currentPage: page
     })
-    console.log("Test");
   }
 }
 
-
 export default Home;
-
-// onClick={this.changePage.bind(this, 'CarouselPage')}
