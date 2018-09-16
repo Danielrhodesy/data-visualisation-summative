@@ -17,7 +17,6 @@ class Carousel extends Component {
     this.state = {
       currentPage: 'page1'
     }
-    this.changeClass = this.changeClass.bind(this);
   }
   
   render() {

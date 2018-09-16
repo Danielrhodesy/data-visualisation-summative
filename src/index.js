@@ -5,7 +5,8 @@ import WebFont from 'webfontloader';
 import './index.min.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import GraphPage from './components/carousel/carousel';
+import Carousel from './components/carousel/carousel';
+
 
 // import CarouselPage from './components/carousel/carousel'
 

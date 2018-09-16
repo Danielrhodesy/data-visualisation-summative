@@ -11,6 +11,7 @@ class App extends Component {
         this.state = {
           currentPage: 'homePage'
         }
+      this.changePage = this.changePage.bind(this)
     }
 
   render() {
@@ -18,44 +19,40 @@ class App extends Component {
     let page;
 
       if(currentPage === 'homePage'){
-          page = <HomePage/>
+          page = <Home
+          {...this.state}
+          changePage={this.changePage}
+          />
       } else if(currentPage === 'carouselPage'){
-          page = <CarouselPage/>
-      }
-    
+          page = <Carousel/>
+      } else {
+        page = <Page404/>
+    }
+
     return (
       <div className="app">
         {page}
       </div>
     );
   }
+  changePage(page){
+    this.setState({
+        currentPage: page
+    })
+    console.log("Test");
+  }
   
 }
 
-class HomePage extends Component {
+class Page404 extends Component {
   render() {
-   
     return (
-      <Home/>
+      <div>
+          <h2>404</h2>
+          <p>Page not found</p>
+      </div>
     );
   }
 }
-
-
-class CarouselPage extends Component {
-  render() {
-    return (
-      <Carousel/>
-    );
-  }
-}
-
-// class mapPage extends Component {
-//     render() {
-//       return (
-//         <MapPage/>
-//       );
-//     }
-// }
 
 export default App;
