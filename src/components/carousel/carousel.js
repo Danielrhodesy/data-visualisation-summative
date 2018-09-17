@@ -8,6 +8,7 @@ import {
  } from 'reactstrap';
  import Slider from "react-slick";
  import { Chart } from "react-google-charts";
+ import Swipe from 'react-easy-swipe';
 
 
 class Carousel extends Component {
@@ -18,7 +19,22 @@ class Carousel extends Component {
       currentPage: 'page1'
     }
   }
+
+  onSwipeStart(event) {
+    console.log('Start swiping...', event);
+  }
+ 
+  onSwipeRight(position, event) {
+    console.log(`Moved ${position.x} pixels horizontally`, event);
+
+  }
+ 
+  onSwipeEnd(event) {
+    console.log('End swiping...', event);
+  }
   
+ 
+
   render() {
 
     var currentPage = this.state.currentPage;
@@ -41,22 +57,31 @@ class Carousel extends Component {
         <div className="page1">
           <div className="placeholder">
           </div>
-          <div className="header header-color1">
+          <div className="header-container">
+
             {page}
+
           </div>
+            
           <Slider {...settings} >
-           
-            <div className="graph1 graph-position" >
-            {/* onSwipe={this.changePage.bind(this, 'page2')} */}
-              <Chart 
-                chartType="ColumnChart"
-                width="100%"
-                height="17.8em"
-                data={bardata}
-                options={baroptions}
-              />
-            </div>
-          
+           <Swipe
+            onSwipeStart={this.onSwipeStart}
+            onSwipeLeft={this.changePage.bind(this, 'page2')}>
+              <div className="graph1 graph-position" >
+              {/* onSwipe={this.changePage.bind(this, 'page2')} */}
+                <Chart
+                  chartType="ColumnChart"
+                  width="100%"
+                  height="17.8em"
+                  data={bardata}
+                  options={baroptions}
+                />
+              </div>
+            </Swipe>
+            <Swipe
+            onSwipeStart={this.onSwipeStart}
+            onSwipeLeft={this.changePage.bind(this, 'page3')}
+            onSwipeRight={this.changePage.bind(this, 'page1')}>
             <div className="graph2 graph-position">
               <Chart
                 chartType="LineChart"
@@ -66,6 +91,11 @@ class Carousel extends Component {
                 options={lineoptions}
               />
             </div>
+            </Swipe>
+            <Swipe
+            onSwipeStart={this.onSwipeStart}
+            onSwipeLeft={this.changePage.bind(this, 'page4')}
+            onSwipeRight={this.changePage.bind(this, 'page2')}>
             <div className="graph3 graph-position">
               <Chart
                 chartType="PieChart"
@@ -75,6 +105,9 @@ class Carousel extends Component {
                 options={donutoptions1}
               />
             </div>
+            </Swipe>
+            <Swipe
+              onSwipeRight={this.changePage.bind(this, 'page3')}>
             <div className="graph4 graph-position">
               <Chart
                 chartType="PieChart"
@@ -84,8 +117,9 @@ class Carousel extends Component {
                 options={donutoptions2}
               />
             </div>
+            </Swipe>
           </Slider>
-          <div className="footer footer-color1">
+          <div className="footer">
             <Button color="success" size="large">FIND HELP</Button>
           </div>
         </div>
@@ -93,11 +127,14 @@ class Carousel extends Component {
     )
   }
 
-changePage(pageNumber){
+  changePage(page){
     this.setState({
-        currentPage: pageNumber
+        currentPage: page
     })
-}
+    console.log("test");
+  }
+
+
 
 
 }
@@ -106,26 +143,35 @@ changePage(pageNumber){
 class Page1 extends Component {
   render() {
     return (
-      <div className="paragraph-position">
-        <p className="headparagraph">
-          Whos Getting Help?
-        </p>
-        <p className="paragraph paragraph1">
-          171,033 people accessed mental health care and addiction services in 2015 - 16.
-        </p>
-      </div>
+   
+        <div className="header header-color1">
+          <div className="paragraph-position">
+            <p className="headparagraph">
+              Whos Getting Help?
+            </p>
+            <p className="paragraph paragraph1">
+              171,033 people accessed mental health care and addiction services in 2015 - 16.
+            </p>
+          </div>
+        </div>
     )
   }
+
 }
 
 class Page2 extends Component {
   render() {
     return (
-      <div className="paragraph-position">
-        <p className="paragraph paragraph2">
-          Kiwis are reporting higher reates of psychological distress each year, meaning our <b>mental health care services are more important than ever.</b>
-        </p>
+   
+      <div className="header header-color2">
+        <div className="paragraph-position">
+          <p className="paragraph paragraph2">
+            Kiwis are reporting higher reates of psychological distress each year, meaning our <b>mental health care services are more important than ever.</b>
+          </p>
+        </div>
       </div>
+    
+
     );
   }
 }
@@ -135,14 +181,18 @@ class Page2 extends Component {
 class Page3 extends Component {
   render() {
     return (
-      <div className="paragraph-position">
-        <p className="headparagraph">
-          Whos Getting Help?
-        </p>
-        <p className="paragraph paragraph3">
-          Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
-        </p>
+      
+      <div className="header header-color3">
+        <div className="paragraph-position">
+          <p className="headparagraph">
+            Whos Getting Help?
+          </p>
+          <p className="paragraph paragraph3">
+            Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
+          </p>
+        </div>
       </div>
+    
     );
   }
 }
@@ -151,13 +201,16 @@ class Page3 extends Component {
 class Page4 extends Component {
   render() {
     return (
-      <div className="paragraph-position">
-        <p className="headparagraph">
-          Whos Getting Help?
-        </p>
-        <p className="paragraph paragraph3">
-          Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
-        </p>
+
+      <div className="header header-color4">
+        <div className="paragraph-position">
+          <p className="headparagraph">
+            Whos Getting Help?
+          </p>
+          <p className="paragraph paragraph3">
+            Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
+          </p>
+        </div>
       </div>
     );
   }

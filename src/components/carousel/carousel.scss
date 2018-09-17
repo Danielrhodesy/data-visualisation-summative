@@ -3,21 +3,7 @@ $red: #EF5D60;
 $lightPurple: #866BB6;
 $darkPurple: #5A496A;
 
-.page1 {
-    // display: none;
-}
 
-.page2 {
-    display: none;
-}
-
-.page3 {
-    display: none;
-}
-
-.page4 {
-    display: none;
-}
 
 // .graphPage {
 //     height: 667px;
@@ -138,6 +124,15 @@ $darkPurple: #5A496A;
 }
 
 .footer-color3 {
-    background-color: $darkPurple
+    background-color: $darkPurple;
 }
 
+// Page 4
+
+.header-color4 {
+    background-color: $green;
+}
+
+.footer-color4 {
+    background-color: $green;
+}
