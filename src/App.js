@@ -24,8 +24,12 @@ class App extends Component {
           changePage={this.changePage}
           />
       } else if(currentPage === 'carouselPage'){
-          page = <Carousel/>
-      }
+          page = <Carousel
+          {...this.state}
+          changePage={this.changePage}/>
+      } else {
+        page = <Page404/>
+    }
 
     return (
       <div className="app">
@@ -43,21 +47,10 @@ class App extends Component {
 }
 
 
-
-
-
-class HomePage extends Component {
+class Page404 extends Component {
     render() {
       return (
-        <Home/>
-      );
-    }
-}
-
-class CarouselPage extends Component {
-    render() {
-      return (
-        <Carousel/>
+        <h1>404</h1>
       );
     }
 }

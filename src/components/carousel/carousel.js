@@ -8,6 +8,7 @@ import {
  } from 'reactstrap';
  import Slider from "react-slick";
  import { Chart } from "react-google-charts";
+ import Swipe from 'react-easy-swipe';
 
 
 class Carousel extends Component {
@@ -15,47 +16,87 @@ class Carousel extends Component {
   constructor(){
     super();
     this.state = {
-      currentPage: 'page1'
+      currentSlide: 'Slide1',
+      currentFooter: 'footer1'
     }
   }
 
+  onSwipeStart(event) {
+    console.log('Start swiping...', event);
+  }
+
+  onSwipeRight(position, event) {
+    console.log(`Moved ${position.x} pixels horizontally`, event);
+
+  }
+
+  onSwipeEnd(event) {
+    console.log('End swiping...', event);
+  }
+
+
+
   render() {
 
-    var currentPage = this.state.currentPage;
-    let page;
+    var currentFooter = this.state.currentFooter
+    let footer
 
-    if(currentPage === 'page1'){
-      page = <Page1/>
-    } else if(currentPage === 'page2'){
-      page = <Page2/>
-    } else if(currentPage === 'page3'){
-        page = <Page3/>
-    } else if(currentPage === 'page4'){
-        page = <Page4/>
+    if(currentFooter === 'Footer1'){
+      footer = <Footer1/>
+    } else if(currentFooter === 'footer2'){
+      footer = <Footer2/>
+    } else if(currentFooter === 'footer3'){
+      footer = <Footer3/>
+    } else if(currentFooter === 'footer4'){
+      footer = <Footer4/>
     }
 
+    var currentSlide = this.state.currentSlide;
+    let Slide;
+
+    if(currentSlide === 'Slide1'){
+      Slide = <Slide1/>
+    } else if(currentSlide === 'Slide2'){
+      Slide = <Slide2/>
+    } else if(currentSlide === 'Slide3'){
+        Slide = <Slide3/>
+    } else if(currentSlide === 'Slide4'){
+        Slide = <Slide4/>
+    }
+
+
     return (
-      <div className="graphPage">
-        {/* PAGE 1 - Age/Mental Health */}
+      <div className="graphSlide">
+        {/* Slide 1 - Age/Mental Health */}
 
-        <div className="page1">
-          
-          <div className="header header-color1">
-            {page}
+        <div className="Slide1">
+          <div className="placeholder">
           </div>
+          <div className="header-container">
+
+            {Slide}
+
+          </div>
+
           <Slider {...settings} >
-
-            <div className="graph1 graph-position" >
-            {/* onSwipe={this.changePage.bind(this, 'page2')} */}
-              <Chart
-                chartType="ColumnChart"
-                width="100%"
-                height="17.8em"
-                data={bardata}
-                options={baroptions}
-              />
-            </div>
-
+           <Swipe
+            onSwipeStart={this.onSwipeStart}
+            onSwipeLeft={this.changeSlide.bind(this, 'Slide2')}>
+              <div className="graph1 graph-position" >
+              {/* onSwipe={this.changeSlide.bind(this, 'Slide2')} */}
+                <Chart
+                  chartType="ColumnChart"
+                  width="100%"
+                  height="17.8em"
+                  data={bardata}
+                  options={baroptions}
+                />
+              </div>
+            </Swipe>
+            <Swipe
+            onSwipeStart={this.onSwipeStart}
+            onSwipeLeft={this.changeSlide.bind(this, 'Slide3')}
+            onSwipeRight={this.changeSlide.bind(this, 'Slide1')}>
             <div className="graph2 graph-position">
               <Chart
                 chartType="LineChart"
@@ -65,6 +106,11 @@ class Carousel extends Component {
                 options={lineoptions}
               />
             </div>
+            </Swipe>
+            <Swipe
+            onSwipeStart={this.onSwipeStart}
+            onSwipeLeft={this.changeSlide.bind(this, 'Slide4')}
+            onSwipeRight={this.changeSlide.bind(this, 'Slide2')}>
             <div className="graph3 graph-position">
               <Chart
                 chartType="PieChart"
@@ -74,6 +120,9 @@ class Carousel extends Component {
                 options={donutoptions1}
               />
             </div>
+            </Swipe>
+            <Swipe
+              onSwipeRight={this.changeSlide.bind(this, 'Slide3')}>
             <div className="graph4 graph-position">
               <Chart
                 chartType="PieChart"
@@ -83,80 +132,154 @@ class Carousel extends Component {
                 options={donutoptions2}
               />
             </div>
+            </Swipe>
           </Slider>
-          <div className="footer footer-color1">
-            <Button color="success" size="large">FIND HELP</Button>
+          <div className="footer-container">
+          <div className="footer footer-color2">
+            <Button color="success" size="large" onClick={this.props.changePage.bind(this, 'MapPage')}>FIND HELP</Button>
+      </div>
           </div>
+
         </div>
       </div>
     )
   }
 
-changePage(pageNumber){
+  changePage(page){
     this.setState({
-        currentPage: pageNumber
+        currentPage: page
     })
-}
+  }
+
+  changeSlide(slide){
+    this.setState({
+        currentSlide: slide
+    })
+    console.log("Slide test");
+  }
+
+  changeFooter(footer){
+    this.setState({
+        currentFooter: footer
+    })
+    console.log("footer test");
+  }
 
 
 }
 
 
-class Page1 extends Component {
+class Slide1 extends Component {
   render() {
     return (
-      <div className="paragraph-position">
-        <p className="headparagraph">
-          Whos Getting Help?
-        </p>
-        <p className="paragraph paragraph1">
-          171,033 people accessed mental health care and addiction services in 2015 - 16.
-        </p>
-      </div>
+
+        <div className="header header-color1">
+          <div className="paragraph-position">
+            <p className="headparagraph">
+              Whos Getting Help?
+            </p>
+            <p className="paragraph paragraph1">
+              171,033 people accessed mental health care and addiction services in 2015 - 16.
+            </p>
+          </div>
+        </div>
     )
   }
+
 }
 
-class Page2 extends Component {
+class Slide2 extends Component {
   render() {
     return (
-      <div className="paragraph-position">
-        <p className="paragraph paragraph2">
-          Kiwis are reporting higher reates of psychological distress each year, meaning our <b>mental health care services are more important than ever.</b>
-        </p>
+
+      <div className="header header-color2">
+        <div className="paragraph-position">
+          <p className="paragraph paragraph2">
+            Kiwis are reporting higher reates of psychological distress each year, meaning our <b>mental health care services are more important than ever.</b>
+          </p>
+        </div>
       </div>
+
+
     );
   }
 }
 
 
 
-class Page3 extends Component {
+class Slide3 extends Component {
   render() {
     return (
-      <div className="paragraph-position">
-        <p className="headparagraph">
-          Whos Getting Help?
-        </p>
-        <p className="paragraph paragraph3">
-          Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
-        </p>
+
+      <div className="header header-color3">
+        <div className="paragraph-position">
+          <p className="headparagraph">
+            Whos Getting Help?
+          </p>
+          <p className="paragraph paragraph3">
+            Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
+          </p>
+        </div>
       </div>
+
     );
   }
 }
 
 
-class Page4 extends Component {
+class Slide4 extends Component {
   render() {
     return (
-      <div className="paragraph-position">
-        <p className="headparagraph">
-          Whos Getting Help?
-        </p>
-        <p className="paragraph paragraph3">
-          Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
-        </p>
+
+      <div className="header header-color4">
+        <div className="paragraph-position">
+          <p className="headparagraph">
+            Whos Getting Help?
+          </p>
+          <p className="paragraph paragraph3">
+            Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
+          </p>
+        </div>
+      </div>
+    );
+  }
+}
+
+class Footer1 extends Component {
+  render() {
+    return (
+      <div className="footer footer-color1">
+            <Button color="success" size="large">FIND HELP</Button>
+      </div>
+    );
+  }
+}
+
+class Footer2 extends Component {
+  render() {
+    return (
+      <div className="footer footer-color2">
+            <Button color="success" size="large">FIND HELP</Button>
+      </div>
+    );
+  }
+}
+
+class Footer3 extends Component {
+  render() {
+    return (
+      <div className="footer footer-color3">
+            <Button color="success" size="large">FIND HELP</Button>
+      </div>
+    );
+  }
+}
+
+class Footer4 extends Component {
+  render() {
+    return (
+      <div className="footer footer-color4">
+            <Button color="success" size="large">FIND HELP</Button>
       </div>
     );
   }
