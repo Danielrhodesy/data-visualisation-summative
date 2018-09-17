@@ -1,52 +1,50 @@
 import React, { Component } from 'react';
 import Home from './components/home/home';
-import carousel from './components/carousel/carousel';
-// import Carousel from ''
+import Carousel from './components/carousel/carousel';
+import {
+  Button
+ } from 'reactstrap';
 
 class App extends Component {
   constructor(){
         super();
         this.state = {
-            currentPage: 'homePage'
+          currentPage: 'homePage'
         }
-        // this.changeClass = this.changeClass.bind(this);
-
+      this.changePage = this.changePage.bind(this)
     }
-  render() {
 
+  render() {
     var currentPage = this.state.currentPage;
-      let page;
+    let page;
 
       if(currentPage === 'homePage'){
-          page = <HomePage/>
+          page = <Home
+          {...this.state}
+          changePage={this.changePage}
+          />
       } else if(currentPage === 'carouselPage'){
-          page = <CarouselPage/>
-      // } else if(currentPage === 'mapPage'){
-      //     page = <MapPage/>
+          page = <Carousel/>
       }
 
-
-
     return (
-
       <div className="app">
-      {/*  <header className="app-header">
-          <div className="header-logo"></div>
-        </header> */}
         {page}
-        {/* <CarouselPage/> */}
       </div>
     );
   }
-
   changePage(page){
     this.setState({
         currentPage: page
     })
+    console.log("Test");
+  }
+
 }
 
 
-}
+
+
 
 class HomePage extends Component {
     render() {
@@ -64,12 +62,6 @@ class CarouselPage extends Component {
     }
 }
 
-// class mapPage extends Component {
-//     render() {
-//       return (
-//         <MapPage/>
-//       );
-//     }
-// }
+
 
 export default App;
