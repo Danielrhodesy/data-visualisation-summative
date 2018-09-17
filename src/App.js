@@ -24,7 +24,9 @@ class App extends Component {
           changePage={this.changePage}
           />
       } else if(currentPage === 'carouselPage'){
-          page = <Carousel/>
+          page = <Carousel
+          {...this.state}
+          changePage={this.changePage}/>
       } else {
         page = <Page404/>
     }

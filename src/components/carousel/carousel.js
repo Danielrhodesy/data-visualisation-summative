@@ -16,7 +16,8 @@ class Carousel extends Component {
   constructor(){
     super();
     this.state = {
-      currentPage: 'page1'
+      currentSlide: 'Slide1',
+      currentFooter: 'footer1'
     }
   }
 
@@ -37,38 +38,52 @@ class Carousel extends Component {
 
   render() {
 
-    var currentPage = this.state.currentPage;
-    let page;
+    var currentFooter = this.state.currentFooter
+    let footer
 
-    if(currentPage === 'page1'){
-      page = <Page1/>
-    } else if(currentPage === 'page2'){
-      page = <Page2/>
-    } else if(currentPage === 'page3'){
-        page = <Page3/>
-    } else if(currentPage === 'page4'){
-        page = <Page4/>
+    if(currentFooter === 'Footer1'){
+      footer = <Footer1/>
+    } else if(currentFooter === 'footer2'){
+      footer = <Footer2/>
+    } else if(currentFooter === 'footer3'){
+      footer = <Footer3/>
+    } else if(currentFooter === 'footer4'){
+      footer = <Footer4/>
+    }
+  
+    var currentSlide = this.state.currentSlide;
+    let Slide;
+
+    if(currentSlide === 'Slide1'){
+      Slide = <Slide1/>
+    } else if(currentSlide === 'Slide2'){
+      Slide = <Slide2/>
+    } else if(currentSlide === 'Slide3'){
+        Slide = <Slide3/>
+    } else if(currentSlide === 'Slide4'){
+        Slide = <Slide4/>
     }
 
-    return (
-      <div className="graphPage">
-        {/* PAGE 1 - Age/Mental Health */}
 
-        <div className="page1">
+    return (
+      <div className="graphSlide">
+        {/* Slide 1 - Age/Mental Health */}
+
+        <div className="Slide1">
           <div className="placeholder">
           </div>
           <div className="header-container">
 
-            {page}
+            {Slide}
 
           </div>
             
           <Slider {...settings} >
            <Swipe
             onSwipeStart={this.onSwipeStart}
-            onSwipeLeft={this.changePage.bind(this, 'page2')}>
+            onSwipeLeft={this.changeSlide.bind(this, 'Slide2')}>
               <div className="graph1 graph-position" >
-              {/* onSwipe={this.changePage.bind(this, 'page2')} */}
+              {/* onSwipe={this.changeSlide.bind(this, 'Slide2')} */}
                 <Chart
                   chartType="ColumnChart"
                   width="100%"
@@ -80,8 +95,8 @@ class Carousel extends Component {
             </Swipe>
             <Swipe
             onSwipeStart={this.onSwipeStart}
-            onSwipeLeft={this.changePage.bind(this, 'page3')}
-            onSwipeRight={this.changePage.bind(this, 'page1')}>
+            onSwipeLeft={this.changeSlide.bind(this, 'Slide3')}
+            onSwipeRight={this.changeSlide.bind(this, 'Slide1')}>
             <div className="graph2 graph-position">
               <Chart
                 chartType="LineChart"
@@ -94,8 +109,8 @@ class Carousel extends Component {
             </Swipe>
             <Swipe
             onSwipeStart={this.onSwipeStart}
-            onSwipeLeft={this.changePage.bind(this, 'page4')}
-            onSwipeRight={this.changePage.bind(this, 'page2')}>
+            onSwipeLeft={this.changeSlide.bind(this, 'Slide4')}
+            onSwipeRight={this.changeSlide.bind(this, 'Slide2')}>
             <div className="graph3 graph-position">
               <Chart
                 chartType="PieChart"
@@ -107,7 +122,7 @@ class Carousel extends Component {
             </div>
             </Swipe>
             <Swipe
-              onSwipeRight={this.changePage.bind(this, 'page3')}>
+              onSwipeRight={this.changeSlide.bind(this, 'Slide3')}>
             <div className="graph4 graph-position">
               <Chart
                 chartType="PieChart"
@@ -119,9 +134,12 @@ class Carousel extends Component {
             </div>
             </Swipe>
           </Slider>
-          <div className="footer">
-            <Button color="success" size="large">FIND HELP</Button>
+          <div className="footer-container">
+          <div className="footer footer-color2">
+            <Button color="success" size="large" onClick={this.props.changePage.bind(this, 'MapPage')}>FIND HELP</Button>
+      </div>
           </div>
+          
         </div>
       </div> 
     )
@@ -131,16 +149,27 @@ class Carousel extends Component {
     this.setState({
         currentPage: page
     })
-    console.log("test");
   }
 
+  changeSlide(slide){
+    this.setState({
+        currentSlide: slide
+    })
+    console.log("Slide test");
+  }
 
+  changeFooter(footer){
+    this.setState({
+        currentFooter: footer
+    })
+    console.log("footer test");
+  }
 
 
 }
 
 
-class Page1 extends Component {
+class Slide1 extends Component {
   render() {
     return (
    
@@ -159,7 +188,7 @@ class Page1 extends Component {
 
 }
 
-class Page2 extends Component {
+class Slide2 extends Component {
   render() {
     return (
    
@@ -178,7 +207,7 @@ class Page2 extends Component {
 
 
 
-class Page3 extends Component {
+class Slide3 extends Component {
   render() {
     return (
       
@@ -198,7 +227,7 @@ class Page3 extends Component {
 }
 
 
-class Page4 extends Component {
+class Slide4 extends Component {
   render() {
     return (
 
@@ -211,6 +240,46 @@ class Page4 extends Component {
             Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
           </p>
         </div>
+      </div>
+    );
+  }
+}
+
+class Footer1 extends Component {
+  render() {
+    return (
+      <div className="footer footer-color1">
+            <Button color="success" size="large">FIND HELP</Button>
+      </div>
+    );
+  }
+}
+
+class Footer2 extends Component {
+  render() {
+    return (
+      <div className="footer footer-color2">
+            <Button color="success" size="large">FIND HELP</Button>
+      </div>
+    );
+  }
+}
+
+class Footer3 extends Component {
+  render() {
+    return (
+      <div className="footer footer-color3">
+            <Button color="success" size="large">FIND HELP</Button>
+      </div>
+    );
+  }
+}
+
+class Footer4 extends Component {
+  render() {
+    return (
+      <div className="footer footer-color4">
+            <Button color="success" size="large">FIND HELP</Button>
       </div>
     );
   }
