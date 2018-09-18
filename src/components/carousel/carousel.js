@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import './carousel.css';
 import {
-  Button,
-  Container,
-  Row,
-  Col
+  Button
  } from 'reactstrap';
  import Slider from "react-slick";
  import { Chart } from "react-google-charts";
@@ -136,7 +133,7 @@ class Carousel extends Component {
           </Slider>
           <div className="footer-container">
           <div className="footer footer-color2">
-            <Button color="success" size="large" onClick={this.props.changePage.bind(this, 'MapPage')}>FIND HELP</Button>
+            <Button color="success" size="large" onClick={this.props.changePage.bind(this, 'mapPage')}>FIND HELP</Button>
       </div>
           </div>
           
@@ -214,7 +211,7 @@ class Slide3 extends Component {
       <div className="header header-color3">
         <div className="paragraph-position">
           <p className="headparagraph">
-            Whos Getting Help?
+            Who's Getting Help?
           </p>
           <p className="paragraph paragraph3">
             Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
@@ -234,7 +231,7 @@ class Slide4 extends Component {
       <div className="header header-color4">
         <div className="paragraph-position">
           <p className="headparagraph">
-            Whos Getting Help?
+            Who's Getting Help?
           </p>
           <p className="paragraph paragraph3">
             Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.

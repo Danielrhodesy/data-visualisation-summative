@@ -6,9 +6,8 @@ import {
 
 import Home from './components/home/home';
 import Carousel from './components/carousel/carousel';
-import Map from './components/map/map';
-// import { GoogleApiWrapper } from 'google-maps-react';
-// import GoogleMapsContainer from './components/map/react-map';
+import Map from './components/help/map';
+
 
 class App extends Component {
   constructor(){
@@ -34,6 +33,18 @@ class App extends Component {
           changePage={this.changePage}/>
       } else if (currentPage === 'mapPage') {
         page = <Map
+          id="myMap"
+          options={{
+            center: { lat: 41.0082, lng: 28.9784 },
+            zoom: 8
+          }}
+          onMapLoad={map => {
+            var marker = new window.google.maps.Marker({
+              position: { lat: 41.0082, lng: 28.9784 },
+              map: map,
+              title: 'Hello Istanbul!'
+            });
+          }}
           {...this.state}
           changePage={this.changePage} />
       } else {
