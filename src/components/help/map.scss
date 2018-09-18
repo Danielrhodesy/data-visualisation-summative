@@ -5,7 +5,7 @@ $darkPurple: #5A496A;
 
 
 
-.map-container {
+.help {
     width: 100%;
     height: 100%;
     background-color :$lightPurple;
@@ -16,21 +16,21 @@ $darkPurple: #5A496A;
     height: 60%;
 }
 
-      #description {
+      .description {
         font-family: Roboto;
         font-size: 15px;
         font-weight: 300;
       }
 
-      #infowindow-content .title {
+      .infowindow-content .title {
         font-weight: bold;
       }
 
-      #infowindow-content {
+      .infowindow-content {
         display: none;
       }
 
-      .map #infowindow-content {
+      .map .infowindow-content {
         display: inline;
       }
 
@@ -45,7 +45,7 @@ $darkPurple: #5A496A;
         font-family: Roboto;
       }
 
-      #pac-container {
+      .pac-container {
         padding-bottom: 12px;
         margin-right: 12px;
       }
@@ -61,7 +61,7 @@ $darkPurple: #5A496A;
         font-weight: 300;
       }
 
-      #pac-input {
+      .pac-input {
         background-color: #fff;
         font-family: Roboto;
         font-size: 15px;
@@ -72,17 +72,17 @@ $darkPurple: #5A496A;
         width: 400px;
       }
 
-      #pac-input:focus {
+      .pac-input:focus {
         border-color: #4d90fe;
       }
 
-      #title {
+      .title {
         color: #fff;
         background-color: #4d90fe;
         font-size: 25px;
         font-weight: 500;
         padding: 6px 12px;
       }
-      #target {
+      .target {
         width: 345px;
       }

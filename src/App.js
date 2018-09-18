@@ -31,20 +31,8 @@ class App extends Component {
           page = <Carousel
           {...this.state}
           changePage={this.changePage}/>
-      } else if (currentPage === 'mapPage') {
-        page = <Map
-          id="myMap"
-          options={{
-            center: { lat: 41.0082, lng: 28.9784 },
-            zoom: 8
-          }}
-          onMapLoad={map => {
-            var marker = new window.google.maps.Marker({
-              position: { lat: 41.0082, lng: 28.9784 },
-              map: map,
-              title: 'Hello Istanbul!'
-            });
-          }}
+      } else if (currentPage === 'helpPage') {
+        page = <Help
           {...this.state}
           changePage={this.changePage} />
       } else {
