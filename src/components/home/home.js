@@ -9,22 +9,19 @@ import {
 
 class Home extends Component {
   render() {
+
     return (
-
       <div className="home">
-        <div className="image-container">
-          <h1 className="app-title">Going<br></br> through it?<br/>You're not alone.</h1>
-          <Button className="button" color="success" size="large">CHECK OUT THE STATS</Button>
-          <Button className="button" color="success" size="large">FIND HELP NEAR YOU</Button>
-        </div>
+        <h1 className="heading">Going<br/> through it?<br/>You're not<br/> alone.</h1>
+        <Button className="first-button button" color="success" size="large" onClick={this.props.changePage.bind(this, 'carouselPage')}>CHECK OUT THE STATS</Button>
+        <Button className="second-button button" color="success" size="large" onClick={this.props.changePage.bind(this, 'MapPage')}>FIND HELP NEAR YOU</Button>
       </div>
-
-      <div className="home">
-          <h1 className="heading">Going<br/> through it?<br/>You're not<br/> alone.</h1>
-          <Button className="first-button button" color="success" size="large">CHECK OUT THE STATS</Button>
-          <Button className="second-button button" color="success" size="large">FIND HELP NEAR YOU</Button>
-        </div>
     );
+  }
+  changePage(page){
+    this.setState({
+        currentPage: page
+    })
   }
 }
 
