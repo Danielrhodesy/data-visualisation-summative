@@ -7,6 +7,8 @@ import {
 import Home from './components/home/home';
 import Carousel from './components/carousel/carousel';
 import Map from './components/map/map';
+import { GoogleApiWrapper } from 'google-maps-react';
+// import GoogleMapsContainer from './components/map/react-map';
 
 class App extends Component {
   constructor(){
@@ -31,7 +33,7 @@ class App extends Component {
           {...this.state}
           changePage={this.changePage}/>
       } else if (currentPage === 'mapPage') {
-        page = <Map
+        page = <GoogleApiWrapper
           {...this.state}
           changePage={this.changePage} />
       } else {
