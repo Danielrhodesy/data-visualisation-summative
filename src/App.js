@@ -3,11 +3,10 @@ import ReactDOM from 'react-dom';
 import { 
   Button
  } from 'reactstrap';
+
 import Home from './components/home/home';
 import Carousel from './components/carousel/carousel';
-import {
-  Button
- } from 'reactstrap';
+import Map from './components/map/map';
 
 class App extends Component {
   constructor(){
@@ -31,6 +30,10 @@ class App extends Component {
           page = <Carousel
           {...this.state}
           changePage={this.changePage}/>
+      } else if (currentPage === 'mapPage') {
+        page = <Map
+          {...this.state}
+          changePage={this.changePage} />
       } else {
         page = <Page404/>
     }
@@ -45,7 +48,6 @@ class App extends Component {
     this.setState({
         currentPage: page
     })
-    console.log("Test");
   }
   
 }

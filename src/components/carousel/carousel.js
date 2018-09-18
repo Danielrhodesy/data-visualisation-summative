@@ -39,7 +39,7 @@ class Carousel extends Component {
   render() {
 
     var currentFooter = this.state.currentFooter
-    let footer
+    let footer;
 
     if(currentFooter === 'Footer1'){
       footer = <Footer1/>
@@ -176,7 +176,7 @@ class Slide1 extends Component {
         <div className="header header-color1">
           <div className="paragraph-position">
             <p className="headparagraph">
-              Whos Getting Help?
+              Who's Getting Help?
             </p>
             <p className="paragraph paragraph1">
               171,033 people accessed mental health care and addiction services in 2015 - 16.
@@ -366,4 +366,4 @@ const donutoptions2 = {
 };
 
 
-export default Carousel
+export default Carousel;

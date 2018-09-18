@@ -1,13 +1,33 @@
 import React, { Component } from 'react';
+import { Button } from 'reactstrap';
+import './map.css';
+import GoogleMapsContainer from './components/map/react-map';
 // import config from "config.js"; 
 
-function MapImage(){
-    
-    // const url = "https://maps.googleapis.com/maps/api/staticmap?center=Wellington,New+ZealandY&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&key="
+class Map extends Component {
+    render() {
 
-   
-    return <img className="map-image" src="https://maps.googleapis.com/maps/api/staticmap?center=Wellington,New+ZealandY&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&key=AIzaSyBhrNAnxQp6Jknk4roq8oG4_ygmKPPkLbE"/>;
-    ;
+        return (
+            <div className="map-container">
+            <input id="pac-input" className="controls" type="text" placeholder="Search Box"/>
+            <GoogleMapsContainer/>
+            <Button className="second-button button" color="success" size="large" onClick={this.props.changePage.bind(this, 'MapPage')}>SEARCH</Button>
+            </div>
+        );
+    }
+
+    
+    // componentDidMount() {
+    //     const mapScript = document.createElement("map-script");
+    //     mapScript.src = "./components/map/map-script.js";
+    //     // mapScript.async = true;
+    //     document.body.appendChild(mapScript);
+    // }
+    changePage(page) {
+        this.setState({
+            currentPage: page
+        })
+    }
 }
 
-export default MapImage;
+export default Map;
