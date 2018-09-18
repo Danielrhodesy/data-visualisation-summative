@@ -9,7 +9,7 @@ import {
 
 
 class Carousel extends Component {
-  
+
   constructor(){
     super();
     this.state = {
@@ -21,17 +21,17 @@ class Carousel extends Component {
   onSwipeStart(event) {
     console.log('Start swiping...', event);
   }
- 
+
   onSwipeRight(position, event) {
     console.log(`Moved ${position.x} pixels horizontally`, event);
 
   }
- 
+
   onSwipeEnd(event) {
     console.log('End swiping...', event);
   }
-  
- 
+
+
 
   render() {
 
@@ -47,7 +47,7 @@ class Carousel extends Component {
     } else if(currentFooter === 'footer4'){
       footer = <Footer4/>
     }
-  
+
     var currentSlide = this.state.currentSlide;
     let Slide;
 
@@ -74,7 +74,7 @@ class Carousel extends Component {
             {Slide}
 
           </div>
-            
+
           <Slider {...settings} >
            <Swipe
             onSwipeStart={this.onSwipeStart}
@@ -136,9 +136,9 @@ class Carousel extends Component {
             <Button color="success" size="large" onClick={this.props.changePage.bind(this, 'mapPage')}>FIND HELP</Button>
       </div>
           </div>
-          
+
         </div>
-      </div> 
+      </div>
     )
   }
 
@@ -169,7 +169,7 @@ class Carousel extends Component {
 class Slide1 extends Component {
   render() {
     return (
-   
+
         <div className="header header-color1">
           <div className="paragraph-position">
             <p className="headparagraph">
@@ -188,7 +188,7 @@ class Slide1 extends Component {
 class Slide2 extends Component {
   render() {
     return (
-   
+
       <div className="header header-color2">
         <div className="paragraph-position">
           <p className="paragraph paragraph2">
@@ -196,7 +196,7 @@ class Slide2 extends Component {
           </p>
         </div>
       </div>
-    
+
 
     );
   }
@@ -207,7 +207,7 @@ class Slide2 extends Component {
 class Slide3 extends Component {
   render() {
     return (
-      
+
       <div className="header header-color3">
         <div className="paragraph-position">
           <p className="headparagraph">
@@ -218,7 +218,7 @@ class Slide3 extends Component {
           </p>
         </div>
       </div>
-    
+
     );
   }
 }
@@ -283,7 +283,7 @@ class Footer4 extends Component {
 }
 
 
-//CAROUSEL 
+//CAROUSEL
 
 var settings = {
   dots: true,
@@ -354,7 +354,7 @@ const donutdata2 = [
   ["Eat", 2],
   ["Commute", 2],
   ["Watch TV", 2],
-  ["Sleep", 7] 
+  ["Sleep", 7]
 ];
 const donutoptions2 = {
   pieHole: 0.32,

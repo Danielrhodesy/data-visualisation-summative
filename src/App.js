@@ -62,18 +62,16 @@ class App extends Component {
         currentPage: page
     })
   }
-  
+
 }
 
+
 class Page404 extends Component {
-  render() {
-    return (
-      <div>
-          <h2>404</h2>
-          <p>Page not found</p>
-      </div>
-    );
-  }
+    render() {
+      return (
+        <h1>404</h1>
+      );
+    }
 }
 
 

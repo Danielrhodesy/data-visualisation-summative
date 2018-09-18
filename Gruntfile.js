@@ -8,7 +8,7 @@ module.exports = function (grunt) {
         files: {                         // Dictionary of files
           'src/index.css': 'src/index.scss',  // 'destination': 'source
           'src/components/carousel/carousel.css': 'src/components/carousel/carousel.scss',
-          'src/components/map/map.css': 'src/components/map/map.scss'
+          'src/components/help/map.css': 'src/components/help/map.scss'
         }
       }
     },
@@ -28,11 +28,11 @@ module.exports = function (grunt) {
         files: ["src/index.css",
       "src/App.css",
       "src/components/carousel/carousel.css",
-    "src/components/map/map.css"],
+    "src/components/help/map.css"],
         tasks: ["cssmin"]
       },
       sass: {
-        files: ["src/index.scss", "src/App.scss","src/components/carousel/carousel.scss", "src/components/map/map.scss"],
+        files: ["src/index.scss", "src/App.scss","src/components/carousel/carousel.scss", "src/components/help/map.scss"],
         tasks: ["sass"]
       }
     }
