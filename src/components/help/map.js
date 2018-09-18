@@ -33,8 +33,15 @@ class Map extends Component {
     }
 
     render() {
+        const style = {
+            width: '100vw',
+            height: '60vh',
+            'marginTop': '10vh',
+            'marginLeft': 'auto',
+            'marginRight': 'auto'
+        }
         return (
-            <div style={{ width: 500, height: 500 }} id={this.props.id} />
+            <div style={style} id={this.props.id} />
         );
     }
 }
