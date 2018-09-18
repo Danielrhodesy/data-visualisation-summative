@@ -17,24 +17,11 @@ class Carousel extends Component {
     super();
     this.state = {
       currentSlide: 'Slide1',
-      currentFooter: 'footer1'
+      currentFooter: 'Footer1'
     }
   }
 
-  onSwipeStart(event) {
-    console.log('Start swiping...', event);
-  }
-
-  onSwipeRight(position, event) {
-    console.log(`Moved ${position.x} pixels horizontally`, event);
-
-  }
-
-  onSwipeEnd(event) {
-    console.log('End swiping...', event);
-  }
-
-
+  
 
   render() {
 
@@ -43,11 +30,11 @@ class Carousel extends Component {
 
     if(currentFooter === 'Footer1'){
       footer = <Footer1/>
-    } else if(currentFooter === 'footer2'){
+    } else if(currentFooter === 'Footer2'){
       footer = <Footer2/>
-    } else if(currentFooter === 'footer3'){
+    } else if(currentFooter === 'Footer3'){
       footer = <Footer3/>
-    } else if(currentFooter === 'footer4'){
+    } else if(currentFooter === 'Footer4'){
       footer = <Footer4/>
     }
 
@@ -64,6 +51,7 @@ class Carousel extends Component {
         Slide = <Slide4/>
     }
 
+    
 
     return (
       <div className="graphSlide">
@@ -80,8 +68,7 @@ class Carousel extends Component {
 
           <Slider {...settings} >
            <Swipe
-            onSwipeStart={this.onSwipeStart}
-            onSwipeLeft={this.changeSlide.bind(this, 'Slide2')}>
+            onSwipeLeft={this.leftSwipe()}>
               <div className="graph1 graph-position" >
               {/* onSwipe={this.changeSlide.bind(this, 'Slide2')} */}
                 <Chart
@@ -94,7 +81,6 @@ class Carousel extends Component {
               </div>
             </Swipe>
             <Swipe
-            onSwipeStart={this.onSwipeStart}
             onSwipeLeft={this.changeSlide.bind(this, 'Slide3')}
             onSwipeRight={this.changeSlide.bind(this, 'Slide1')}>
             <div className="graph2 graph-position">
@@ -108,7 +94,6 @@ class Carousel extends Component {
             </div>
             </Swipe>
             <Swipe
-            onSwipeStart={this.onSwipeStart}
             onSwipeLeft={this.changeSlide.bind(this, 'Slide4')}
             onSwipeRight={this.changeSlide.bind(this, 'Slide2')}>
             <div className="graph3 graph-position">
@@ -134,21 +119,23 @@ class Carousel extends Component {
             </div>
             </Swipe>
           </Slider>
-          <div className="footer-container">
-          <div className="footer footer-color2">
-            <Button color="success" size="large" onClick={this.props.changePage.bind(this, 'MapPage')}>FIND HELP</Button>
-      </div>
-          </div>
-
+          {footer}
         </div>
       </div>
     )
+  }
+
+  leftSwipe(){
+    this.changeSlide.bind(this, 'Slide2')
+    this.changeFooter.bind(this, 'Footer2')
   }
 
   changePage(page){
     this.setState({
         currentPage: page
     })
+    console.log("Page Test");
+    
   }
 
   changeSlide(slide){
@@ -164,7 +151,6 @@ class Carousel extends Component {
     })
     console.log("footer test");
   }
-
 
 }
 
@@ -343,13 +329,15 @@ const donutdata1 = [
   ["Eat", 2],
   ["Commute", 2],
   ["Watch TV", 2],
-  ["Sleep", 7] // CSS-style declaration
+  ["Sleep", 7] 
 ];
 const donutoptions1 = {
   pieHole: 0.32,
   chartArea:{left:60,top:50,width:'70%',height:'50%'},
   legend: {position: 'none'}
 }
+
+// PIE CHART 2
 
 const donutdata2 = [
   ["Task", "Hours per Day"],
