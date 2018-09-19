@@ -51,24 +51,23 @@ class Carousel extends Component {
         Slide = <Slide4/>
     }
 
-    
+
 
     return (
       <div className="graphSlide">
         {/* Slide 1 - Age/Mental Health */}
 
         <div className="Slide1">
-          <div className="placeholder">
-          </div>
+          
           <div className="header-container">
 
             {Slide}
 
-          </div>
+          
 
           <Slider {...settings} >
            <Swipe
-            onSwipeLeft={this.leftSwipe()}>
+            onSwipeLeft={this.changeSlide.bind(this, 'Slide2')}>
               <div className="graph1 graph-position" >
               {/* onSwipe={this.changeSlide.bind(this, 'Slide2')} */}
                 <Chart
@@ -119,7 +118,13 @@ class Carousel extends Component {
             </div>
             </Swipe>
           </Slider>
-          {footer}
+          <div className="slider">
+
+          </div>
+          <div>
+            <Button color="success" size="large">FIND HELP</Button>
+          </div>  
+          </div>
         </div>
       </div>
     )
