@@ -6,7 +6,7 @@ import {
 
 import Home from './components/home/home';
 import Carousel from './components/carousel/carousel';
-import Map from './components/help/map';
+import Help from './components/help/help';
 
 
 class App extends Component {

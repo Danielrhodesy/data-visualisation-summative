@@ -11,9 +11,11 @@ $darkPurple: #5A496A;
 // Page structure and static content
 
 body, html, #root {
+    // display: flex;
     height: 100%;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
+    box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
     overflow: hidden;
 }

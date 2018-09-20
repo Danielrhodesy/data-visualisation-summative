@@ -19,7 +19,7 @@ class Map extends Component {
         if (!window.google) {
             var s = document.createElement('script');
             s.type = 'text/javascript';
-            s.src = `https://maps.google.com/maps/api/js?key=AIzaSyDnZHCNVuYH8lZSMZtuHzJ4677eUi6AE8w`;
+            s.src = `https://maps.google.com/maps/api/js?key=AIzaSyCfT6S_MJf57cLx78nAxxN92Y1bqJpl7s0&libraries=places`;
             var x = document.getElementsByTagName('script')[0];
             x.parentNode.insertBefore(s, x);
             // Below is important. 
@@ -33,7 +33,7 @@ class Map extends Component {
     }
 
     render() {
-        const style = {
+        const mapStyle = {
             width: '100vw',
             height: '60vh',
             'marginTop': '10vh',
@@ -41,7 +41,7 @@ class Map extends Component {
             'marginRight': 'auto'
         }
         return (
-            <div style={style} id={this.props.id} />
+            <div style={mapStyle} id={this.props.id} />
         );
     }
 }
