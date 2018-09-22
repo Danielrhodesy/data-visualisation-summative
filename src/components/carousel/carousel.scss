@@ -16,8 +16,6 @@ $darkPurple: #5A496A;
  
 
 .header {
-    // position: relative;
-
     width: 100%;
     height: 40em;
     position: absolute;
@@ -46,35 +44,56 @@ $darkPurple: #5A496A;
     }
 }
 
-.graph-position {
 
+.graph-background {
     margin-top: 11em;
 
     width: 100%;
     height: 17.8em;
+    background-color: white;
 
-    background-color: grey;
+    position: absolute;
 
+    .graph-position {
+
+        width: 100%;
+        height: 17.8em;
+
+
+    }
+    .slick-dots {
+        
+        margin-top: 10em;
+        width: 100%;
+        height: 2em;
+
+        background-color: white;
+    }
 }
 
-.carousel {
+
+.button-container{
+    position: absolute;
+    margin-top: 33em;
 
     width: 100%;
-    height: 4.5em;
+    height: 3.5em;
 
-    background-color: rgb(163, 162, 162);
+    // background-color: white;
+    text-align: center;
 
+    button {
+        border-radius: 25px;
+        font-weight: 600;
+        background-color: #95BB4D;
+        border-color: #95BB4D;
+        padding: 15px 20px;
+    }
+    
 }
 
-button {
-    position: absolute;
-    margin-top: 22em;
-    border-radius: 25px;
-    font-weight: 600;
-    background-color: #95BB4D;
-    border-color: #95BB4D;
-    padding: 15px 20px;
-}
+
+
 
 
 

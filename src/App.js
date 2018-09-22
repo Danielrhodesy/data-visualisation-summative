@@ -33,6 +33,9 @@ class App extends Component {
 
     return (
       <div className="app">
+      <header class="app-header">
+       <div class="header-logo" onClick={this.changePage.bind(this, 'homePage')}></div>
+      </header>
         {page}
       </div>
     );

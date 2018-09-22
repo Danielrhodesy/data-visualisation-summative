@@ -18,22 +18,32 @@
   color: white;
 }
 
-.graph-position {
+.graph-background {
   margin-top: 11em;
   width: 100%;
   height: 17.8em;
-  background-color: grey;
-}
-
-.carousel {
-  width: 100%;
-  height: 4.5em;
-  background-color: #a3a2a2;
-}
-
-button {
+  background-color: white;
   position: absolute;
-  margin-top: 22em;
+}
+.graph-background .graph-position {
+  width: 100%;
+  height: 17.8em;
+}
+.graph-background .slick-dots {
+  margin-top: 10em;
+  width: 100%;
+  height: 2em;
+  background-color: white;
+}
+
+.button-container {
+  position: absolute;
+  margin-top: 33em;
+  width: 100%;
+  height: 3.5em;
+  text-align: center;
+}
+.button-container button {
   border-radius: 25px;
   font-weight: 600;
   background-color: #95BB4D;
