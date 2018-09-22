@@ -19,23 +19,20 @@ class Carousel extends Component {
       currentFooter: 'Footer1',
       error: null,
       isLoaded: false,
-      items: []
+      data: []
     }
   }
 
   componentDidMount() {
-    fetch("http://192.168.33.10:5000/getjson")
+    fetch("http://192.168.33.10:5000/data")
       .then(res => res.json())
       .then(
         (result) => {
           this.setState({
             isLoaded: true,
-            items: result
+            data: result
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         (error) => {
           this.setState({
             isLoaded: true,
@@ -47,7 +44,7 @@ class Carousel extends Component {
 
   render() {
 
-  const { error, isLoaded, items } = this.state;
+  const { error, isLoaded, data } = this.state;
     if (error) {
       console.log('error');
       
@@ -56,17 +53,18 @@ class Carousel extends Component {
       
     } else {
       console.log('Working');
-      return (
-        <ul>
-          {items.map(item => (
-            <li key={item.first_name}>
-              {item.first_name} {item.last_name}
-            </li>
-          ))}
-        </ul>
-      );
+      console.log(data);
+      
+      // return (
+      //   <ul>
+      //     {data.map(data => (
+      //       <li key={data.age}>
+      //         {data.age} {data.people}
+      //       </li>
+      //     ))}
+      //   </ul>
+      // );
     }
-
 
     var currentSlide = this.state.currentSlide;
     let Slide;
@@ -148,7 +146,7 @@ class Carousel extends Component {
             </div>
           <div className="button-container">
             <Button color="success" size="large" onClick={this.props.changePage.bind(this, 'MapPage')}>FIND HELP</Button>
-          </div>  
+          </div>
         </div>
       </div>
     )
@@ -321,7 +319,7 @@ const donutdata2 = [
 const donutoptions2 = {
   pieHole: 0.32,
   chartArea:{left:60,top:50,width:'70%',height:'50%'},
-  legend: {position: 'left'}
+  legend: {position: 'right'}
 };
 
 

@@ -1,12 +1,30 @@
 [
     {
-        "id": 1,
-        "first_name": "Tashina",
-        "last_name": "Jacobs"
+        "age": "under 15",
+        "people": 25661
     },
     {
-        "id": 2,
-        "first_name": "Roberto",
-        "last_name": "Maximus"
+        "age": "15 - 24",
+        "people": 40436
+    },
+    {
+        "age": "25 - 34",
+        "people": 30505
+    },
+    {
+        "age": "35 - 44",
+        "people": 25623
+    },
+    {
+        "age": "45 - 54",
+        "people": 21824
+    },
+    {
+        "age": "55 - 64",
+        "people": 10561
+    },
+    {
+        "age": "64+",
+        "people": 14423
     }
 ]
