@@ -16,39 +16,13 @@ class Carousel extends Component {
     super();
     this.state = {
       currentSlide: 'Slide1',
-      currentFooter: 'footer1'
+      currentFooter: 'Footer1'
     }
   }
 
-  onSwipeStart(event) {
-    console.log('Start swiping...', event);
-  }
-
-  onSwipeRight(position, event) {
-    console.log(`Moved ${position.x} pixels horizontally`, event);
-
-  }
-
-  onSwipeEnd(event) {
-    console.log('End swiping...', event);
-  }
-
-
+  
 
   render() {
-
-    var currentFooter = this.state.currentFooter
-    let footer;
-
-    if(currentFooter === 'Footer1'){
-      footer = <Footer1/>
-    } else if(currentFooter === 'footer2'){
-      footer = <Footer2/>
-    } else if(currentFooter === 'footer3'){
-      footer = <Footer3/>
-    } else if(currentFooter === 'footer4'){
-      footer = <Footer4/>
-    }
 
     var currentSlide = this.state.currentSlide;
     let Slide;
@@ -67,87 +41,81 @@ class Carousel extends Component {
     return (
       <div className="graphSlide">
         {/* Slide 1 - Age/Mental Health */}
-
-        <div className="Slide1">
-          <div className="placeholder">
-          </div>
           <div className="header-container">
 
             {Slide}
 
-          </div>
-
-          <Slider {...settings} >
-           <Swipe
-            onSwipeStart={this.onSwipeStart}
-            onSwipeLeft={this.changeSlide.bind(this, 'Slide2')}>
-              <div className="graph1 graph-position" >
-              {/* onSwipe={this.changeSlide.bind(this, 'Slide2')} */}
+          <div className="graph-background">
+            <Slider {...settings} >
+            <Swipe
+              onSwipeLeft={this.changeSlide.bind(this, 'Slide2')}>
+                <div className="graph1 graph-position" >
+                {/* onSwipe={this.changeSlide.bind(this, 'Slide2')} */}
+                  <Chart
+                    chartType="ColumnChart"
+                    width="100%"
+                    height="17.7em"
+                    data={bardata}
+                    options={baroptions}
+                  />
+                </div>
+              </Swipe>
+              <Swipe
+              onSwipeLeft={this.changeSlide.bind(this, 'Slide3')}
+              onSwipeRight={this.changeSlide.bind(this, 'Slide1')}>
+              <div className="graph2 graph-position">
                 <Chart
-                  chartType="ColumnChart"
+                  chartType="LineChart"
                   width="100%"
-                  height="17.8em"
-                  data={bardata}
-                  options={baroptions}
+                  height="17.7em"
+                  data={linedata}
+                  options={lineoptions}
                 />
               </div>
-            </Swipe>
-            <Swipe
-            onSwipeStart={this.onSwipeStart}
-            onSwipeLeft={this.changeSlide.bind(this, 'Slide3')}
-            onSwipeRight={this.changeSlide.bind(this, 'Slide1')}>
-            <div className="graph2 graph-position">
-              <Chart
-                chartType="LineChart"
-                width="100%"
-                height="17.8em"
-                data={linedata}
-                options={lineoptions}
-              />
+              </Swipe>
+              <Swipe
+              onSwipeLeft={this.changeSlide.bind(this, 'Slide4')}
+              onSwipeRight={this.changeSlide.bind(this, 'Slide2')}>
+              <div className="graph3 graph-position">
+                <Chart
+                  chartType="PieChart"
+                  width="100%"
+                  height="17.7em"
+                  data={donutdata1}
+                  options={donutoptions1}
+                />
+              </div>
+              </Swipe>
+              <Swipe
+                onSwipeRight={this.changeSlide.bind(this, 'Slide3')}>
+              <div className="graph4 graph-position">
+                <Chart
+                  chartType="PieChart"
+                  width="100%"
+                  height="17.7em"
+                  data={donutdata2}
+                  options={donutoptions2}
+                />
+              </div>
+              </Swipe>
+            </Slider>
             </div>
-            </Swipe>
-            <Swipe
-            onSwipeStart={this.onSwipeStart}
-            onSwipeLeft={this.changeSlide.bind(this, 'Slide4')}
-            onSwipeRight={this.changeSlide.bind(this, 'Slide2')}>
-            <div className="graph3 graph-position">
-              <Chart
-                chartType="PieChart"
-                width="100%"
-                height="400px"
-                data={donutdata1}
-                options={donutoptions1}
-              />
+            <div className="slider-background">
             </div>
-            </Swipe>
-            <Swipe
-              onSwipeRight={this.changeSlide.bind(this, 'Slide3')}>
-            <div className="graph4 graph-position">
-              <Chart
-                chartType="PieChart"
-                width="100%"
-                height="400px"
-                data={donutdata2}
-                options={donutoptions2}
-              />
-            </div>
-            </Swipe>
-          </Slider>
-          <div className="footer-container">
-          <div className="footer footer-color2">
-            <Button color="success" size="large" onClick={this.props.changePage.bind(this, 'mapPage')}>FIND HELP</Button>
-      </div>
-          </div>
-
+          <div className="button-container">
+            <Button color="success" size="large" onClick={this.props.changePage.bind(this, 'MapPage')}>FIND HELP</Button>
+          </div>  
         </div>
       </div>
     )
   }
 
+
   changePage(page){
     this.setState({
         currentPage: page
     })
+    console.log("Page Test");
   }
 
   changeSlide(slide){
@@ -156,41 +124,28 @@ class Carousel extends Component {
     })
     console.log("Slide test");
   }
-
-  changeFooter(footer){
-    this.setState({
-        currentFooter: footer
-    })
-    console.log("footer test");
-  }
-
-
 }
-
 
 class Slide1 extends Component {
   render() {
     return (
-
-        <div className="header header-color1">
-          <div className="paragraph-position">
-            <p className="headparagraph">
-              Who's Getting Help?
-            </p>
-            <p className="paragraph paragraph1">
-              171,033 people accessed mental health care and addiction services in 2015 - 16.
-            </p>
-          </div>
+      <div className="header header-color1">
+        <div className="paragraph-position">
+          <p className="headparagraph">
+            Who's Getting Help?
+          </p>
+          <p className="paragraph paragraph1">
+            171,033 people accessed mental health care and addiction services in 2015 - 16.
+          </p>
         </div>
+      </div>
     )
   }
-
 }
 
 class Slide2 extends Component {
   render() {
     return (
-
       <div className="header header-color2">
         <div className="paragraph-position">
           <p className="paragraph paragraph2">
@@ -198,8 +153,6 @@ class Slide2 extends Component {
           </p>
         </div>
       </div>
-
-
     );
   }
 }
@@ -244,52 +197,13 @@ class Slide4 extends Component {
   }
 }
 
-class Footer1 extends Component {
-  render() {
-    return (
-      <div className="footer footer-color1">
-            <Button color="success" size="large">FIND HELP</Button>
-      </div>
-    );
-  }
-}
-
-class Footer2 extends Component {
-  render() {
-    return (
-      <div className="footer footer-color2">
-            <Button color="success" size="large">FIND HELP</Button>
-      </div>
-    );
-  }
-}
-
-class Footer3 extends Component {
-  render() {
-    return (
-      <div className="footer footer-color3">
-            <Button color="success" size="large">FIND HELP</Button>
-      </div>
-    );
-  }
-}
-
-class Footer4 extends Component {
-  render() {
-    return (
-      <div className="footer footer-color4">
-            <Button color="success" size="large">FIND HELP</Button>
-      </div>
-    );
-  }
-}
 
 
 //CAROUSEL
 
 var settings = {
+  arrows: false,
   dots: true,
-  dotClass: 'carouselDots',
   infinite: false,
   speed: 500,
   slidesToShow: 1,
@@ -351,6 +265,8 @@ const donutoptions1 = {
   chartArea:{left:60,top:50,width:'70%',height:'50%'},
   legend: {position: 'Right'}
 }
+
+// PIE CHART 2
 
 const donutdata2 = [
   ["Gender", "Number"],
