@@ -8,8 +8,8 @@ body, html, #root {
 }
 
 .header-logo {
-  height: 7vh;
-  width: 60vw;
+  height: 9vh;
+  width: 75vw;
   background-image: url("./images/mhf-logo.png");
   background-position: center;
   background-size: cover;

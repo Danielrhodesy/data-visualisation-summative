@@ -21,15 +21,13 @@ body, html, #root {
 }
 
 .header-logo {
-  height: 7vh;
-  width: 60vw;
+  height: 9vh;
+  width: 75vw;
   background-image: url("./images/mhf-logo.png");
   background-position: center;
-  // background-repeat: no-repeat;
   background-size: cover;
   position: sticky;
 }
-
 
 //Shared styling
 
@@ -38,8 +36,7 @@ body, html, #root {
   font-weight: 600;
   background-color: $green;
   border-color: $green;
-  // margin: 10% 0 0 20%;
-  padding: 4% 6%; //use percentage for padding and margins
+  padding: 4% 6%;
   position:relative;
 }
 
@@ -74,8 +71,19 @@ body, html, #root {
   padding: 7% 6%;
 }
 
+
 //Carousel component
 
+//Carousel component???
+
+
+.image-container {
+    background-image: url("./images/hero-original.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 .image-container {
     background-image: url("./images/hero-original.jpg");

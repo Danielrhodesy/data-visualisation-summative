@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import Map from './map';
-import { Container, Row, Col, Button } from 'reactstrap';
-// import 'src/index.css';
+import { Button } from 'reactstrap';
 import './map.css';
 // import GoogleMapsContainer from './components/map/react-map';
-// import config from "config.js"; 
+// import config from "config.js";
 
 class Help extends Component {
     render() {

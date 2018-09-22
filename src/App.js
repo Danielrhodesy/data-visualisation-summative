@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { 
+
+import Home from './components/home/home';
+import Carousel from './components/carousel/carousel';
+import {
   Button
  } from 'reactstrap';
 
@@ -41,6 +44,9 @@ class App extends Component {
 
     return (
       <div className="app">
+      <header class="app-header">
+       <div class="header-logo" onClick={this.changePage.bind(this, 'homePage')}></div>
+      </header>
         {page}
       </div>
     );
