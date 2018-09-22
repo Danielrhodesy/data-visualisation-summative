@@ -56,7 +56,15 @@ class Carousel extends Component {
       
     } else {
       console.log('Working');
-      
+      return (
+        <ul>
+          {items.map(item => (
+            <li key={item.first_name}>
+              {item.first_name} {item.last_name}
+            </li>
+          ))}
+        </ul>
+      );
     }
 
 
