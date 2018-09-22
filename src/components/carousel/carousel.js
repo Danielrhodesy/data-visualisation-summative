@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import './carousel.css';
 import {
-  Button,
-  Container,
-  Row,
-  Col
+  Button
  } from 'reactstrap';
  import Slider from "react-slick";
  import { Chart } from "react-google-charts";
@@ -12,6 +9,8 @@ import {
 
 
 class Carousel extends Component {
+
+  
 
   constructor(){
     super();
@@ -39,7 +38,7 @@ class Carousel extends Component {
   render() {
 
     var currentFooter = this.state.currentFooter
-    let footer
+    let footer;
 
     if(currentFooter === 'Footer1'){
       footer = <Footer1/>
@@ -136,7 +135,7 @@ class Carousel extends Component {
           </Slider>
           <div className="footer-container">
           <div className="footer footer-color2">
-            <Button color="success" size="large" onClick={this.props.changePage.bind(this, 'MapPage')}>FIND HELP</Button>
+            <Button color="success" size="large" onClick={this.props.changePage.bind(this, 'mapPage')}>FIND HELP</Button>
       </div>
           </div>
 
@@ -176,7 +175,7 @@ class Slide1 extends Component {
         <div className="header header-color1">
           <div className="paragraph-position">
             <p className="headparagraph">
-              Whos Getting Help?
+              Who's Getting Help?
             </p>
             <p className="paragraph paragraph1">
               171,033 people accessed mental health care and addiction services in 2015 - 16.
@@ -214,7 +213,7 @@ class Slide3 extends Component {
       <div className="header header-color3">
         <div className="paragraph-position">
           <p className="headparagraph">
-            Whos Getting Help?
+            Who's Getting Help?
           </p>
           <p className="paragraph paragraph3">
             Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
@@ -234,7 +233,7 @@ class Slide4 extends Component {
       <div className="header header-color4">
         <div className="paragraph-position">
           <p className="headparagraph">
-            Whos Getting Help?
+            Who's Getting Help?
           </p>
           <p className="paragraph paragraph3">
             Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
@@ -350,7 +349,7 @@ const donutdata1 = [
 const donutoptions1 = {
   pieHole: 0.32,
   chartArea:{left:60,top:50,width:'70%',height:'50%'},
-  legend: {position: 'none'}
+  legend: {position: 'labeled'}
 }
 
 const donutdata2 = [
@@ -362,8 +361,8 @@ const donutdata2 = [
 const donutoptions2 = {
   pieHole: 0.32,
   chartArea:{left:60,top:50,width:'70%',height:'50%'},
-  legend: {position: 'none'}
+  legend: {position: 'left'}
 };
 
 
-export default Carousel
+export default Carousel;

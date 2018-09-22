@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
-<<<<<<< Updated upstream
-=======
 import ReactDOM from 'react-dom';
-import {
-  Button
- } from 'reactstrap';
 
->>>>>>> Stashed changes
 import Home from './components/home/home';
 import Carousel from './components/carousel/carousel';
 import {
@@ -35,14 +29,15 @@ class App extends Component {
           page = <Carousel
           {...this.state}
           changePage={this.changePage}/>
-<<<<<<< Updated upstream
-=======
-      } else if (currentPage === 'helpPage') {
-        page = <Map
-          {...this.state}
-          changePage={this.changePage} />
->>>>>>> Stashed changes
-      } else {
+
+      }
+
+      // else if (currentPage === 'helpPage') {
+      //   page = <Map
+      //     {...this.state}
+      //     changePage={this.changePage} />
+
+        else {
         page = <Page404/>
     }
 
