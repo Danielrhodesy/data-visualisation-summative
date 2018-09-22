@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import './carousel.css';
 import {
-  Button,
-  Container,
-  Row,
-  Col
+  Button
  } from 'reactstrap';
  import Slider from "react-slick";
  import { Chart } from "react-google-charts";
@@ -12,6 +9,8 @@ import {
 
 
 class Carousel extends Component {
+
+  
 
   constructor(){
     super();
@@ -102,7 +101,6 @@ class Carousel extends Component {
             </Slider>
             </div>
             <div className="slider-background">
-
             </div>
           <div className="button-container">
             <Button color="success" size="large" onClick={this.props.changePage.bind(this, 'MapPage')}>FIND HELP</Button>
@@ -134,7 +132,7 @@ class Slide1 extends Component {
       <div className="header header-color1">
         <div className="paragraph-position">
           <p className="headparagraph">
-            Whos Getting Help?
+            Who's Getting Help?
           </p>
           <p className="paragraph paragraph1">
             171,033 people accessed mental health care and addiction services in 2015 - 16.
@@ -148,7 +146,6 @@ class Slide1 extends Component {
 class Slide2 extends Component {
   render() {
     return (
-
       <div className="header header-color2">
         <div className="paragraph-position">
           <p className="paragraph paragraph2">
@@ -169,7 +166,7 @@ class Slide3 extends Component {
       <div className="header header-color3">
         <div className="paragraph-position">
           <p className="headparagraph">
-            Whos Getting Help?
+            Who's Getting Help?
           </p>
           <p className="paragraph paragraph3">
             Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
@@ -189,7 +186,7 @@ class Slide4 extends Component {
       <div className="header header-color4">
         <div className="paragraph-position">
           <p className="headparagraph">
-            Whos Getting Help?
+            Who's Getting Help?
           </p>
           <p className="paragraph paragraph3">
             Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
@@ -219,13 +216,13 @@ var settings = {
 
 const bardata = [
   ["Age", "People", { role: "style" }],
-  ["Under 15", 20000, "#5A496A"],
-  ["16 - 24", 45000, " #5A496A"],
-  ["25 - 34", 37000, " #5A496A"],
-  ["35 - 44", 21000, " #5A496A"],
-  ["45 - 54", 19000, " #5A496A"],
-  ["55 - 64", 15000, "#5A496A"],
-  ["64+", 12000, " #5A496A"]
+  ["Under 15", 25661, "#5A496A"],
+  ["15 - 24", 40436, " #5A496A"],
+  ["25 - 34", 30505, " #5A496A"],
+  ["35 - 44", 25623, " #5A496A"],
+  ["45 - 54", 21824, " #5A496A"],
+  ["55 - 64", 12561, "#5A496A"],
+  ["64+", 14423, " #5A496A"]
 ];
 
 const baroptions = {
@@ -237,10 +234,12 @@ const baroptions = {
 
 const linedata = [
   ["Year", "Reports"],
-  ["2010", 45],
-  ["2011", 54],
-  ["2012", 58],
-  ["2013", 63]
+  ["2011", 56.4],
+  ["2012", 58.9],
+  ["2013", 65.5],
+  ["2014", 61.6],
+  ["2015", 66.9],
+  ["2016", 72.4]
 ];
 
 const lineoptions = {
@@ -254,35 +253,32 @@ const lineoptions = {
 
 
 const donutdata1 = [
-  ["Task", "Hours per Day"],
-  ["Work", 11],
-  ["Eat", 2],
-  ["Commute", 2],
-  ["Watch TV", 2],
-  ["Sleep", 7] 
+  ["Ethnicity", "Number"],
+  ["Maori", 45726],
+  ["Pacific", 9980],
+  ["Asian", 7122],
+  ["Other", 108205]  // CSS-style declaration
 ];
+
 const donutoptions1 = {
   pieHole: 0.32,
-  chartArea:{left:80,top:50,width:'70%',height:'70%'},
-  legend: {position: 'right', textStyle: {color: '#5A496A', fontSize: 12}}
+  chartArea:{left:60,top:50,width:'70%',height:'50%'},
+  legend: {position: 'labeled'}
 }
 
 // PIE CHART 2
 
 const donutdata2 = [
-  ["Task", "Hours per Day"],
-  ["Work", 11],
-  ["Eat", 2],
-  ["Commute", 2],
-  ["Watch TV", 2],
-  ["Sleep", 7]
+  ["Gender", "Number"],
+  ["Female", 81645],
+  ["Male", 89379]
 ];
+
 const donutoptions2 = {
   pieHole: 0.32,
-  chartArea:{left:80,top:50,width:'70%',height:'70%'},
-  legend: {position: 'right', textStyle: {color: '#5A496A', fontSize: 12}}
-
+  chartArea:{left:60,top:50,width:'70%',height:'50%'},
+  legend: {position: 'left'}
 };
 
 
-export default Carousel
+export default Carousel;

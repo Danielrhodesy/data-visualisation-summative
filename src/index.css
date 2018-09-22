@@ -7,8 +7,8 @@ body, html, #root {
 }
 
 .header-logo {
-  height: 7vh;
-  width: 60vw;
+  height: 9vh;
+  width: 75vw;
   background-image: url("./images/mhf-logo.png");
   background-position: center;
   background-size: cover;
@@ -48,6 +48,14 @@ body, html, #root {
   color: white;
   text-shadow: 2px 2px 2px rgba(80, 80, 80, 0.5);
   padding: 7% 6%;
+}
+
+.image-container {
+  background-image: url("./images/hero-original.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /*# sourceMappingURL=index.css.map */
