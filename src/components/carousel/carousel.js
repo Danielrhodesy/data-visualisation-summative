@@ -12,17 +12,53 @@ class Carousel extends Component {
 
   
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       currentSlide: 'Slide1',
-      currentFooter: 'Footer1'
+      currentFooter: 'Footer1',
+      error: null,
+      isLoaded: false,
+      items: []
     }
   }
 
-  
+  componentDidMount() {
+    fetch("http://192.168.33.10:5000/getjson")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            items: result
+          });
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+    }
 
   render() {
+
+  const { error, isLoaded, items } = this.state;
+    if (error) {
+      console.log('error');
+      
+    } else if (!isLoaded) {
+      console.log('loading');
+      
+    } else {
+      console.log('Working');
+      
+    }
+
 
     var currentSlide = this.state.currentSlide;
     let Slide;
