@@ -30,7 +30,7 @@ class Map extends Component {
         } else {
             this.onScriptLoad()
         }
-    }
+    } 
 
     render() {
         const mapStyle = {

@@ -340,7 +340,7 @@ const donutdata1 = [
   ["Eat", 2],
   ["Commute", 2],
   ["Watch TV", 2],
-  ["Sleep", 7] // CSS-style declaration
+  ["Sleep", 7] .// CSS-style declaration
 ];
 const donutoptions1 = {
   pieHole: 0.32,
