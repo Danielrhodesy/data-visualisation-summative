@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-
-import Home from './components/home/home';
-import Carousel from './components/carousel/carousel';
 import {
   Button
  } from 'reactstrap';
