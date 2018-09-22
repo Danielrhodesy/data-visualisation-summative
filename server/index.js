@@ -1,5 +1,6 @@
 const express = require('express');
 const data = require('./data/data.json');
+// const daa = require('./data/bardata.json');
 const cors = require('cors');
 
 const app = express();
@@ -11,7 +12,7 @@ app.use(function(req, res, next){
   next();
 });
 
-app.get('/getjson', function(req, res){
+app.get('/data', function(req, res){
   res.json(data);
 });
 

@@ -19,23 +19,20 @@ class Carousel extends Component {
       currentFooter: 'Footer1',
       error: null,
       isLoaded: false,
-      items: []
+      data: []
     }
   }
 
   componentDidMount() {
-    fetch("http://192.168.33.10:5000/getjson")
+    fetch("http://192.168.33.10:5000/data")
       .then(res => res.json())
       .then(
         (result) => {
           this.setState({
             isLoaded: true,
-            items: result
+            data: result
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         (error) => {
           this.setState({
             isLoaded: true,
@@ -47,7 +44,7 @@ class Carousel extends Component {
 
   render() {
 
-  const { error, isLoaded, items } = this.state;
+  const { error, isLoaded, data } = this.state;
     if (error) {
       console.log('error');
 
@@ -56,9 +53,18 @@ class Carousel extends Component {
 
     } else {
       console.log('Working');
+      console.log(data);
 
+      // return (
+      //   <ul>
+      //     {data.map(data => (
+      //       <li key={data.age}>
+      //         {data.age} {data.people}
+      //       </li>
+      //     ))}
+      //   </ul>
+      // );
     }
-
 
     var currentSlide = this.state.currentSlide;
     let Slide;
