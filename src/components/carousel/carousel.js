@@ -10,19 +10,57 @@ import {
 
 class Carousel extends Component {
 
-
-
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       currentSlide: 'Slide1',
-      currentFooter: 'Footer1'
+      currentFooter: 'Footer1',
+      error: null,
+      isLoaded: false,
+      items: []
     }
   }
 
-  
+  componentDidMount() {
+    fetch("http://192.168.33.10:5000/getjson")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            items: result
+          });
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }
 
   render() {
+
+    const { error, isLoaded, items } = this.state;
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
+      return (
+        <ul>
+          {items.map(item => (
+            <li key={item.first_name}>
+              {item.first_name} {item.last_name}
+            </li>
+          ))}
+        </ul>
+      );
+    }
 
     var currentSlide = this.state.currentSlide;
     let Slide;
@@ -104,7 +142,7 @@ class Carousel extends Component {
             </div>
           <div className="button-container">
             <Button color="success" size="large" onClick={this.props.changePage.bind(this, 'MapPage')}>FIND HELP</Button>
-          </div>  
+          </div>
         </div>
       </div>
     )
@@ -254,16 +292,16 @@ const lineoptions = {
 
 const donutdata1 = [
   ["Ethnicity", "Number"],
-  ["Māori", 45726],
+  ["Maori", 45726],
   ["Pacific", 9980],
   ["Asian", 7122],
-  ["Pākehā/Other", 108205]  // CSS-style declaration
+  ["Other", 108205]  // CSS-style declaration
 ];
 
 const donutoptions1 = {
   pieHole: 0.32,
   chartArea:{left:60,top:50,width:'70%',height:'50%'},
-  legend: {position: 'Right'}
+  legend: {position: 'labeled'}
 }
 
 // PIE CHART 2
@@ -277,7 +315,7 @@ const donutdata2 = [
 const donutoptions2 = {
   pieHole: 0.32,
   chartArea:{left:60,top:50,width:'70%',height:'50%'},
-  legend: {position: 'left'}
+  legend: {position: 'right'}
 };
 
 
