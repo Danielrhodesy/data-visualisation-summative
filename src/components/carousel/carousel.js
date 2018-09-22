@@ -10,6 +10,8 @@ import {
 
 class Carousel extends Component {
 
+
+
   constructor(props){
     super(props);
     this.state = {
@@ -41,26 +43,22 @@ class Carousel extends Component {
           });
         }
       )
-  }
+    }
 
   render() {
 
-    const { error, isLoaded, items } = this.state;
+  const { error, isLoaded, items } = this.state;
     if (error) {
-      return <div>Error: {error.message}</div>;
+      console.log('error');
+
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      console.log('loading');
+
     } else {
-      return (
-        <ul>
-          {items.map(item => (
-            <li key={item.first_name}>
-              {item.first_name} {item.last_name}
-            </li>
-          ))}
-        </ul>
-      );
+      console.log('Working');
+
     }
+
 
     var currentSlide = this.state.currentSlide;
     let Slide;
