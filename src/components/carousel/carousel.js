@@ -10,7 +10,7 @@ import {
 
 class Carousel extends Component {
 
-  
+
 
   constructor(){
     super();
@@ -340,16 +340,16 @@ const lineoptions = {
 
 const donutdata1 = [
   ["Ethnicity", "Number"],
-  ["Maori", 45726],
+  ["Māori", 45726],
   ["Pacific", 9980],
   ["Asian", 7122],
-  ["Other", 108205]  // CSS-style declaration
+  ["Pākehā/Other", 108205]  // CSS-style declaration
 ];
 
 const donutoptions1 = {
   pieHole: 0.32,
   chartArea:{left:60,top:50,width:'70%',height:'50%'},
-  legend: {position: 'labeled'}
+  legend: {position: 'Right'}
 }
 
 const donutdata2 = [
