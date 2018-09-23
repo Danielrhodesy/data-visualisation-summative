@@ -55,15 +55,7 @@ class Carousel extends Component {
       console.log('Working');
       console.log(data);
 
-      // return (
-      //   <ul>
-      //     {data.map(data => (
-      //       <li key={data.age}>
-      //         {data.age} {data.people}
-      //       </li>
-      //     ))}
-      //   </ul>
-      // );
+    
     }
 
     var currentSlide = this.state.currentSlide;
