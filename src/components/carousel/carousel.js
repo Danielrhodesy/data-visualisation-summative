@@ -3,14 +3,12 @@ import './carousel.css';
 import {
   Button
  } from 'reactstrap';
- import Slider from "react-slick";
- import { Chart } from "react-google-charts";
- import Swipe from 'react-easy-swipe';
-
+import Slider from "react-slick";
+import { Chart } from "react-google-charts";
+import Swipe from 'react-easy-swipe';
+const { google } = window.google;
 
 class Carousel extends Component {
-
-
 
   constructor(props){
     super(props);
@@ -19,9 +17,11 @@ class Carousel extends Component {
       currentFooter: 'Footer1',
       error: null,
       isLoaded: false,
-      data: []
+      bardata: []
     }
   }
+
+
 
   componentDidMount() {
     fetch("http://192.168.33.10:5000/data")
@@ -32,6 +32,7 @@ class Carousel extends Component {
             isLoaded: true,
             data: result
           });
+
         },
         (error) => {
           this.setState({
@@ -40,6 +41,7 @@ class Carousel extends Component {
           });
         }
       )
+
     }
 
   render() {
@@ -54,8 +56,18 @@ class Carousel extends Component {
     } else {
       console.log('Working');
       console.log(data);
+      function populateChart(){
+        //for loop through JSON
+        for (var i = 0; i < data.length; i++) {
+          var importedBarData = {
+            age: data[i].age,
+            people: data[i].people
+          }
+        data.push(importedBarData)
+        }
+      console.log(data);
 
-    
+      }
     }
 
     var currentSlide = this.state.currentSlide;
@@ -79,60 +91,61 @@ class Carousel extends Component {
 
             {Slide}
 
-          <div className="graph-background">
-            <Slider {...settings} >
-            <Swipe
-              onSwipeLeft={this.changeSlide.bind(this, 'Slide2')}>
-                <div className="graph1 graph-position" >
-                {/* onSwipe={this.changeSlide.bind(this, 'Slide2')} */}
+            <div className="graph-background">
+              <Slider {...settings} >
+              <Swipe
+                onSwipeLeft={this.changeSlide.bind(this, 'Slide2')}>
+                  <div className="graph1 graph-position" >
+                  {/* onSwipe={this.changeSlide.bind(this, 'Slide2')} */}
+                    <Chart
+                      chartType="ColumnChart"
+                      width="100%"
+                      height="17.7em"
+                      data={data}
+                      options={baroptions}
+                    />
+                  </div>
+                </Swipe>
+                <Swipe
+                onSwipeLeft={this.changeSlide.bind(this, 'Slide3')}
+                onSwipeRight={this.changeSlide.bind(this, 'Slide1')}>
+                <div className="graph2 graph-position">
                   <Chart
-                    chartType="ColumnChart"
+                    chartType="LineChart"
                     width="100%"
                     height="17.7em"
-                    data={bardata}
-                    options={baroptions}
+                    data={linedata}
+                    options={lineoptions}
                   />
                 </div>
-              </Swipe>
-              <Swipe
-              onSwipeLeft={this.changeSlide.bind(this, 'Slide3')}
-              onSwipeRight={this.changeSlide.bind(this, 'Slide1')}>
-              <div className="graph2 graph-position">
-                <Chart
-                  chartType="LineChart"
-                  width="100%"
-                  height="17.7em"
-                  data={linedata}
-                  options={lineoptions}
-                />
-              </div>
-              </Swipe>
-              <Swipe
-              onSwipeLeft={this.changeSlide.bind(this, 'Slide4')}
-              onSwipeRight={this.changeSlide.bind(this, 'Slide2')}>
-              <div className="graph3 graph-position">
-                <Chart
-                  chartType="PieChart"
-                  width="100%"
-                  height="17.7em"
-                  data={donutdata1}
-                  options={donutoptions1}
-                />
-              </div>
-              </Swipe>
-              <Swipe
-                onSwipeRight={this.changeSlide.bind(this, 'Slide3')}>
-              <div className="graph4 graph-position">
-                <Chart
-                  chartType="PieChart"
-                  width="100%"
-                  height="17.7em"
-                  data={donutdata2}
-                  options={donutoptions2}
-                />
-              </div>
-              </Swipe>
-            </Slider>
+                </Swipe>
+                <Swipe
+                onSwipeLeft={this.changeSlide.bind(this, 'Slide4')}
+                onSwipeRight={this.changeSlide.bind(this, 'Slide2')}>
+                <div className="graph3 graph-position">
+                  <Chart
+                    chartType="PieChart"
+                    width="100%"
+                    height="17.7em"
+                    data={donutdata1}
+                    options={donutoptions1}
+
+                  />
+                </div>
+                </Swipe>
+                <Swipe
+                  onSwipeRight={this.changeSlide.bind(this, 'Slide3')}>
+                <div className="graph4 graph-position">
+                  <Chart
+                    chartType="PieChart"
+                    width="100%"
+                    height="17.7em"
+                    data={donutdata2}
+                    options={donutoptions2}
+                  />
+                </div>
+                </Swipe>
+              </Slider>
             </div>
             <div className="slider-background">
             </div>
@@ -144,6 +157,19 @@ class Carousel extends Component {
     )
   }
 
+
+  // FOR LOOP each
+
+  //  loadData(data) {
+  //   // load json data
+  //   $.each(data, function (index, row) {
+  //     data.addRow([
+  //       new Date(row.insert_date),
+  //       parseFloat(row.age),
+  //       parseFloat(row.hum)
+  //     ]);
+  //   });
+  // }
 
   changePage(page){
     this.setState({
@@ -210,7 +236,6 @@ class Slide3 extends Component {
           <p className="credit">-Ministry of Health - 'Mental Health and Addiction: Service Use 2015/16'</p>
         </div>
       </div>
-
     );
   }
 }
@@ -230,6 +255,7 @@ class Slide4 extends Component {
           </p>
           <p className="credit">-Ministry of Health - 'Mental Health and Addiction: Service Use 2015/16'</p>
         </div>
+
       </div>
     );
   }
@@ -250,18 +276,6 @@ var settings = {
 
 
 
-// BAR CHART DATA
-
-const bardata = [
-  ["Age", "Number Of People By Age", { role: "style" }],
-  ["Under 15", 25661, "#5A496A"],
-  ["15 - 24", 40436, " #5A496A"],
-  ["25 - 34", 30505, " #5A496A"],
-  ["35 - 44", 25623, " #5A496A"],
-  ["45 - 54", 21824, " #5A496A"],
-  ["55 - 64", 12561, "#5A496A"],
-  ["64+", 14423, " #5A496A"]
-];
 
 const baroptions = {
   title:'PEOPLE ACCESSING SERVICES',
@@ -270,6 +284,8 @@ const baroptions = {
   legend: {position: 'bottom'},
   colors: ["#5A496A"]
 }
+
+
 
 // LINE CHART DATA
 
