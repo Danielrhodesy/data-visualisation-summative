@@ -42,7 +42,8 @@ export default class Map extends React.Component {
         // initialize the autocomplete functionality using the #pac-input input box
         let inputNode = document.getElementById('pac-input');
         // map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(inputNode);
-        let autoComplete = new window.google.maps.places.Autocomplete(card);
+        let autoComplete = new window.google.maps.places.Autocomplete(inputNode);
+
 
         autoComplete.addListener('place_changed', () => {
             let place = autoComplete.getPlace();
