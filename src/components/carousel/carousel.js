@@ -3,14 +3,12 @@ import './carousel.css';
 import {
   Button
  } from 'reactstrap';
- import Slider from "react-slick";
- import { Chart } from "react-google-charts";
- import Swipe from 'react-easy-swipe';
-
+import Slider from "react-slick";
+import { Chart } from "react-google-charts";
+import Swipe from 'react-easy-swipe';
+const { google } = window.google;
 
 class Carousel extends Component {
-
-  
 
   constructor(props){
     super(props);
@@ -19,10 +17,12 @@ class Carousel extends Component {
       currentFooter: 'Footer1',
       error: null,
       isLoaded: false,
-      data: []
+      bardata: []
     }
   }
 
+
+  
   componentDidMount() {
     fetch("http://192.168.33.10:5000/data")
       .then(res => res.json())
@@ -31,7 +31,8 @@ class Carousel extends Component {
           this.setState({
             isLoaded: true,
             data: result
-          });
+          });  
+                
         },
         (error) => {
           this.setState({
@@ -40,8 +41,9 @@ class Carousel extends Component {
           });
         }
       )
-    }
 
+    }
+   
   render() {
 
   const { error, isLoaded, data } = this.state;
@@ -50,20 +52,22 @@ class Carousel extends Component {
       
     } else if (!isLoaded) {
       console.log('loading');
-      
+    
     } else {
       console.log('Working');
       console.log(data);
+      function populateChart(){
+        //for loop through JSON 
+        for (var i = 0; i < data.length; i++) {
+          var importedBarData = {
+            age: data[i].age,
+            people: data[i].people
+          }
+        data.push(importedBarData)
+        }
+      console.log(data);
       
-      // return (
-      //   <ul>
-      //     {data.map(data => (
-      //       <li key={data.age}>
-      //         {data.age} {data.people}
-      //       </li>
-      //     ))}
-      //   </ul>
-      // );
+      } 
     }
 
     var currentSlide = this.state.currentSlide;
@@ -87,60 +91,61 @@ class Carousel extends Component {
 
             {Slide}
 
-          <div className="graph-background">
-            <Slider {...settings} >
-            <Swipe
-              onSwipeLeft={this.changeSlide.bind(this, 'Slide2')}>
-                <div className="graph1 graph-position" >
-                {/* onSwipe={this.changeSlide.bind(this, 'Slide2')} */}
+            <div className="graph-background">
+              <Slider {...settings} >
+              <Swipe
+                onSwipeLeft={this.changeSlide.bind(this, 'Slide2')}>
+                  <div className="graph1 graph-position" >
+                  {/* onSwipe={this.changeSlide.bind(this, 'Slide2')} */}
+                    <Chart
+                      chartType="ColumnChart"
+                      width="100%"
+                      height="17.7em"
+                      data={data}
+                      options={baroptions}
+                    />
+                  </div>
+                </Swipe>
+                <Swipe
+                onSwipeLeft={this.changeSlide.bind(this, 'Slide3')}
+                onSwipeRight={this.changeSlide.bind(this, 'Slide1')}>
+                <div className="graph2 graph-position">
                   <Chart
-                    chartType="ColumnChart"
+                    chartType="LineChart"
                     width="100%"
                     height="17.7em"
-                    data={bardata}
-                    options={baroptions}
+                    data={linedata}
+                    options={lineoptions}
                   />
                 </div>
-              </Swipe>
-              <Swipe
-              onSwipeLeft={this.changeSlide.bind(this, 'Slide3')}
-              onSwipeRight={this.changeSlide.bind(this, 'Slide1')}>
-              <div className="graph2 graph-position">
-                <Chart
-                  chartType="LineChart"
-                  width="100%"
-                  height="17.7em"
-                  data={linedata}
-                  options={lineoptions}
-                />
-              </div>
-              </Swipe>
-              <Swipe
-              onSwipeLeft={this.changeSlide.bind(this, 'Slide4')}
-              onSwipeRight={this.changeSlide.bind(this, 'Slide2')}>
-              <div className="graph3 graph-position">
-                <Chart
-                  chartType="PieChart"
-                  width="100%"
-                  height="17.7em"
-                  data={donutdata1}
-                  options={donutoptions1}
-                />
-              </div>
-              </Swipe>
-              <Swipe
-                onSwipeRight={this.changeSlide.bind(this, 'Slide3')}>
-              <div className="graph4 graph-position">
-                <Chart
-                  chartType="PieChart"
-                  width="100%"
-                  height="17.7em"
-                  data={donutdata2}
-                  options={donutoptions2}
-                />
-              </div>
-              </Swipe>
-            </Slider>
+                </Swipe>
+                <Swipe
+                onSwipeLeft={this.changeSlide.bind(this, 'Slide4')}
+                onSwipeRight={this.changeSlide.bind(this, 'Slide2')}>
+                <div className="graph3 graph-position">
+                  <Chart
+                    chartType="PieChart"
+                    width="100%"
+                    height="17.7em"
+                    data={donutdata1}
+                    options={donutoptions1}
+                    
+                  />
+                </div>
+                </Swipe>
+                <Swipe
+                  onSwipeRight={this.changeSlide.bind(this, 'Slide3')}>
+                <div className="graph4 graph-position">
+                  <Chart
+                    chartType="PieChart"
+                    width="100%"
+                    height="17.7em"
+                    data={donutdata2}
+                    options={donutoptions2}
+                  />
+                </div>
+                </Swipe>
+              </Slider>
             </div>
             <div className="slider-background">
             </div>
@@ -152,6 +157,19 @@ class Carousel extends Component {
     )
   }
 
+
+  // FOR LOOP each
+
+  //  loadData(data) {
+  //   // load json data
+  //   $.each(data, function (index, row) {
+  //     data.addRow([
+  //       new Date(row.insert_date),
+  //       parseFloat(row.age),
+  //       parseFloat(row.hum)
+  //     ]);
+  //   });
+  // }
 
   changePage(page){
     this.setState({
@@ -215,7 +233,6 @@ class Slide3 extends Component {
           </p>
         </div>
       </div>
-
     );
   }
 }
@@ -234,6 +251,7 @@ class Slide4 extends Component {
             Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
           </p>
         </div>
+
       </div>
     );
   }
@@ -252,25 +270,54 @@ var settings = {
   slidesToScroll: 1
 };
 
-
-
 // BAR CHART DATA
 
-const bardata = [
-  ["Age", "People", { role: "style" }],
-  ["Under 15", 25661, "#5A496A"],
-  ["15 - 24", 40436, " #5A496A"],
-  ["25 - 34", 30505, " #5A496A"],
-  ["35 - 44", 25623, " #5A496A"],
-  ["45 - 54", 21824, " #5A496A"],
-  ["55 - 64", 12561, "#5A496A"],
-  ["64+", 14423, " #5A496A"]
-];
+
+// const bardata = (()=>{
+//     ["Age", "People", { role: "style" }],
+//     [bardata.age[0], bardata.people[0], " #5A496A"],
+//     [bardata.age[1], bardata.people[1], " #5A496A"],
+//     ["35 - 44", 25623, " #5A496A"],
+//     ["45 - 54", 21824, " #5A496A"],
+//     ["55 - 64", 12561, "#5A496A"],
+//     ["64+", 14423, " #5A496A"]
+// })
+
+// const data = new google.visualization.DataTable();
+//   data.addColumn('datetime', 'x');
+//   data.addColumn('number', 'Temperature');
+//   data.addColumn('number', 'Humidity');
+
+// const bardata = google.visualization.arrayToDataTable([
+//   ["Age", "People", { role: "style" }],
+//   [["15 - 24"], 40436, " #5A496A"],
+//   ["25 - 34", 30505, " #5A496A"],
+//   ["35 - 44", 25623, " #5A496A"],
+//   ["45 - 54", 21824, " #5A496A"],
+//   ["55 - 64", 12561, "#5A496A"],
+//   ["64+", 14423, " #5A496A"]
+// ]);
+
+
+function populateChart(){
+  const data = google.visualization.arrayToDataTable([
+    ["Age", "People", { role: "style" }],
+    [data[0].age, data[0].people],
+    [data[1].age, data[1].people],
+    [data[2].age, data[2].people],
+    [data[3].age, data[3].people],
+    [data[4].age, data[4].people],
+    [data[5].age, data[5].people]
+  ]);
+}
+
 
 const baroptions = {
   legend: {position: 'none'},
   chartArea:{left:65,top:50,width:'75%',height:'65%'}
 }
+
+
 
 // LINE CHART DATA
 
