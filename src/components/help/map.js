@@ -38,10 +38,11 @@ export default class Map extends React.Component {
             position: { lat: -33.8688, lng: 151.2195 },
         });
 
+        let card = document.getElementById('pac-card');
         // initialize the autocomplete functionality using the #pac-input input box
         let inputNode = document.getElementById('pac-input');
-        map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(inputNode);
-        let autoComplete = new window.google.maps.places.Autocomplete(inputNode);
+        // map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(inputNode);
+        let autoComplete = new window.google.maps.places.Autocomplete(card);
 
         autoComplete.addListener('place_changed', () => {
             let place = autoComplete.getPlace();
@@ -67,8 +68,18 @@ export default class Map extends React.Component {
     render() {
         return (
             <div id='app'>
-            <input id='pac-input'/>
-                <div id='map'/>
+            <div id='pac-card'>
+            
+            </div>
+             <div id="pac-container">
+        <input id="pac-input" type="text"
+            placeholder="Enter a location">
+      </input>
+      </div>
+            <div id='map'/>
+            <div id='infowindow-content'></div>
+                <span id='place-name' className='title'></span><br/>
+                <span id='place-address'></span>
             </div>
         );
     }
