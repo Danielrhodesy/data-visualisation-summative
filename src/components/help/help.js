@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Map from './map.js'
+import Map from './map.js';
 import { Button } from 'reactstrap';
 import './map.css';
 // import GoogleMapsContainer from './components/map/react-map';
@@ -23,20 +23,9 @@ class Help extends Component {
             //     <Row>
             //         <Col>
                         <div className="help">
-                <Map
-                    id="myMap"
-                    options={{
-                        center: { lat: 41.0082, lng: 28.9784 },
-                        zoom: 8
-                    }}
-                    onMapLoad={map => {
-                        var marker = new window.google.maps.Marker({
-                            position: { lat: 41.0082, lng: 28.9784 },
-                            map: map,
-                            title: 'Hello Istanbul!'
-                        });
-                    }}
-                />
+                                <div className="map-container">
+                                    <Map/>
+                                </div>
                             <Button className="second-button button" color="success" size="large" onClick={this.props.changePage.bind(this, 'homePage')}>HOME</Button>
                         </div>
             //         </Col>
