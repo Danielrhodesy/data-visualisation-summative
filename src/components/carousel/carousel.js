@@ -17,7 +17,8 @@ class Carousel extends Component {
       currentFooter: 'Footer1',
       error: null,
       isLoaded: false,
-      bardata: []
+      data: [],
+      firstData: []
     }
   }
 
@@ -28,11 +29,22 @@ class Carousel extends Component {
       .then(res => res.json())
       .then(
         (result) => {
+
+          // Fetch each graph through this ( keep looping through each fetch for graph on each page)
+          // Change func names
+
+
+          var firstData = result;
+          console.log(firstData);
+          var dataTable = [["Age", "People"]];
+          for (let i = 0; i < firstData.length; i++) {
+            dataTable.push([firstData[i].age, firstData[i].people])
+          }
           this.setState({
             isLoaded: true,
-            data: result
-          });  
-                
+            data: result,
+            firstData: dataTable
+          });
         },
         (error) => {
           this.setState({
@@ -55,19 +67,7 @@ class Carousel extends Component {
     
     } else {
       console.log('Working');
-      console.log(data);
-      function populateChart(){
-        //for loop through JSON 
-        for (var i = 0; i < data.length; i++) {
-          var importedBarData = {
-            age: data[i].age,
-            people: data[i].people
-          }
-        data.push(importedBarData)
-        }
-      console.log(data);
-      
-      } 
+     
     }
 
     var currentSlide = this.state.currentSlide;
@@ -101,7 +101,7 @@ class Carousel extends Component {
                       chartType="ColumnChart"
                       width="100%"
                       height="17.7em"
-                      data={data}
+                      data={this.state.firstData}
                       options={baroptions}
                     />
                   </div>
@@ -158,19 +158,6 @@ class Carousel extends Component {
   }
 
 
-  // FOR LOOP each
-
-  //  loadData(data) {
-  //   // load json data
-  //   $.each(data, function (index, row) {
-  //     data.addRow([
-  //       new Date(row.insert_date),
-  //       parseFloat(row.age),
-  //       parseFloat(row.hum)
-  //     ]);
-  //   });
-  // }
-
   changePage(page){
     this.setState({
         currentPage: page
@@ -201,114 +188,6 @@ class Slide1 extends Component {
       </div>
     )
   }
-}
-
-class Slide2 extends Component {
-  render() {
-    return (
-      <div className="header header-color2">
-        <div className="paragraph-position">
-          <p className="paragraph paragraph2">
-            Kiwis are reporting higher reates of psychological distress each year, meaning our <b>mental health care services are more important than ever.</b>
-          </p>
-        </div>
-      </div>
-    );
-  }
-}
-
-
-
-class Slide3 extends Component {
-  render() {
-    return (
-
-      <div className="header header-color3">
-        <div className="paragraph-position">
-          <p className="headparagraph">
-            Who's Getting Help?
-          </p>
-          <p className="paragraph paragraph3">
-            Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
-          </p>
-        </div>
-      </div>
-    );
-  }
-}
-
-
-class Slide4 extends Component {
-  render() {
-    return (
-
-      <div className="header header-color4">
-        <div className="paragraph-position">
-          <p className="headparagraph">
-            Who's Getting Help?
-          </p>
-          <p className="paragraph paragraph3">
-            Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
-          </p>
-        </div>
-
-      </div>
-    );
-  }
-}
-
-
-
-//CAROUSEL
-
-var settings = {
-  arrows: false,
-  dots: true,
-  infinite: false,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1
-};
-
-// BAR CHART DATA
-
-
-// const bardata = (()=>{
-//     ["Age", "People", { role: "style" }],
-//     [bardata.age[0], bardata.people[0], " #5A496A"],
-//     [bardata.age[1], bardata.people[1], " #5A496A"],
-//     ["35 - 44", 25623, " #5A496A"],
-//     ["45 - 54", 21824, " #5A496A"],
-//     ["55 - 64", 12561, "#5A496A"],
-//     ["64+", 14423, " #5A496A"]
-// })
-
-// const data = new google.visualization.DataTable();
-//   data.addColumn('datetime', 'x');
-//   data.addColumn('number', 'Temperature');
-//   data.addColumn('number', 'Humidity');
-
-// const bardata = google.visualization.arrayToDataTable([
-//   ["Age", "People", { role: "style" }],
-//   [["15 - 24"], 40436, " #5A496A"],
-//   ["25 - 34", 30505, " #5A496A"],
-//   ["35 - 44", 25623, " #5A496A"],
-//   ["45 - 54", 21824, " #5A496A"],
-//   ["55 - 64", 12561, "#5A496A"],
-//   ["64+", 14423, " #5A496A"]
-// ]);
-
-
-function populateChart(){
-  const data = google.visualization.arrayToDataTable([
-    ["Age", "People", { role: "style" }],
-    [data[0].age, data[0].people],
-    [data[1].age, data[1].people],
-    [data[2].age, data[2].people],
-    [data[3].age, data[3].people],
-    [data[4].age, data[4].people],
-    [data[5].age, data[5].people]
-  ]);
 }
 
 
@@ -368,6 +247,76 @@ const donutoptions2 = {
   chartArea:{left:60,top:50,width:'70%',height:'50%'},
   legend: {position: 'right'}
 };
+
+
+
+//CAROUSEL
+
+var settings = {
+  arrows: false,
+  dots: true,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1
+};
+
+
+
+class Slide2 extends Component {
+  render() {
+    return (
+      <div className="header header-color2">
+        <div className="paragraph-position">
+          <p className="paragraph paragraph2">
+            Kiwis are reporting higher reates of psychological distress each year, meaning our <b>mental health care services are more important than ever.</b>
+          </p>
+        </div>
+      </div>
+    );
+  }
+}
+
+
+
+class Slide3 extends Component {
+  render() {
+    return (
+
+      <div className="header header-color3">
+        <div className="paragraph-position">
+          <p className="headparagraph">
+            Who's Getting Help?
+          </p>
+          <p className="paragraph paragraph3">
+            Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
+          </p>
+        </div>
+      </div>
+    );
+  }
+}
+
+
+class Slide4 extends Component {
+  render() {
+    return (
+
+      <div className="header header-color4">
+        <div className="paragraph-position">
+          <p className="headparagraph">
+            Who's Getting Help?
+          </p>
+          <p className="paragraph paragraph3">
+            Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
+          </p>
+        </div>
+
+      </div>
+    );
+  }
+}
+
 
 
 export default Carousel;
