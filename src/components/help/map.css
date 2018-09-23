@@ -87,4 +87,14 @@
   width: 345px;
 }
 
+.map-container {
+  height: 800px;
+  width: 100vw;
+}
+
+#map {
+  height: 800px;
+  width: 100vw;
+}
+
 /*# sourceMappingURL=map.css.map */

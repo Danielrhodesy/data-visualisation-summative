@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
+import SearchBox from 'react-google-maps/lib/places/SearchBox';
 const { google } = window.google;
 
 export default class SearchBox extends React.Component {

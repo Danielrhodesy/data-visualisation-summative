@@ -59,4 +59,12 @@ body, html, #root {
   background-size: cover;
 }
 
+.image-container {
+  background-image: url("./images/hero-original.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 /*# sourceMappingURL=index.css.map */
