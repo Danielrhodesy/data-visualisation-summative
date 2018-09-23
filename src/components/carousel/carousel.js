@@ -192,7 +192,7 @@ class Slide2 extends Component {
       <div className="header header-color2">
         <div className="paragraph-position">
           <p className="paragraph paragraph2">
-            Kiwis are reporting higher reates of psychological distress each year, meaning our <b>mental health care services are more important than ever.</b>
+            Kiwis are reporting higher rates of mood and anxiety disorders each year, meaning our <b>mental health care services are more important than ever.</b>
           </p>
           <p className="credit">-Ministry of Health - Ministry of Health - 'New Zealand Health Survey'</p>
         </div>
