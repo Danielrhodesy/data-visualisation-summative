@@ -68,10 +68,10 @@ export default class Map extends React.Component {
     render() {
         return (
             <div id='map-container'>            
-        <input id="pac-input" type="text"
+        <input className="pac-input" type="text"
             placeholder="Enter a location">
       </input>
-                <div id='map' />
+                <div className='map' />
 
       </div>
         );

@@ -1,10 +1,3 @@
-$green: #95BB4D;
-$red: #EF5D60;
-$lightPurple: #866BB6;
-$darkPurple: #5A496A;
-
-
-
 .help {
     width: 100vw;
     height: 100vh;
@@ -17,59 +10,25 @@ $darkPurple: #5A496A;
     background-color: $lightPurple;
 }
 
-#map {
+.map {
     width: 100vw;
     height: 60vh;
     margin-bottom: 5%;
 }
 
+.pac-input {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  background-color: #fff;
+  font-size: 15px;
+  font-weight: 300;
+  text-overflow: ellipsis;
+  width: 100vw;
+}
 
-      .pac-container {
-        padding-bottom: 12px;
-        margin-right: 12px;
-      }
 
-      .pac-controls {
-        display: inline-block;
-        padding: 5px 11px;
-      }
-
-      .pac-controls label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-      }
-
-      #pac-input {
-        margin-top: 5%;
-        margin-bottom: 5%;
-        background-color: #fff;
-        font-size: 15px;
-        font-weight: 300;
-        text-overflow: ellipsis;
-        width: 100vw;
-      }
-
-      .pac-input:focus {
-        border-color: #4d90fe;
-      }
-
-      .title {
-        color: #fff;
-        background-color: #4d90fe;
-        font-size: 25px;
-        font-weight: 500;
-        padding: 6px 12px;
-      }
-      .target {
-        width: 345px;
-      }
 
 .map-home-button { 
   margin-top: 5%;
   margin-left: 38vw;
 }
-// #map {
-//   height: 800px;
-//   width: 100vw;
-// }
