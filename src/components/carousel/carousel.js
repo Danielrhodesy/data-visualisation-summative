@@ -17,7 +17,8 @@ class Carousel extends Component {
       currentFooter: 'Footer1',
       error: null,
       isLoaded: false,
-      bardata: []
+      data: [],
+      firstData: []
     }
   }
 
@@ -28,11 +29,22 @@ class Carousel extends Component {
       .then(res => res.json())
       .then(
         (result) => {
+
+          // Fetch each graph through this ( keep looping through each fetch for graph on each page)
+          // Change func names
+
+
+          var firstData = result ;
+          console.log(result);
+          var dataTable = [["Age", "People"]];
+          for (let i = 0; i < firstData.length; i++) {
+            dataTable.push([firstData[i].age, firstData[i].people])
+          }
           this.setState({
             isLoaded: true,
-            data: result
+            data: result,
+            firstData: dataTable
           });
-
         },
         (error) => {
           this.setState({
@@ -55,19 +67,7 @@ class Carousel extends Component {
 
     } else {
       console.log('Working');
-      console.log(data);
-      function populateChart(){
-        //for loop through JSON
-        for (var i = 0; i < data.length; i++) {
-          var importedBarData = {
-            age: data[i].age,
-            people: data[i].people
-          }
-        data.push(importedBarData)
-        }
-      console.log(data);
 
-      }
     }
 
     var currentSlide = this.state.currentSlide;
@@ -101,7 +101,7 @@ class Carousel extends Component {
                       chartType="ColumnChart"
                       width="100%"
                       height="17.7em"
-                      data={data}
+                      data={this.state.firstData}
                       options={baroptions}
                     />
                   </div>
@@ -158,19 +158,6 @@ class Carousel extends Component {
   }
 
 
-  // FOR LOOP each
-
-  //  loadData(data) {
-  //   // load json data
-  //   $.each(data, function (index, row) {
-  //     data.addRow([
-  //       new Date(row.insert_date),
-  //       parseFloat(row.age),
-  //       parseFloat(row.hum)
-  //     ]);
-  //   });
-  // }
-
   changePage(page){
     this.setState({
         currentPage: page
@@ -203,78 +190,6 @@ class Slide1 extends Component {
     )
   }
 }
-
-class Slide2 extends Component {
-  render() {
-    return (
-      <div className="header header-color2">
-        <div className="paragraph-position">
-          <p className="paragraph paragraph2">
-            Kiwis are reporting higher rates of mood and anxiety disorders each year, meaning our <b>mental health care services are more important than ever.</b>
-          </p>
-          <p className="credit">-Ministry of Health - Ministry of Health - 'New Zealand Health Survey'</p>
-        </div>
-      </div>
-    );
-  }
-}
-
-
-
-class Slide3 extends Component {
-  render() {
-    return (
-
-      <div className="header header-color3">
-        <div className="paragraph-position">
-          <p className="headparagraph">
-            Who's Getting Help?
-          </p>
-          <p className="paragraph paragraph3">
-            Per capita, Maori are seeking the most help  -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
-          </p>
-          <p className="credit">-Ministry of Health - 'Mental Health and Addiction: Service Use 2015/16'</p>
-        </div>
-      </div>
-    );
-  }
-}
-
-
-class Slide4 extends Component {
-  render() {
-    return (
-
-      <div className="header header-color4">
-        <div className="paragraph-position">
-          <p className="headparagraph">
-            Who's Getting Help?
-          </p>
-          <p className="paragraph paragraph3">
-            Men and women are accessing the mental health services at about the same rate.
-          </p>
-          <p className="credit">-Ministry of Health - 'Mental Health and Addiction: Service Use 2015/16'</p>
-        </div>
-
-      </div>
-    );
-  }
-}
-
-
-
-//CAROUSEL
-
-var settings = {
-  arrows: false,
-  dots: true,
-  infinite: false,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1
-};
-
-
 
 
 const baroptions = {
@@ -345,6 +260,76 @@ const donutoptions2 = {
   chartArea:{left:60,top:80,width:'75%',height:'55%'},
   legend: {position: 'bottom'}
 };
+
+
+
+//CAROUSEL
+
+var settings = {
+  arrows: false,
+  dots: true,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1
+};
+
+
+
+class Slide2 extends Component {
+  render() {
+    return (
+      <div className="header header-color2">
+        <div className="paragraph-position">
+          <p className="paragraph paragraph2">
+            Kiwis are reporting higher reates of psychological distress each year, meaning our <b>mental health care services are more important than ever.</b>
+          </p>
+        </div>
+      </div>
+    );
+  }
+}
+
+
+
+class Slide3 extends Component {
+  render() {
+    return (
+
+      <div className="header header-color3">
+        <div className="paragraph-position">
+          <p className="headparagraph">
+            Who's Getting Help?
+          </p>
+          <p className="paragraph paragraph3">
+            Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
+          </p>
+        </div>
+      </div>
+    );
+  }
+}
+
+
+class Slide4 extends Component {
+  render() {
+    return (
+
+      <div className="header header-color4">
+        <div className="paragraph-position">
+          <p className="headparagraph">
+            Who's Getting Help?
+          </p>
+          <p className="paragraph paragraph3">
+            Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
+          </p>
+        </div>
+
+      </div>
+    );
+  }
+}
+
 
 
 export default Carousel;
