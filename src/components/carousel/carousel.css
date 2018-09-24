@@ -1,39 +1,45 @@
 .header {
+  position: absolute;
   width: 100%;
   height: 40em;
-  position: absolute;
 }
-.header .paragraph-position {
+
+.paragraph-position {
   margin-top: 1em;
   margin-left: 1em;
   margin-right: 1em;
   padding-top: 1.5%;
 }
-.header .paragraph-position .head-paragraph {
+
+.head-paragraph {
   margin: 0px;
   font-weight: bold;
   color: white;
 }
-.header .paragraph-position .paragraph {
+
+.paragraph {
   color: white;
 }
-.header .paragraph-position .credit {
+
+.credit {
   color: white;
   font-size: 10px;
 }
 
 .graph-background {
+  position: absolute;
   margin-top: 11em;
   width: 100%;
   height: 17.8em;
   background-color: white;
-  position: absolute;
 }
-.graph-background .graph-position {
+
+.graph-position {
   width: 100%;
   height: 17.8em;
 }
-.graph-background .slick-dots {
+
+.slick-dots {
   margin-top: 10em;
   width: 100%;
   height: 2em;
@@ -47,7 +53,8 @@
   height: 3.5em;
   text-align: center;
 }
-.button-container button {
+
+.button {
   border-radius: 25px;
   font-weight: 600;
   background-color: #95BB4D;

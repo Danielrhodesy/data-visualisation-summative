@@ -1,28 +1,28 @@
 body, html, #root {
-  height: 100%;
   margin: 0 auto;
   padding: 0;
+  height: 100%;
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
   overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .header-logo {
+  position: sticky;
   height: 9vh;
   width: 75vw;
   background-image: url("./images/mhf-logo.png");
   background-position: center;
   background-size: cover;
-  position: sticky;
 }
 
 .button {
+  position: relative;
+  padding: 4% 6%;
   border-radius: 25px;
   font-weight: 600;
   background-color: #95BB4D;
   border-color: #95BB4D;
-  padding: 4% 6%;
-  position: relative;
 }
 
 .second-button {
@@ -35,33 +35,26 @@ body, html, #root {
 }
 
 .home {
-  background-image: url("./images/hero-original.jpg");
   height: 100vh;
   width: auto;
+  background-image: url("./images/hero-original.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .heading {
+  padding-top: 8%;
+  padding-left: 8%;
   font-size: 2em;
   font-weight: 600;
   color: white;
   text-shadow: 2px 2px 2px rgba(80, 80, 80, 0.5);
-  padding: 7% 6%;
 }
 
 .image-container {
-  background-image: url("./images/hero-original.jpg");
   height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.image-container {
   background-image: url("./images/hero-original.jpg");
-  height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

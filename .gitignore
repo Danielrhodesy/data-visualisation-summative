@@ -23,3 +23,5 @@ yarn-error.log*
 /.sass-cache
 
 /src/help/backups
+
+.env

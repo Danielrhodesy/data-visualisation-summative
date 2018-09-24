@@ -1,97 +1,74 @@
-// Variables
+// VARIABLES
 
 $green: #95BB4D;
 $red: #EF5D60;
 $lightPurple: #866BB6;
 $darkPurple: #5A496A;
 
-// Mixins
-
-
-// Page structure and static content
+// PAGE STRUCTURE AND STATIC CONTENT
 
 body, html, #root {
-    // display: flex;
-    height: 100%;
-    margin: 0 auto;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-    overflow: hidden;
+  margin: 0 auto;
+  padding: 0;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .header-logo {
+  position: sticky;
   height: 9vh;
   width: 75vw;
   background-image: url("./images/mhf-logo.png");
   background-position: center;
   background-size: cover;
-  position: sticky;
 }
 
-//Shared styling
+// SHARED STYLING
 
 .button {
+  position: relative;
+  padding: 4% 6%;
   border-radius: 25px;
   font-weight: 600;
   background-color: $green;
   border-color: $green;
-  padding: 4% 6%;
-  position:relative;
 }
 
-.second-button{
+.second-button {
   margin: 0 0 0 18%;
   padding: 4% 7%
 }
 
-.first-button{
+.first-button {
   margin: 60% 0 8% 18%;
 }
 
-
-//px only for border-radius and text-shadow
-
-
-//Home component
+//HOME COMPONENT
 
 .home {
-  background-image: url("./images/hero-original.jpg");
   height: 100vh;
   width: auto;
+  background-image: url("./images/hero-original.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.heading{
-  font-size: 2em; //use rem or em
+.heading {
+  padding-top: 8%;
+  padding-left: 8%;
+  font-size: 2em; 
   font-weight: 600;
   color: white;
   text-shadow: 2px 2px 2px rgba(80, 80, 80, 0.5);
-  padding: 7% 6%;
 }
 
-
-//Carousel component
-
-//Carousel component???
-
-
 .image-container {
-    background-image: url("./images/hero-original.jpg");
     height: 100%;
+    background-image: url("./images/hero-original.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
-
-.image-container {
-    background-image: url("./images/hero-original.jpg");
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-//Map component

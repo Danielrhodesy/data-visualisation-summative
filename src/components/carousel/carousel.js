@@ -154,7 +154,7 @@ class Carousel extends Component {
             <div className="slider-background">
             </div>
           <div className="button-container">
-            <Button color="success" size="large" onClick={this.props.changePage.bind(this, "helpPage")}>FIND HELP</Button>
+            <Button className="button" color="success" size="large" onClick={this.props.changePage.bind(this, "helpPage")}>FIND HELP</Button>
           </div>
         </div>
       </div>
@@ -175,6 +175,7 @@ class Carousel extends Component {
     })
   }
 }
+
 //CAROUSEL COMPONENT ENDS
 
 //BAR CHART OPTIONS
