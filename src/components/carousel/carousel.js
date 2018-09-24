@@ -28,22 +28,33 @@ class Carousel extends Component {
     fetch("http://192.168.33.10:5000/data")
       .then(res => res.json())
       .then(
+        
         (result) => {
 
           // Fetch each graph through this ( keep looping through each fetch for graph on each page)
           // Change func names
-
-
-          var firstData = result;
-          console.log(firstData);
-          var dataTable = [["Age", "People"]];
-          for (let i = 0; i < firstData.length; i++) {
-            dataTable.push([firstData[i].age, firstData[i].people])
+          var lineData = result.arrayTwo;
+          console.log(result.arrayTwo);
+          var dataTable = [["Year", "Reports"]];
+          for (let i = 0; i < lineData.length; i++) {
+            dataTable.push([lineData[i].year, lineData[i].reports])
           }
           this.setState({
             isLoaded: true,
             data: result,
-            firstData: dataTable
+            lineData: dataTable
+          });
+
+          var barData = result.arrayOne;
+          console.log(result.arrayOne);
+          var dataTable = [["Age", "People"]];
+          for (let i = 0; i < barData.length; i++) {
+            dataTable.push([barData[i].age, barData[i].people])
+          }
+          this.setState({
+            isLoaded: true,
+            data: result,
+            barData: dataTable
           });
         },
         (error) => {
@@ -101,7 +112,7 @@ class Carousel extends Component {
                       chartType="ColumnChart"
                       width="100%"
                       height="17.7em"
-                      data={this.state.firstData}
+                      data={this.state.barData}
                       options={baroptions}
                     />
                   </div>
@@ -114,7 +125,7 @@ class Carousel extends Component {
                     chartType="LineChart"
                     width="100%"
                     height="17.7em"
-                    data={linedata}
+                    data={this.state.lineData}
                     options={lineoptions}
                   />
                 </div>
@@ -200,15 +211,6 @@ const baroptions = {
 
 // LINE CHART DATA
 
-const linedata = [
-  ["Year", "Reports"],
-  ["2011", 56.4],
-  ["2012", 58.9],
-  ["2013", 65.5],
-  ["2014", 61.6],
-  ["2015", 66.9],
-  ["2016", 72.4]
-];
 
 const lineoptions = {
   curveType: "function",
