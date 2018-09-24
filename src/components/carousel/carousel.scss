@@ -5,15 +5,10 @@ $darkPurple: #5A496A;
 
 
 
-// .graphPage {
-//     height: 667px;
-//     width: 375px;
-// }
-
 // MAIN PAGE BUILD
 
 
- 
+
 
 .header {
     width: 100%;
@@ -27,7 +22,7 @@ $darkPurple: #5A496A;
         margin-left: 1em;
         margin-right: 1em;
 
-        padding-top: 5%;
+        padding-top: 1.5%;
 
         .headparagraph {
         margin: 0px;
@@ -39,6 +34,12 @@ $darkPurple: #5A496A;
         }
         .paragraph {
             color: white;
+        }
+
+        .credit{
+          color: white;
+          font-size: 10px;
+          // text-align: center;
         }
 
     }
@@ -62,7 +63,7 @@ $darkPurple: #5A496A;
 
     }
     .slick-dots {
-        
+
         margin-top: 10em;
         width: 100%;
         height: 2em;
@@ -74,7 +75,7 @@ $darkPurple: #5A496A;
 
 .button-container{
     position: absolute;
-    margin-top: 33em;
+    margin-top: 32.75em;
 
     width: 100%;
     height: 3.5em;
@@ -89,7 +90,7 @@ $darkPurple: #5A496A;
         border-color: #95BB4D;
         padding: 15px 20px;
     }
-    
+
 }
 
 
@@ -115,13 +116,12 @@ $darkPurple: #5A496A;
 // PAGE 3
 
 .header-color3 {
-    background-color: $darkPurple;
+    background-color: $lightPurple;
 }
 
 
 // Page 4
 
 .header-color4 {
-    background-color: $green;
+    background-color: $darkPurple;
 }
-
