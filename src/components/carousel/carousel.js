@@ -287,7 +287,7 @@ class Slide3 extends Component {
             Who's Getting Help?
           </p>
           <p className="paragraph paragraph3">
-            Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
+            Per capita, Māori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
           </p>
         </div>
       </div>
@@ -306,7 +306,7 @@ class Slide4 extends Component {
             Who's Getting Help?
           </p>
           <p className="paragraph paragraph3">
-            Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
+            Men and woman are accessing the mental health services at about the same rate.
           </p>
         </div>
 
