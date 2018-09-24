@@ -163,13 +163,8 @@ class Carousel extends Component {
             <div className="slider-background">
             </div>
           <div className="button-container">
-<<<<<<< HEAD
             <Button color="success" size="large" onClick={this.props.changePage.bind(this, 'helpPage')}>FIND HELP</Button>
-          </div>  
-=======
-            <Button color="success" size="large" onClick={this.props.changePage.bind(this, 'MapPage')}>FIND HELP NEAR YOU</Button>
           </div>
->>>>>>> JSONgraph
         </div>
       </div>
     )
