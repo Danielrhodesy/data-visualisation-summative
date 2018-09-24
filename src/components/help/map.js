@@ -65,8 +65,8 @@ class Map extends React.Component {
     render() {
         return (
             <div className="map-container">
-              <input id="pac-input" type="text" placeholder="Enter a location"/>
-              <div id="map"/>
+              <input className="pac-input" id="pac-input" type="text" placeholder="Enter a location"/>
+              <div className="map" id="map"/>
             </div>
         );
     }

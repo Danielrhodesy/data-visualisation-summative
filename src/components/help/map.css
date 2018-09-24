@@ -10,29 +10,13 @@
   background-color: #866BB6;
 }
 
-#map {
+.map {
   width: 100vw;
   height: 60vh;
   margin-bottom: 5%;
 }
 
-.pac-container {
-  padding-bottom: 12px;
-  margin-right: 12px;
-}
-
-.pac-controls {
-  display: inline-block;
-  padding: 5px 11px;
-}
-
-.pac-controls label {
-  font-family: Roboto;
-  font-size: 13px;
-  font-weight: 300;
-}
-
-#pac-input {
+.pac-input {
   margin-top: 5%;
   margin-bottom: 5%;
   background-color: #fff;
@@ -40,22 +24,6 @@
   font-weight: 300;
   text-overflow: ellipsis;
   width: 100vw;
-}
-
-.pac-input:focus {
-  border-color: #4d90fe;
-}
-
-.title {
-  color: #fff;
-  background-color: #4d90fe;
-  font-size: 25px;
-  font-weight: 500;
-  padding: 6px 12px;
-}
-
-.target {
-  width: 345px;
 }
 
 .map-home-button {
