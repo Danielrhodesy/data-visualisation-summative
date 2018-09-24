@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
-import {
-  Button,
-  Container,
-  Row,
-  Col,
-  Carousel
- } from 'reactstrap';
+import { Button } from 'reactstrap';
 
 class Home extends Component {
   render() {
-
     return (
       <div className="home">
         <h1 className="heading">Going<br/> through it?<br/>You're not<br/> alone.</h1>
@@ -18,6 +11,7 @@ class Home extends Component {
       </div>
     );
   }
+
   changePage(page){
     this.setState({
         currentPage: page

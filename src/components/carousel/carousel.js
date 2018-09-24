@@ -1,19 +1,16 @@
-import React, { Component } from 'react';
-import './carousel.css';
-import { Button } from 'reactstrap';
+import React, { Component } from "react";
+import "./carousel.css";
+import { Button } from "reactstrap";
 import Slider from "react-slick";
 import { Chart } from "react-google-charts";
-import Swipe from 'react-easy-swipe';
-const { google } = window.google;
+import Swipe from "react-easy-swipe";
 
-//CAROUSEL COMPONENT BEGINS
 class Carousel extends Component {
-
   constructor(props){
     super(props);
     this.state = {
-      currentSlide: 'Slide1',
-      currentFooter: 'Footer1',
+      currentSlide: "Slide1",
+      currentFooter: "Footer1",
       error: null,
       isLoaded: false,
       data: [],
@@ -21,8 +18,7 @@ class Carousel extends Component {
     }
   }
 
-
-
+  //API REQUEST TO NODE SERVER
   componentDidMount() {
     fetch("http://192.168.33.10:5000/data")
       .then(res => res.json())
@@ -85,17 +81,16 @@ class Carousel extends Component {
     }
 
   render() {
-
     var currentSlide = this.state.currentSlide;
     let Slide;
 
-    if(currentSlide === 'Slide1'){
+    if(currentSlide === "Slide1"){
       Slide = <Slide1/>
-    } else if(currentSlide === 'Slide2'){
+    } else if(currentSlide === "Slide2"){
       Slide = <Slide2/>
-    } else if(currentSlide === 'Slide3'){
+    } else if(currentSlide === "Slide3"){
         Slide = <Slide3/>
-    } else if(currentSlide === 'Slide4'){
+    } else if(currentSlide === "Slide4"){
         Slide = <Slide4/>
     }
 
@@ -103,12 +98,11 @@ class Carousel extends Component {
     return (
       <div className="graphSlide">
           <div className="header-container">
-
             {Slide}
             <div className="graph-background">
               <Slider {...settings} >
               <Swipe
-                onSwipeLeft={this.changeSlide.bind(this, 'Slide2')}>
+                onSwipeLeft={this.changeSlide.bind(this, "Slide2")}>
                   <div className="graph1 graph-position" >
                     <Chart
                       chartType="ColumnChart"
@@ -120,8 +114,8 @@ class Carousel extends Component {
                   </div>
                 </Swipe>
                 <Swipe
-                onSwipeLeft={this.changeSlide.bind(this, 'Slide3')}
-                onSwipeRight={this.changeSlide.bind(this, 'Slide1')}>
+                onSwipeLeft={this.changeSlide.bind(this, "Slide3")}
+                onSwipeRight={this.changeSlide.bind(this, "Slide1")}>
                 <div className="graph2 graph-position">
                   <Chart
                     chartType="LineChart"
@@ -133,8 +127,8 @@ class Carousel extends Component {
                 </div>
                 </Swipe>
                 <Swipe
-                onSwipeLeft={this.changeSlide.bind(this, 'Slide4')}
-                onSwipeRight={this.changeSlide.bind(this, 'Slide2')}>
+                onSwipeLeft={this.changeSlide.bind(this, "Slide4")}
+                onSwipeRight={this.changeSlide.bind(this, "Slide2")}>
                 <div className="graph3 graph-position">
                   <Chart
                     chartType="PieChart"
@@ -147,7 +141,7 @@ class Carousel extends Component {
                 </div>
                 </Swipe>
                 <Swipe
-                  onSwipeRight={this.changeSlide.bind(this, 'Slide3')}>
+                  onSwipeRight={this.changeSlide.bind(this, "Slide3")}>
                 <div className="graph4 graph-position">
                   <Chart
                     chartType="PieChart"
@@ -163,21 +157,21 @@ class Carousel extends Component {
             <div className="slider-background">
             </div>
           <div className="button-container">
-            <Button color="success" size="large" onClick={this.props.changePage.bind(this, 'helpPage')}>FIND HELP</Button>
+            <Button color="success" size="large" onClick={this.props.changePage.bind(this, "helpPage")}>FIND HELP</Button>
           </div>
         </div>
       </div>
     )
   }
 
-// CHANGE PAGE
+// CHANGE PAGE FUNCTION
   changePage(page){
     this.setState({
         currentPage: page
     })
   }
 
-//SLIDE GRAPH FUNC
+//SLIDE GRAPH FUNCTION
   changeSlide(slide){
     this.setState({
         currentSlide: slide
@@ -186,48 +180,46 @@ class Carousel extends Component {
 }
 //CAROUSEL COMPONENT ENDS
 
-
-
 //BAR CHART OPTIONS
 const baroptions = {
-  title:'PEOPLE ACCESSING SERVICES',
-  titleTextStyle: {color: 'grey', fontName: 'Montserrat'},
-  chartArea:{left:65,top:50,width:'75%',height:'65%'},
-  legend: {position: 'bottom'},
+  title:"PEOPLE ACCESSING SERVICES",
+  titleTextStyle: {color: "grey", fontName: "Montserrat"},
+  chartArea:{left:65,top:50,width:"75%",height:"65%"},
+  legend: {position: "bottom"},
   colors: ["#5A496A"]
 }
 
 // LINE CHART OPTIONS
 const lineoptions = {
   curveType: "function",
-  title:'REPORTS OF MOOD AND ANXIETY DISORDER',
-  titleTextStyle: {color: 'grey', fontName: 'Montserrat'},
+  title:"REPORTS OF MOOD AND ANXIETY DISORDER",
+  titleTextStyle: {color: "grey", fontName: "Montserrat"},
   colors: ["#EF5D60"],
-  chartArea:{left:65,top:50,width:'70%',height:'65%'},
-  legend: {position: 'bottom',}
+  chartArea:{left:65,top:50,width:"70%",height:"65%"},
+  legend: {position: "bottom",}
 };
 
 // PIE CHART 1 OPTIONS
 const donutoptions1 = {
   pieHole: 0.32,
-  title:'SERVICE USE BY ETHNICITY',
-  titleTextStyle: {color: 'grey', fontName: 'Montserrat'},
-  slices: {0: {color: '#866BB6'}, 1: {color: '#EF5D60'}, 2: {color: '#5A496A'}, 3: {color: '#95BB4D'}},
-  chartArea:{left:60,top:80,width:'75%',height:'55%'},
-  legend: {position: 'bottom'}
+  title:"SERVICE USE BY ETHNICITY",
+  titleTextStyle: {color: "grey", fontName: "Montserrat"},
+  slices: {0: {color: "#866BB6"}, 1: {color: "#EF5D60"}, 2: {color: "#5A496A"}, 3: {color: "#95BB4D"}},
+  chartArea:{left:60,top:80,width:"75%",height:"55%"},
+  legend: {position: "bottom"}
 }
 
 // PIE CHART 2 OPTIONS
 const donutoptions2 = {
   pieHole: 0.32,
-  title: 'SERVICE USE BY GENDER', fontSize: '80px',
-  titleTextStyle: {color: 'grey', fontName: 'Montserrat',},
-  slices: {0: {color: '#5A496A'}, 1: {color: '#EF5D60'}},
-  chartArea:{left:60,top:80,width:'75%',height:'55%'},
-  legend: {position: 'bottom'}
+  title: "SERVICE USE BY GENDER", fontSize: "80px",
+  titleTextStyle: {color: "grey", fontName: "Montserrat",},
+  slices: {0: {color: "#5A496A"}, 1: {color: "#EF5D60"}},
+  chartArea:{left:60,top:80,width:"75%",height:"55%"},
+  legend: {position: "bottom"}
 };
 
-
+//CHART OPTIONS END
 
 //CAROUSEL
 var settings = {
@@ -239,6 +231,7 @@ var settings = {
   slidesToScroll: 1
 };
 
+//CAROUSEL ENDS
 
 //SLIDES
 class Slide1 extends Component {
@@ -252,14 +245,12 @@ class Slide1 extends Component {
           <p className="paragraph paragraph1">
             171,033 people accessed mental health care and addiction services in 2015 - 16.
           </p>
-          <p className="credit">-Ministry of Health - 'Mental Health and Addiction: Service Use 2015/16'</p>
+          <p className="credit">-Ministry of Health - "Mental Health and Addiction: Service Use 2015/16"</p>
         </div>
       </div>
     )
   }
 }
-
-
 
 class Slide2 extends Component {
   render() {
@@ -275,12 +266,9 @@ class Slide2 extends Component {
   }
 }
 
-
-
 class Slide3 extends Component {
   render() {
     return (
-
       <div className="header header-color3">
         <div className="paragraph-position">
           <p className="headparagraph">
@@ -295,11 +283,9 @@ class Slide3 extends Component {
   }
 }
 
-
 class Slide4 extends Component {
   render() {
     return (
-
       <div className="header header-color4">
         <div className="paragraph-position">
           <p className="headparagraph">
@@ -309,12 +295,11 @@ class Slide4 extends Component {
             Men and woman are accessing the mental health services at about the same rate.
           </p>
         </div>
-
       </div>
     );
   }
 }
 
+//SLIDES END
 
-
-export default Carousel;
+export default Carousel

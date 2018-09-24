@@ -1,33 +1,33 @@
-import React from 'react';
+import React from "react";
 
-import './map.css';
+import "./map.css";
 
-export default class Map extends React.Component {
+class Map extends React.Component {
     constructor() {
         super();
         this.state = {
             zoom: 13,
-            maptype: 'roadmap',
-            place_formatted: '',
-            place_id: '',
-            place_location: '',
+            maptype: "roadmap",
+            place_formatted: "",
+            place_id: "",
+            place_location: "",
         };
     }
 
     componentDidMount() {
-        let map = new window.google.maps.Map(document.getElementById('map'), {
+        let map = new window.google.maps.Map(document.getElementById("map"), {
             center: { lat: -41.228241, lng: 174.905120 },
             zoom: 5,
-            mapTypeId: 'roadmap',
+            mapTypeId: "roadmap",
         });
 
-        map.addListener('zoom_changed', () => {
+        map.addListener("zoom_changed", () => {
             this.setState({
                 zoom: map.getZoom(),
             });
         });
 
-        map.addListener('maptypeid_changed', () => {
+        map.addListener("maptypeid_changed", () => {
             this.setState({
                 maptype: map.getMapTypeId(),
             });
@@ -38,13 +38,11 @@ export default class Map extends React.Component {
             position: { lat: -41.228241, lng: 174.905120 },
         });
 
-        // initialize the autocomplete functionality using the #pac-input input box
-        let inputNode = document.getElementById('pac-input');
-        // map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(inputNode);
+        let inputNode = document.getElementById("pac-input");
         let autoComplete = new window.google.maps.places.Autocomplete(inputNode);
 
 
-        autoComplete.addListener('place_changed', () => {
+        autoComplete.addListener("place_changed", () => {
             let place = autoComplete.getPlace();
             let location = place.geometry.location;
 
@@ -54,7 +52,6 @@ export default class Map extends React.Component {
                 place_location: location.toString(),
             });
 
-            // bring the selected place in view on the map
             map.fitBounds(place.geometry.viewport);
             map.setCenter(location);
 
@@ -67,13 +64,12 @@ export default class Map extends React.Component {
 
     render() {
         return (
-            <div id='map-container'>            
-        <input id="pac-input" type="text"
-            placeholder="Enter a location">
-      </input>
-                <div id='map' />
-
-      </div>
+            <div className="map-container">
+              <input id="pac-input" type="text" placeholder="Enter a location"/>
+              <div id="map"/>
+            </div>
         );
     }
-};
+}
+
+export default Map
