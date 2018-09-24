@@ -3,12 +3,7 @@ $red: #EF5D60;
 $lightPurple: #866BB6;
 $darkPurple: #5A496A;
 
-
-
 // MAIN PAGE BUILD
-
-
-
 
 .header {
     width: 100%;
@@ -24,7 +19,7 @@ $darkPurple: #5A496A;
 
         padding-top: 1.5%;
 
-        .headparagraph {
+        .head-paragraph {
         margin: 0px;
 
         font-weight: bold;
@@ -94,34 +89,29 @@ $darkPurple: #5A496A;
 }
 
 
-
-
-
-
-
 // PAGE 1
 
-.header-color1 {
+.header-color-one {
     background-color: $lightPurple;
 }
 
 
 // PAGE 2
 
-.header-color2 {
+.header-color-two {
     background-color: $red;
 }
 
 
 // PAGE 3
 
-.header-color3 {
+.header-color-three {
     background-color: $lightPurple;
 }
 
 
 // Page 4
 
-.header-color4 {
+.header-color-four {
     background-color: $darkPurple;
 }

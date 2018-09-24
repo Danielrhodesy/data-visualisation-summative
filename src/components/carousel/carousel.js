@@ -9,8 +9,7 @@ class Carousel extends Component {
   constructor(props){
     super(props);
     this.state = {
-      currentSlide: "Slide1",
-      currentFooter: "Footer1",
+      currentSlide: "SlideOne",
       error: null,
       isLoaded: false,
       data: [],
@@ -47,26 +46,26 @@ class Carousel extends Component {
             lineData: dataTable
           });
 
-          var donutData1 = result.arrayThree;
+          var donutDataOne = result.arrayThree;
           var dataTable = [["ethnicity", "number"]];
-          for (let i = 0; i < donutData1.length; i++) {
-            dataTable.push([donutData1[i].ethnicity, donutData1[i].number])
+          for (let i = 0; i < donutDataOne.length; i++) {
+            dataTable.push([donutDataOne[i].ethnicity, donutDataOne[i].number])
           }
           this.setState({
             isLoaded: true,
             data: result,
-            donutData1: dataTable
+            donutDataOne: dataTable
           });
 
-          var donutData2 = result.arrayFour;
+          var donutDataTwo = result.arrayFour;
           var dataTable = [["Female", "Male"]];
-          for (let i = 0; i < donutData2.length; i++) {
-            dataTable.push([donutData2[i].gender, donutData2[i].number])
+          for (let i = 0; i < donutDataTwo.length; i++) {
+            dataTable.push([donutDataTwo[i].gender, donutDataTwo[i].number])
           }
           this.setState({
             isLoaded: true,
             data: result,
-            donutData2: dataTable
+            donutDataTwo: dataTable
           });
         },
 
@@ -77,23 +76,21 @@ class Carousel extends Component {
           });
         }
       )
-
     }
 
   render() {
     var currentSlide = this.state.currentSlide;
     let Slide;
 
-    if(currentSlide === "Slide1"){
-      Slide = <Slide1/>
-    } else if(currentSlide === "Slide2"){
-      Slide = <Slide2/>
-    } else if(currentSlide === "Slide3"){
-        Slide = <Slide3/>
-    } else if(currentSlide === "Slide4"){
-        Slide = <Slide4/>
+    if(currentSlide === "SlideOne"){
+      Slide = <SlideOne/>
+    } else if(currentSlide === "SlideTwo"){
+      Slide = <SlideTwo/>
+    } else if(currentSlide === "SlideThree"){
+        Slide = <SlideThree/>
+    } else if(currentSlide === "SlideFour"){
+        Slide = <SlideFour/>
     }
-
 
     return (
       <div className="graphSlide">
@@ -102,53 +99,53 @@ class Carousel extends Component {
             <div className="graph-background">
               <Slider {...settings} >
               <Swipe
-                onSwipeLeft={this.changeSlide.bind(this, "Slide2")}>
-                  <div className="graph1 graph-position" >
+                onSwipeLeft={this.changeSlide.bind(this, "SlideTwo")}>
+                  <div className="graph-one graph-position" >
                     <Chart
                       chartType="ColumnChart"
                       width="100%"
                       height="17.7em"
                       data={this.state.barData}
-                      options={baroptions}
+                      options={barOptions}
                     />
                   </div>
                 </Swipe>
                 <Swipe
-                onSwipeLeft={this.changeSlide.bind(this, "Slide3")}
-                onSwipeRight={this.changeSlide.bind(this, "Slide1")}>
-                <div className="graph2 graph-position">
+                onSwipeLeft={this.changeSlide.bind(this, "SlideThree")}
+                onSwipeRight={this.changeSlide.bind(this, "SlideOne")}>
+                <div className="graph-two graph-position">
                   <Chart
                     chartType="LineChart"
                     width="100%"
                     height="17.7em"
                     data={this.state.lineData}
-                    options={lineoptions}
+                    options={lineOptions}
                   />
                 </div>
                 </Swipe>
                 <Swipe
-                onSwipeLeft={this.changeSlide.bind(this, "Slide4")}
-                onSwipeRight={this.changeSlide.bind(this, "Slide2")}>
-                <div className="graph3 graph-position">
+                onSwipeLeft={this.changeSlide.bind(this, "SlideFour")}
+                onSwipeRight={this.changeSlide.bind(this, "SlideTwo")}>
+                <div className="graph-three graph-position">
                   <Chart
                     chartType="PieChart"
                     width="100%"
                     height="17.7em"
-                    data={this.state.donutData1}
-                    options={donutoptions1}
+                    data={this.state.donutDataOne}
+                    options={donutOptionsOne}
 
                   />
                 </div>
                 </Swipe>
                 <Swipe
-                  onSwipeRight={this.changeSlide.bind(this, "Slide3")}>
-                <div className="graph4 graph-position">
+                  onSwipeRight={this.changeSlide.bind(this, "SlideThree")}>
+                <div className="graph-four graph-position">
                   <Chart
                     chartType="PieChart"
                     width="100%"
                     height="17.7em"
-                    data={this.state.donutData2}
-                    options={donutoptions2}
+                    data={this.state.donutDataTwo}
+                    options={donutOptionsTwo}
                   />
                 </div>
                 </Swipe>
@@ -181,26 +178,26 @@ class Carousel extends Component {
 //CAROUSEL COMPONENT ENDS
 
 //BAR CHART OPTIONS
-const baroptions = {
-  title:"PEOPLE ACCESSING SERVICES",
+const barOptions = {
+  title:"SERVICE USE BY AGE",
   titleTextStyle: {color: "grey", fontName: "Montserrat"},
   chartArea:{left:65,top:50,width:"75%",height:"65%"},
-  legend: {position: "bottom"},
+  legend: {position: "none"},
   colors: ["#5A496A"]
 }
 
 // LINE CHART OPTIONS
-const lineoptions = {
+const lineOptions = {
   curveType: "function",
-  title:"REPORTS OF MOOD AND ANXIETY DISORDER",
+  title:"REPORTS OF MOOD AND ANXIETY DISORDERS",
   titleTextStyle: {color: "grey", fontName: "Montserrat"},
   colors: ["#EF5D60"],
   chartArea:{left:65,top:50,width:"70%",height:"65%"},
-  legend: {position: "bottom",}
+  legend: {position: "none",}
 };
 
 // PIE CHART 1 OPTIONS
-const donutoptions1 = {
+const donutOptionsOne = {
   pieHole: 0.32,
   title:"SERVICE USE BY ETHNICITY",
   titleTextStyle: {color: "grey", fontName: "Montserrat"},
@@ -210,7 +207,7 @@ const donutoptions1 = {
 }
 
 // PIE CHART 2 OPTIONS
-const donutoptions2 = {
+const donutOptionsTwo = {
   pieHole: 0.32,
   title: "SERVICE USE BY GENDER", fontSize: "80px",
   titleTextStyle: {color: "grey", fontName: "Montserrat",},
@@ -218,7 +215,6 @@ const donutoptions2 = {
   chartArea:{left:60,top:80,width:"75%",height:"55%"},
   legend: {position: "bottom"}
 };
-
 //CHART OPTIONS END
 
 //CAROUSEL
@@ -234,15 +230,15 @@ var settings = {
 //CAROUSEL ENDS
 
 //SLIDES
-class Slide1 extends Component {
+class SlideOne extends Component {
   render() {
     return (
-      <div className="header header-color1">
+      <div className="header header-color-one">
         <div className="paragraph-position">
-          <p className="headparagraph">
+          <p className="head-paragraph">
             Who's Getting Help?
           </p>
-          <p className="paragraph paragraph1">
+          <p className="paragraph paragraph-one">
             171,033 people accessed mental health care and addiction services in 2015 - 16.
           </p>
           <p className="credit">-Ministry of Health - "Mental Health and Addiction: Service Use 2015/16"</p>
@@ -252,12 +248,12 @@ class Slide1 extends Component {
   }
 }
 
-class Slide2 extends Component {
+class SlideTwo extends Component {
   render() {
     return (
-      <div className="header header-color2">
+      <div className="header header-color-two">
         <div className="paragraph-position">
-          <p className="paragraph paragraph2">
+          <p className="paragraph paragraph-two">
             Kiwis are reporting higher reates of psychological distress each year, meaning our <b>mental health care services are more important than ever.</b>
           </p>
         </div>
@@ -266,15 +262,15 @@ class Slide2 extends Component {
   }
 }
 
-class Slide3 extends Component {
+class SlideThree extends Component {
   render() {
     return (
-      <div className="header header-color3">
+      <div className="header header-color-three">
         <div className="paragraph-position">
-          <p className="headparagraph">
+          <p className="head-paragraph">
             Who's Getting Help?
           </p>
-          <p className="paragraph paragraph3">
+          <p className="paragraph paragraph-three">
             Per capita, Māori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
           </p>
         </div>
@@ -283,15 +279,15 @@ class Slide3 extends Component {
   }
 }
 
-class Slide4 extends Component {
+class SlideFour extends Component {
   render() {
     return (
-      <div className="header header-color4">
+      <div className="header header-color-four">
         <div className="paragraph-position">
-          <p className="headparagraph">
+          <p className="head-paragraph">
             Who's Getting Help?
           </p>
-          <p className="paragraph paragraph3">
+          <p className="paragraph paragraph-four">
             Men and woman are accessing the mental health services at about the same rate.
           </p>
         </div>
