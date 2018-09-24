@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import './carousel.css';
-import {
-  Button
- } from 'reactstrap';
+import { Button } from 'reactstrap';
 import Slider from "react-slick";
 import { Chart } from "react-google-charts";
 import Swipe from 'react-easy-swipe';
 const { google } = window.google;
 
+//CAROUSEL COMPONENT BEGINS
 class Carousel extends Component {
 
   constructor(props){
@@ -30,22 +29,51 @@ class Carousel extends Component {
       .then(
         (result) => {
 
-          // Fetch each graph through this ( keep looping through each fetch for graph on each page)
-          // Change func names
-
-
-          var firstData = result ;
-          console.log(result);
+          var barData = result.arrayOne;
           var dataTable = [["Age", "People"]];
-          for (let i = 0; i < firstData.length; i++) {
-            dataTable.push([firstData[i].age, firstData[i].people])
+          for (let i = 0; i < barData.length; i++) {
+            dataTable.push([barData[i].age, barData[i].people])
           }
           this.setState({
             isLoaded: true,
             data: result,
-            firstData: dataTable
+            barData: dataTable
+          });
+
+          var lineData = result.arrayTwo;
+          var dataTable = [["Year", "Reports"]];
+          for (let i = 0; i < lineData.length; i++) {
+            dataTable.push([lineData[i].year, lineData[i].reports])
+          }
+          this.setState({
+            isLoaded: true,
+            data: result,
+            lineData: dataTable
+          });
+
+          var donutData1 = result.arrayThree;
+          var dataTable = [["ethnicity", "number"]];
+          for (let i = 0; i < donutData1.length; i++) {
+            dataTable.push([donutData1[i].ethnicity, donutData1[i].number])
+          }
+          this.setState({
+            isLoaded: true,
+            data: result,
+            donutData1: dataTable
+          });
+
+          var donutData2 = result.arrayFour;
+          var dataTable = [["Female", "Male"]];
+          for (let i = 0; i < donutData2.length; i++) {
+            dataTable.push([donutData2[i].gender, donutData2[i].number])
+          }
+          this.setState({
+            isLoaded: true,
+            data: result,
+            donutData2: dataTable
           });
         },
+
         (error) => {
           this.setState({
             isLoaded: true,
@@ -57,18 +85,6 @@ class Carousel extends Component {
     }
 
   render() {
-
-  const { error, isLoaded, data } = this.state;
-    if (error) {
-      console.log('error');
-
-    } else if (!isLoaded) {
-      console.log('loading');
-
-    } else {
-      console.log('Working');
-
-    }
 
     var currentSlide = this.state.currentSlide;
     let Slide;
@@ -86,22 +102,19 @@ class Carousel extends Component {
 
     return (
       <div className="graphSlide">
-        {/* Slide 1 - Age/Mental Health */}
           <div className="header-container">
 
             {Slide}
-
             <div className="graph-background">
               <Slider {...settings} >
               <Swipe
                 onSwipeLeft={this.changeSlide.bind(this, 'Slide2')}>
                   <div className="graph1 graph-position" >
-                  {/* onSwipe={this.changeSlide.bind(this, 'Slide2')} */}
                     <Chart
                       chartType="ColumnChart"
                       width="100%"
                       height="17.7em"
-                      data={this.state.firstData}
+                      data={this.state.barData}
                       options={baroptions}
                     />
                   </div>
@@ -114,7 +127,7 @@ class Carousel extends Component {
                     chartType="LineChart"
                     width="100%"
                     height="17.7em"
-                    data={linedata}
+                    data={this.state.lineData}
                     options={lineoptions}
                   />
                 </div>
@@ -127,7 +140,7 @@ class Carousel extends Component {
                     chartType="PieChart"
                     width="100%"
                     height="17.7em"
-                    data={donutdata1}
+                    data={this.state.donutData1}
                     options={donutoptions1}
 
                   />
@@ -140,7 +153,7 @@ class Carousel extends Component {
                     chartType="PieChart"
                     width="100%"
                     height="17.7em"
-                    data={donutdata2}
+                    data={this.state.donutData2}
                     options={donutoptions2}
                   />
                 </div>
@@ -157,22 +170,77 @@ class Carousel extends Component {
     )
   }
 
-
+// CHANGE PAGE
   changePage(page){
     this.setState({
         currentPage: page
     })
-    console.log("Page Test");
   }
 
+//SLIDE GRAPH FUNC
   changeSlide(slide){
     this.setState({
         currentSlide: slide
     })
-    console.log("Slide test");
   }
 }
+//CAROUSEL COMPONENT ENDS
 
+
+
+//BAR CHART OPTIONS
+const baroptions = {
+  title:'PEOPLE ACCESSING SERVICES',
+  titleTextStyle: {color: 'grey', fontName: 'Montserrat'},
+  chartArea:{left:65,top:50,width:'75%',height:'65%'},
+  legend: {position: 'bottom'},
+  colors: ["#5A496A"]
+}
+
+// LINE CHART OPTIONS
+const lineoptions = {
+  curveType: "function",
+  title:'REPORTS OF MOOD AND ANXIETY DISORDER',
+  titleTextStyle: {color: 'grey', fontName: 'Montserrat'},
+  colors: ["#EF5D60"],
+  chartArea:{left:65,top:50,width:'70%',height:'65%'},
+  legend: {position: 'bottom',}
+};
+
+// PIE CHART 1 OPTIONS
+const donutoptions1 = {
+  pieHole: 0.32,
+  title:'SERVICE USE BY ETHNICITY',
+  titleTextStyle: {color: 'grey', fontName: 'Montserrat'},
+  slices: {0: {color: '#866BB6'}, 1: {color: '#EF5D60'}, 2: {color: '#5A496A'}, 3: {color: '#95BB4D'}},
+  chartArea:{left:60,top:80,width:'75%',height:'55%'},
+  legend: {position: 'bottom'}
+}
+
+// PIE CHART 2 OPTIONS
+const donutoptions2 = {
+  pieHole: 0.32,
+  title: 'SERVICE USE BY GENDER', fontSize: '80px',
+  titleTextStyle: {color: 'grey', fontName: 'Montserrat',},
+  slices: {0: {color: '#5A496A'}, 1: {color: '#EF5D60'}},
+  chartArea:{left:60,top:80,width:'75%',height:'55%'},
+  legend: {position: 'bottom'}
+};
+
+
+
+//CAROUSEL
+var settings = {
+  arrows: false,
+  dots: true,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1
+};
+
+
+//SLIDES
 class Slide1 extends Component {
   render() {
     return (
@@ -190,89 +258,6 @@ class Slide1 extends Component {
     )
   }
 }
-
-
-const baroptions = {
-  title:'PEOPLE ACCESSING SERVICES',
-  titleTextStyle: {color: 'grey', fontName: 'Montserrat'},
-  chartArea:{left:65,top:50,width:'75%',height:'65%'},
-  legend: {position: 'bottom'},
-  colors: ["#5A496A"]
-}
-
-
-
-// LINE CHART DATA
-
-const linedata = [
-  ["Year", "Percentage By Year (15yrs and older)"],
-  ["2011", 12.7],
-  ["2012", 16.3],
-  ["2013", 16.4],
-  ["2014", 17.4],
-  ["2015", 18.8],
-  ["2016", 19.9]
-];
-
-const lineoptions = {
-  curveType: "function",
-  title:'REPORTS OF MOOD AND ANXIETY DISORDER',
-  titleTextStyle: {color: 'grey', fontName: 'Montserrat'},
-  colors: ["#EF5D60"],
-  chartArea:{left:65,top:50,width:'70%',height:'65%'},
-  legend: {position: 'bottom',}
-};
-
-// PIE CHART DATA
-
-
-const donutdata1 = [
-  ["Ethnicity", "Number"],
-  ["Maori", 45726],
-  ["Pacific", 9980],
-  ["Asian", 7122],
-  ["Other", 108205]  // CSS-style declaration
-];
-
-const donutoptions1 = {
-  pieHole: 0.32,
-  title:'SERVICE USE BY ETHNICITY',
-  titleTextStyle: {color: 'grey', fontName: 'Montserrat'},
-  slices: {0: {color: '#866BB6'}, 1: {color: '#EF5D60'}, 2: {color: '#5A496A'}, 3: {color: '#95BB4D'}},
-  chartArea:{left:60,top:80,width:'75%',height:'55%'},
-  legend: {position: 'bottom'}
-}
-
-// PIE CHART 2
-
-const donutdata2 = [
-  ["Gender", "Number"],
-  ["Female", 81645],
-  ["Male", 89379]
-];
-
-const donutoptions2 = {
-  pieHole: 0.32,
-  // title: position: 'bottom',
-  title: 'SERVICE USE BY GENDER', fontSize: '80px',
-  titleTextStyle: {color: 'grey', fontName: 'Montserrat',},
-  slices: {0: {color: '#5A496A'}, 1: {color: '#EF5D60'}},
-  chartArea:{left:60,top:80,width:'75%',height:'55%'},
-  legend: {position: 'bottom'}
-};
-
-
-
-//CAROUSEL
-
-var settings = {
-  arrows: false,
-  dots: true,
-  infinite: false,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1
-};
 
 
 
