@@ -291,7 +291,7 @@ class SlideFour extends Component {
             Who's Getting Help?
           </p>
           <p className="paragraph paragraph-four">
-            Men and woman are accessing the mental health services at about the same rate.
+            Men and women are accessing the mental health services at about the same rate.
           </p>
           <p className="credit">Ministry of Health - "Mental Health and Addiction: Service Use 2015/16"</p>
         </div>
