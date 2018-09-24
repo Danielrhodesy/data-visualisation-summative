@@ -16,8 +16,8 @@ export default class Map extends React.Component {
 
     componentDidMount() {
         let map = new window.google.maps.Map(document.getElementById('map'), {
-            center: { lat: -33.8688, lng: 151.2195 },
-            zoom: 13,
+            center: { lat: -41.228241, lng: 174.905120 },
+            zoom: 5,
             mapTypeId: 'roadmap',
         });
 
@@ -35,10 +35,9 @@ export default class Map extends React.Component {
 
         let marker = new window.google.maps.Marker({
             map: map,
-            position: { lat: -33.8688, lng: 151.2195 },
+            position: { lat: -41.228241, lng: 174.905120 },
         });
 
-        let card = document.getElementById('pac-card');
         // initialize the autocomplete functionality using the #pac-input input box
         let inputNode = document.getElementById('pac-input');
         // map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(inputNode);
@@ -68,20 +67,13 @@ export default class Map extends React.Component {
 
     render() {
         return (
-            <div id='app'>
-            <div id='pac-card'>
-            
-            </div>
-             <div id="pac-container">
+            <div id='map-container'>            
         <input id="pac-input" type="text"
             placeholder="Enter a location">
       </input>
+                <div id='map' />
+
       </div>
-            <div id='map'/>
-            <div id='infowindow-content'></div>
-                <span id='place-name' className='title'></span><br/>
-                <span id='place-address'></span>
-            </div>
         );
     }
 };

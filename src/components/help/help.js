@@ -23,10 +23,8 @@ class Help extends Component {
             //     <Row>
             //         <Col>
                         <div className="help">
-                                <div className="map-container">
                                     <Map/>
-                                </div>
-                            <Button className="second-button button" color="success" size="large" onClick={this.props.changePage.bind(this, 'homePage')}>HOME</Button>
+                            <Button className="map-home-button button" color="success" size="large" onClick={this.props.changePage.bind(this, 'homePage')}>HOME</Button>
                         </div>
             //         </Col>
             //     </Row>

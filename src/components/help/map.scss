@@ -6,8 +6,8 @@ $darkPurple: #5A496A;
 
 
 .help {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     padding: 0;
     margin: 0; 
     top: 0;
@@ -17,39 +17,12 @@ $darkPurple: #5A496A;
     background-color: $lightPurple;
 }
 
-.map {
-    width: 100%;
-    height: 60%;
+#map {
+    width: 100vw;
+    height: 60vh;
+    margin-bottom: 5%;
 }
 
-      .description {
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-      }
-
-      .infowindow-content .title {
-        font-weight: bold;
-      }
-
-      .infowindow-content {
-        display: none;
-      }
-
-      .map .infowindow-content {
-        display: inline;
-      }
-
-      .pac-card {
-        margin: 10px 10px 0 0;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
-        font-family: Roboto;
-      }
 
       .pac-container {
         padding-bottom: 12px;
@@ -67,15 +40,14 @@ $darkPurple: #5A496A;
         font-weight: 300;
       }
 
-      .pac-input {
+      #pac-input {
+        margin-top: 5%;
+        margin-bottom: 5%;
         background-color: #fff;
-        font-family: Roboto;
         font-size: 15px;
         font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
         text-overflow: ellipsis;
-        width: 400px;
+        width: 100vw;
       }
 
       .pac-input:focus {
@@ -93,12 +65,11 @@ $darkPurple: #5A496A;
         width: 345px;
       }
 
-.map-container {
-  height: 800px;
-  width: 100vw;
+.map-home-button { 
+  margin-top: 5%;
+  margin-left: 38vw;
 }
-
-#map {
-  height: 800px;
-  width: 100vw;
-}
+// #map {
+//   height: 800px;
+//   width: 100vw;
+// }
