@@ -1,19 +1,14 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import {
-  Button
- } from 'reactstrap';
-
-import Home from './components/home/home';
-import Carousel from './components/carousel/carousel';
-import Help from './components/help/help';
+import React, { Component } from "react";
+import Home from "./components/home/home";
+import Carousel from "./components/carousel/carousel";
+import Help from "./components/help/help";
 
 
 class App extends Component {
   constructor(){
         super();
         this.state = {
-          currentPage: 'homePage'
+          currentPage: "homePage"
         }
       this.changePage = this.changePage.bind(this)
     }
@@ -22,27 +17,29 @@ class App extends Component {
     var currentPage = this.state.currentPage;
     let page;
 
-      if(currentPage === 'homePage'){
+    //PAGE NAVIGATION BEGINS
+      if(currentPage === "homePage"){
           page = <Home
           {...this.state}
           changePage={this.changePage}
           />
-      } else if(currentPage === 'carouselPage'){
+      } else if(currentPage === "carouselPage"){
           page = <Carousel
           {...this.state}
           changePage={this.changePage}/>
-      } else if (currentPage === 'helpPage') {
+      } else if (currentPage === "helpPage") {
         page = <Help
           {...this.state}
-          changePage={this.changePage} />
+          changePage={this.changePage}/>
       } else {
         page = <Page404/>
     }
+    //PAGE NAVIGATION ENDS
 
     return (
       <div className="app">
       <header className="app-header">
-       <div className="header-logo" onClick={this.changePage.bind(this, 'homePage')}></div>
+       <div className="header-logo" onClick={this.changePage.bind(this, "homePage")}></div>
       </header>
         {page}
       </div>
@@ -56,7 +53,6 @@ class App extends Component {
 
 }
 
-
 class Page404 extends Component {
     render() {
       return (
@@ -65,5 +61,4 @@ class Page404 extends Component {
     }
 }
 
-
-export default App;
+export default App

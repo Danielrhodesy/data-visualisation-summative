@@ -9,7 +9,7 @@
   margin-right: 1em;
   padding-top: 1.5%;
 }
-.header .paragraph-position .headparagraph {
+.header .paragraph-position .head-paragraph {
   margin: 0px;
   font-weight: bold;
   color: white;
@@ -55,19 +55,19 @@
   padding: 15px 20px;
 }
 
-.header-color1 {
+.header-color-one {
   background-color: #866BB6;
 }
 
-.header-color2 {
+.header-color-two {
   background-color: #EF5D60;
 }
 
-.header-color3 {
+.header-color-three {
   background-color: #866BB6;
 }
 
-.header-color4 {
+.header-color-four {
   background-color: #5A496A;
 }
 
