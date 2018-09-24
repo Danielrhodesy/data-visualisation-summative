@@ -1,26 +1,88 @@
 import React, { Component } from 'react';
 import './carousel.css';
-import {
-  Button
- } from 'reactstrap';
- import Slider from "react-slick";
- import { Chart } from "react-google-charts";
- import Swipe from 'react-easy-swipe';
+import { Button } from 'reactstrap';
+import Slider from "react-slick";
+import { Chart } from "react-google-charts";
+import Swipe from 'react-easy-swipe';
+const { google } = window.google;
 
-
+//CAROUSEL COMPONENT BEGINS
 class Carousel extends Component {
 
-  
-
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       currentSlide: 'Slide1',
-      currentFooter: 'Footer1'
+      currentFooter: 'Footer1',
+      error: null,
+      isLoaded: false,
+      data: [],
+      firstData: []
     }
   }
 
-  
+
+
+  componentDidMount() {
+    fetch("http://192.168.33.10:5000/data")
+      .then(res => res.json())
+      .then(
+        (result) => {
+
+          var barData = result.arrayOne;
+          var dataTable = [["Age", "People"]];
+          for (let i = 0; i < barData.length; i++) {
+            dataTable.push([barData[i].age, barData[i].people])
+          }
+          this.setState({
+            isLoaded: true,
+            data: result,
+            barData: dataTable
+          });
+
+          var lineData = result.arrayTwo;
+          var dataTable = [["Year", "Reports"]];
+          for (let i = 0; i < lineData.length; i++) {
+            dataTable.push([lineData[i].year, lineData[i].reports])
+          }
+          this.setState({
+            isLoaded: true,
+            data: result,
+            lineData: dataTable
+          });
+
+          var donutData1 = result.arrayThree;
+          var dataTable = [["ethnicity", "number"]];
+          for (let i = 0; i < donutData1.length; i++) {
+            dataTable.push([donutData1[i].ethnicity, donutData1[i].number])
+          }
+          this.setState({
+            isLoaded: true,
+            data: result,
+            donutData1: dataTable
+          });
+
+          var donutData2 = result.arrayFour;
+          var dataTable = [["Female", "Male"]];
+          for (let i = 0; i < donutData2.length; i++) {
+            dataTable.push([donutData2[i].gender, donutData2[i].number])
+          }
+          this.setState({
+            isLoaded: true,
+            data: result,
+            donutData2: dataTable
+          });
+        },
+
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+
+    }
 
   render() {
 
@@ -40,92 +102,150 @@ class Carousel extends Component {
 
     return (
       <div className="graphSlide">
-        {/* Slide 1 - Age/Mental Health */}
           <div className="header-container">
 
             {Slide}
-
-          <div className="graph-background">
-            <Slider {...settings} >
-            <Swipe
-              onSwipeLeft={this.changeSlide.bind(this, 'Slide2')}>
-                <div className="graph1 graph-position" >
-                {/* onSwipe={this.changeSlide.bind(this, 'Slide2')} */}
+            <div className="graph-background">
+              <Slider {...settings} >
+              <Swipe
+                onSwipeLeft={this.changeSlide.bind(this, 'Slide2')}>
+                  <div className="graph1 graph-position" >
+                    <Chart
+                      chartType="ColumnChart"
+                      width="100%"
+                      height="17.7em"
+                      data={this.state.barData}
+                      options={baroptions}
+                    />
+                  </div>
+                </Swipe>
+                <Swipe
+                onSwipeLeft={this.changeSlide.bind(this, 'Slide3')}
+                onSwipeRight={this.changeSlide.bind(this, 'Slide1')}>
+                <div className="graph2 graph-position">
                   <Chart
-                    chartType="ColumnChart"
+                    chartType="LineChart"
                     width="100%"
                     height="17.7em"
-                    data={bardata}
-                    options={baroptions}
+                    data={this.state.lineData}
+                    options={lineoptions}
                   />
                 </div>
-              </Swipe>
-              <Swipe
-              onSwipeLeft={this.changeSlide.bind(this, 'Slide3')}
-              onSwipeRight={this.changeSlide.bind(this, 'Slide1')}>
-              <div className="graph2 graph-position">
-                <Chart
-                  chartType="LineChart"
-                  width="100%"
-                  height="17.7em"
-                  data={linedata}
-                  options={lineoptions}
-                />
-              </div>
-              </Swipe>
-              <Swipe
-              onSwipeLeft={this.changeSlide.bind(this, 'Slide4')}
-              onSwipeRight={this.changeSlide.bind(this, 'Slide2')}>
-              <div className="graph3 graph-position">
-                <Chart
-                  chartType="PieChart"
-                  width="100%"
-                  height="17.7em"
-                  data={donutdata1}
-                  options={donutoptions1}
-                />
-              </div>
-              </Swipe>
-              <Swipe
-                onSwipeRight={this.changeSlide.bind(this, 'Slide3')}>
-              <div className="graph4 graph-position">
-                <Chart
-                  chartType="PieChart"
-                  width="100%"
-                  height="17.7em"
-                  data={donutdata2}
-                  options={donutoptions2}
-                />
-              </div>
-              </Swipe>
-            </Slider>
+                </Swipe>
+                <Swipe
+                onSwipeLeft={this.changeSlide.bind(this, 'Slide4')}
+                onSwipeRight={this.changeSlide.bind(this, 'Slide2')}>
+                <div className="graph3 graph-position">
+                  <Chart
+                    chartType="PieChart"
+                    width="100%"
+                    height="17.7em"
+                    data={this.state.donutData1}
+                    options={donutoptions1}
+
+                  />
+                </div>
+                </Swipe>
+                <Swipe
+                  onSwipeRight={this.changeSlide.bind(this, 'Slide3')}>
+                <div className="graph4 graph-position">
+                  <Chart
+                    chartType="PieChart"
+                    width="100%"
+                    height="17.7em"
+                    data={this.state.donutData2}
+                    options={donutoptions2}
+                  />
+                </div>
+                </Swipe>
+              </Slider>
             </div>
             <div className="slider-background">
             </div>
           <div className="button-container">
+<<<<<<< HEAD
             <Button color="success" size="large" onClick={this.props.changePage.bind(this, 'helpPage')}>FIND HELP</Button>
           </div>  
+=======
+            <Button color="success" size="large" onClick={this.props.changePage.bind(this, 'MapPage')}>FIND HELP NEAR YOU</Button>
+          </div>
+>>>>>>> JSONgraph
         </div>
       </div>
     )
   }
 
-
+// CHANGE PAGE
   changePage(page){
     this.setState({
         currentPage: page
     })
-    console.log("Page Test");
   }
 
+//SLIDE GRAPH FUNC
   changeSlide(slide){
     this.setState({
         currentSlide: slide
     })
-    console.log("Slide test");
   }
 }
+//CAROUSEL COMPONENT ENDS
 
+
+
+//BAR CHART OPTIONS
+const baroptions = {
+  title:'PEOPLE ACCESSING SERVICES',
+  titleTextStyle: {color: 'grey', fontName: 'Montserrat'},
+  chartArea:{left:65,top:50,width:'75%',height:'65%'},
+  legend: {position: 'bottom'},
+  colors: ["#5A496A"]
+}
+
+// LINE CHART OPTIONS
+const lineoptions = {
+  curveType: "function",
+  title:'REPORTS OF MOOD AND ANXIETY DISORDER',
+  titleTextStyle: {color: 'grey', fontName: 'Montserrat'},
+  colors: ["#EF5D60"],
+  chartArea:{left:65,top:50,width:'70%',height:'65%'},
+  legend: {position: 'bottom',}
+};
+
+// PIE CHART 1 OPTIONS
+const donutoptions1 = {
+  pieHole: 0.32,
+  title:'SERVICE USE BY ETHNICITY',
+  titleTextStyle: {color: 'grey', fontName: 'Montserrat'},
+  slices: {0: {color: '#866BB6'}, 1: {color: '#EF5D60'}, 2: {color: '#5A496A'}, 3: {color: '#95BB4D'}},
+  chartArea:{left:60,top:80,width:'75%',height:'55%'},
+  legend: {position: 'bottom'}
+}
+
+// PIE CHART 2 OPTIONS
+const donutoptions2 = {
+  pieHole: 0.32,
+  title: 'SERVICE USE BY GENDER', fontSize: '80px',
+  titleTextStyle: {color: 'grey', fontName: 'Montserrat',},
+  slices: {0: {color: '#5A496A'}, 1: {color: '#EF5D60'}},
+  chartArea:{left:60,top:80,width:'75%',height:'55%'},
+  legend: {position: 'bottom'}
+};
+
+
+
+//CAROUSEL
+var settings = {
+  arrows: false,
+  dots: true,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1
+};
+
+
+//SLIDES
 class Slide1 extends Component {
   render() {
     return (
@@ -137,11 +257,14 @@ class Slide1 extends Component {
           <p className="paragraph paragraph1">
             171,033 people accessed mental health care and addiction services in 2015 - 16.
           </p>
+          <p className="credit">-Ministry of Health - 'Mental Health and Addiction: Service Use 2015/16'</p>
         </div>
       </div>
     )
   }
 }
+
+
 
 class Slide2 extends Component {
   render() {
@@ -169,11 +292,10 @@ class Slide3 extends Component {
             Who's Getting Help?
           </p>
           <p className="paragraph paragraph3">
-            Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
+            Per capita, Māori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
           </p>
         </div>
       </div>
-
     );
   }
 }
@@ -189,96 +311,15 @@ class Slide4 extends Component {
             Who's Getting Help?
           </p>
           <p className="paragraph paragraph3">
-            Per capita, Maori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
+            Men and woman are accessing the mental health services at about the same rate.
           </p>
         </div>
+
       </div>
     );
   }
 }
 
-
-
-//CAROUSEL
-
-var settings = {
-  arrows: false,
-  dots: true,
-  infinite: false,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1
-};
-
-
-
-// BAR CHART DATA
-
-const bardata = [
-  ["Age", "People", { role: "style" }],
-  ["Under 15", 25661, "#5A496A"],
-  ["15 - 24", 40436, " #5A496A"],
-  ["25 - 34", 30505, " #5A496A"],
-  ["35 - 44", 25623, " #5A496A"],
-  ["45 - 54", 21824, " #5A496A"],
-  ["55 - 64", 12561, "#5A496A"],
-  ["64+", 14423, " #5A496A"]
-];
-
-const baroptions = {
-  legend: {position: 'none'},
-  chartArea:{left:65,top:50,width:'75%',height:'65%'}
-}
-
-// LINE CHART DATA
-
-const linedata = [
-  ["Year", "Reports"],
-  ["2011", 56.4],
-  ["2012", 58.9],
-  ["2013", 65.5],
-  ["2014", 61.6],
-  ["2015", 66.9],
-  ["2016", 72.4]
-];
-
-const lineoptions = {
-  curveType: "function",
-  colors: ["#EF5D60"],
-  legend: {position: 'none'},
-  chartArea:{left:65,top:50,width:'70%',height:'65%'}
-};
-
-// PIE CHART DATA
-
-
-const donutdata1 = [
-  ["Ethnicity", "Number"],
-  ["Maori", 45726],
-  ["Pacific", 9980],
-  ["Asian", 7122],
-  ["Other", 108205]  // CSS-style declaration
-];
-
-const donutoptions1 = {
-  pieHole: 0.32,
-  chartArea:{left:60,top:50,width:'70%',height:'50%'},
-  legend: {position: 'labeled'}
-}
-
-// PIE CHART 2
-
-const donutdata2 = [
-  ["Gender", "Number"],
-  ["Female", 81645],
-  ["Male", 89379]
-];
-
-const donutoptions2 = {
-  pieHole: 0.32,
-  chartArea:{left:60,top:50,width:'70%',height:'50%'},
-  legend: {position: 'left'}
-};
 
 
 export default Carousel;
