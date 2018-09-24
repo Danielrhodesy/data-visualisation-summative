@@ -241,7 +241,7 @@ class SlideOne extends Component {
           <p className="paragraph paragraph-one">
             171,033 people accessed mental health care and addiction services in 2015 - 16.
           </p>
-          <p className="credit">-Ministry of Health - "Mental Health and Addiction: Service Use 2015/16"</p>
+          <p className="credit">Ministry of Health - "Mental Health and Addiction: Service Use 2015/16"</p>
         </div>
       </div>
     )
@@ -254,8 +254,9 @@ class SlideTwo extends Component {
       <div className="header header-color-two">
         <div className="paragraph-position">
           <p className="paragraph paragraph-two">
-            Kiwis are reporting higher reates of psychological distress each year, meaning our <b>mental health care services are more important than ever.</b>
+            Kiwis are reporting higher rates of psychological distress each year, meaning our <b>mental health care services are more important than ever.</b>
           </p>
+          <p className="credit">Ministry of Health - "New Zealand Health Survey"</p>
         </div>
       </div>
     );
@@ -273,6 +274,7 @@ class SlideThree extends Component {
           <p className="paragraph paragraph-three">
             Per capita, Māori are seeking help the most often -- 6450 people per 100,000, compared to 1125 per 100,000 Asian people.
           </p>
+          <p className="credit">Ministry of Health - "Mental Health and Addiction: Service Use 2015/16"</p>
         </div>
       </div>
     );
@@ -290,6 +292,7 @@ class SlideFour extends Component {
           <p className="paragraph paragraph-four">
             Men and woman are accessing the mental health services at about the same rate.
           </p>
+          <p className="credit">Ministry of Health - "Mental Health and Addiction: Service Use 2015/16"</p>
         </div>
       </div>
     );
