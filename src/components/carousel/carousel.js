@@ -31,30 +31,36 @@ class Carousel extends Component {
         
         (result) => {
 
-          // Fetch each graph through this ( keep looping through each fetch for graph on each page)
-          // Change func names
-          var lineData = result.arrayTwo;
-          console.log(result.arrayTwo);
-          var dataTable = [["Year", "Reports"]];
-          for (let i = 0; i < lineData.length; i++) {
-            dataTable.push([lineData[i].year, lineData[i].reports])
-          }
-          this.setState({
-            isLoaded: true,
-            data: result,
-            lineData: dataTable
-          });
 
-          var barData = result.arrayOne;
+          var firstData = result.arrayOne;
           console.log(result.arrayOne);
           var dataTable = [["Age", "People"]];
-          for (let i = 0; i < barData.length; i++) {
-            dataTable.push([barData[i].age, barData[i].people])
+          for (let i = 0; i < firstData.length; i++) {
+            dataTable.push([firstData[i].age, firstData[i].people])
           }
           this.setState({
             isLoaded: true,
             data: result,
-            barData: dataTable
+            firstData: dataTable
+          });
+        },
+
+        (result) => {
+
+          // Fetch each graph through this ( keep looping through each fetch for graph on each page)
+          // Change func names
+
+
+          var firstData = result.arrayOne;
+          console.log(result.arrayOne);
+          var dataTable = [["Age", "People"]];
+          for (let i = 0; i < firstData.length; i++) {
+            dataTable.push([firstData[i].age, firstData[i].people])
+          }
+          this.setState({
+            isLoaded: true,
+            data: result,
+            firstData: dataTable
           });
         },
         (error) => {
@@ -112,7 +118,7 @@ class Carousel extends Component {
                       chartType="ColumnChart"
                       width="100%"
                       height="17.7em"
-                      data={this.state.barData}
+                      data={this.state.firstData}
                       options={baroptions}
                     />
                   </div>
@@ -125,7 +131,7 @@ class Carousel extends Component {
                     chartType="LineChart"
                     width="100%"
                     height="17.7em"
-                    data={this.state.lineData}
+                    data={linedata}
                     options={lineoptions}
                   />
                 </div>
@@ -211,6 +217,15 @@ const baroptions = {
 
 // LINE CHART DATA
 
+const linedata = [
+  ["Year", "Reports"],
+  ["2011", 56.4],
+  ["2012", 58.9],
+  ["2013", 65.5],
+  ["2014", 61.6],
+  ["2015", 66.9],
+  ["2016", 72.4]
+];
 
 const lineoptions = {
   curveType: "function",
