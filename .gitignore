@@ -1,6 +1,6 @@
 
 # dependencies
-/server/node_modules
+/server/node_modules/
 Gruntfile.js
 
 # testing
