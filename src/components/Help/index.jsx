@@ -5,16 +5,15 @@ import '../../css/map.css';
 
 class Help extends Component {
   changePage(page) {
-    this.setState({
-      currentPage: page,
-    });
+    this.setState(page);
   }
 
   render() {
+    const { changePage } = this.props;
     return (
       <div className="help">
         <Map />
-        <Button className="map-home-button button" color="success" size="large" onClick={this.props.changePage.bind(this, 'homePage')}>HOME</Button>
+        <Button className="map-home-button button" color="success" size="large" onClick={() => changePage('homePage')}>HOME</Button>
       </div>
     );
   }

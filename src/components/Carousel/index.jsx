@@ -140,7 +140,7 @@ class Carousel extends Component {
       barData, lineData, donutDataOne, donutDataTwo,
     } = this.state;
 
-    const { page, changePage } = this.props;
+    const { changePage } = this.props;
     return (
       <>
         <Slider {...sliderSettings}>

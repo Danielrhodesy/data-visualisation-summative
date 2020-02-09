@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Carousel from './components/Carousel/Carousel';
-import ErrorPage from './components/ErrorPage/ErrorPage';
-import Help from './components/Help/Help';
-import Home from './components/Home/Home';
 import { Button } from 'reactstrap';
+import Carousel from './components/Carousel';
+import ErrorPage from './components/ErrorPage';
+import Help from './components/Help';
+import Home from './components/Home';
 
 class App extends Component {
   constructor() {
