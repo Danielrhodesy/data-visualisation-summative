@@ -23,7 +23,7 @@ yarn-error.log*
 /.sass-cache
 
 /src/help/backups
+/src/apiKey.mjs
 
 .env
 node_modules
-apikey

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="map" style="height:500px;width:500px;"></div>
+</body>
+</html>
+<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD2iYnA2TFPfdsL6Yf8w-c-AHjaGAd3uiU&libraries=places'></script>
+<script>
+  let map;
+  let service;
+  let infowindow;
+  const google = window.google; 
+  
+  function initMap() {
+    let sydney = new google.maps.LatLng(-33.867, 151.195);
+  
+    infowindow = new google.maps.InfoWindow();
+  
+    map = new google.maps.Map(
+        document.getElementById('map'), {center: sydney, zoom: 15});
+  
+    let request = {
+      query: 'mental health in wellington',
+    };
+  
+    let createMarker = () => new google.maps.Marker();
+    let service = new google.maps.places.PlacesService(map);
+  
+    service.textSearch(request, function(results, status) {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        console.log(results);
+      }
+    });
+  }
+
+  initMap();
+</script>
