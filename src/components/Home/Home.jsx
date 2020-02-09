@@ -3,12 +3,11 @@ import { Button } from 'reactstrap';
 
 class Home extends Component {
   changePage(page) {
-    this.setState({
-      currentPage: page,
-    });
+    this.setState(page);
   }
 
   render() {
+    const { changePage } = this.props;
     return (
       <div className="home">
         <h1 className="heading">
@@ -22,8 +21,8 @@ class Home extends Component {
           {' '}
           alone.
         </h1>
-        <Button className="button" color="success" size="large" onClick={this.props.changePage.bind(this, 'carouselPage')}>CHECK OUT THE STATS</Button>
-        <Button className="button" color="success" size="large" onClick={this.props.changePage.bind(this, 'helpPage')}>FIND HELP NEAR YOU</Button>
+        <Button className="button" color="success" size="large" onClick={() => changePage('carouselPage')}>CHECK OUT THE STATS</Button>
+        <Button className="button" color="success" size="large" onClick={() => changePage('helpPage')}>FIND HELP NEAR YOU</Button>
       </div>
     );
   }

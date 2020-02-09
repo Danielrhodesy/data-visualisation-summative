@@ -4,12 +4,6 @@ import Slider from 'react-slick';
 import Slide from './Slide';
 import '../../css/carousel.css';
 
-// CHANGE PAGE FUNCTION
-const changePage = (page) => {
-  this.setState({
-    currentPage: page,
-  });
-};
 
 const sliderSettings = {
   arrows: false,
@@ -137,11 +131,16 @@ class Carousel extends Component {
     }
   }
 
+  changePage(page) {
+    this.setState(page);
+  }
+
   render() {
     const {
       barData, lineData, donutDataOne, donutDataTwo,
     } = this.state;
 
+    const { page, changePage } = this.props;
     return (
       <>
         <Slider {...sliderSettings}>
@@ -155,7 +154,7 @@ class Carousel extends Component {
           />
           <Slide
             backgroundColor="#95BB4D"
-            content="Kiwis are reporting higher rates of psychological distress each year, 
+            content="Kiwis are reporting higher rates of psychological distress each year,
             meaning our mental health care services are more important than ever."
             chartType="LineChart"
             credit="Ministry of Health - &quot;New Zealand Health Survey&quot;"
@@ -186,7 +185,7 @@ class Carousel extends Component {
             className="button"
             color="success"
             size="large"
-            onClick={() => changePage(this, 'helpPage')}
+            onClick={() => changePage('helpPage')}
           >
             FIND HELP
           </Button>

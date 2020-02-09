@@ -1,7 +1,6 @@
 
 # dependencies
 /server/node_modules/
-Gruntfile.js
 
 # testing
 /coverage
@@ -27,4 +26,4 @@ yarn-error.log*
 
 .env
 node_modules
-/public/index.html
+apikey
