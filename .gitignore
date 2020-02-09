@@ -19,9 +19,11 @@ Gruntfile.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.history
 
 /.sass-cache
 
 /src/help/backups
 
 .env
+node_modules

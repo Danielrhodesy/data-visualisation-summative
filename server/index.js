@@ -1,6 +1,5 @@
 const express = require('express');
 const data = require('./data/data.json');
-// const daa = require('./data/bardata.json');
 const cors = require('cors');
 
 const app = express();

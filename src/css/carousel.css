@@ -1,9 +1,3 @@
-.header {
-  position: absolute;
-  width: 100%;
-  height: 40em;
-}
-
 .paragraph-position {
   margin-top: 0.5em;
   margin-left: 1em;
@@ -62,6 +56,12 @@
   padding: 15px 20px;
 }
 
+.header {
+  display: flex;
+  width: 100%;
+  height: 50%;
+}
+
 .header-color-one {
   background-color: #866BB6;
 }
@@ -76,6 +76,11 @@
 
 .header-color-four {
   background-color: #5A496A;
+}
+
+.graph-slide {
+  width: 100%;
+  height: 100%;
 }
 
 /*# sourceMappingURL=carousel.css.map */

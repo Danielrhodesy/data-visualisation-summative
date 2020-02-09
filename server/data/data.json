@@ -1,92 +1,92 @@
 
-{
-    "arrayOne": [
-        {
-            "age": "under 15",
-            "people": 25661
-        },
-        {
-            "age": "15 - 24",
-            "people": 40436
-        },
-        {
-            "age": "25 - 34",
-            "people": 30505
-        },
-        {
-            "age": "35 - 44",
-            "people": 25623
-        },
-        {
-            "age": "45 - 54",
-            "people": 21824
-        },
-        {
-            "age": "55 - 64",
-            "people": 10561
-        },
-        {
-            "age": "64+",
-            "people": 14423
-        }
+  {
+  "barData": [
+      {
+          "age": "under 15",
+          "people": 25661
+      },
+      {
+          "age": "15 - 24",
+          "people": 40436
+      },
+      {
+          "age": "25 - 34",
+          "people": 30505
+      },
+      {
+          "age": "35 - 44",
+          "people": 25623
+      },
+      {
+          "age": "45 - 54",
+          "people": 21824
+      },
+      {
+          "age": "55 - 64",
+          "people": 10561
+      },
+      {
+          "age": "64+",
+          "people": 14423
+      }
 
-    ],
-    "arrayTwo" : [
-        {
-            "year": "2011",
-            "reports": 12.7
-        },
-        {
-            "year": "2012",
-            "reports": 16.3
-        },
-        {
-            "year": "2013",
-            "reports": 16.4
-        },
-        {
-            "year": "2014",
-            "reports": 18.6
-        },
-        {
-            "year": "2015",
-            "reports": 17.4
-        },
-        {
-            "year": "2016",
-            "reports": 18.8
-        },
-        {
-            "year": "2017",
-            "reports": 19.9
-        }
-    ],
-    "arrayThree":[
-        {
-            "ethnicity": "Māori",
-            "number": 45726
-        },
-        {
-          "ethnicity": "Pacific",
-          "number": 9980
-        },
-        {
-          "ethnicity": "Asian",
-          "number": 7122
-        },
-        {
-          "ethnicity": "Pākehā/Other",
-          "number": 108205
-        }
-    ],
-    "arrayFour":[
-        {
-            "gender": "Female",
-            "number": 81654
-        },
-        {
-            "gender": "Male",
-            "number": 89379
-        }
-    ]
-}
+  ],
+  "lineData" : [
+      {
+          "year": "2011",
+          "reports": 12.7
+      },
+      {
+          "year": "2012",
+          "reports": 16.3
+      },
+      {
+          "year": "2013",
+          "reports": 16.4
+      },
+      {
+          "year": "2014",
+          "reports": 18.6
+      },
+      {
+          "year": "2015",
+          "reports": 17.4
+      },
+      {
+          "year": "2016",
+          "reports": 18.8
+      },
+      {
+          "year": "2017",
+          "reports": 19.9
+      }
+  ],
+  "donutDataOne":[
+      {
+          "ethnicity": "Māori",
+          "number": 45726
+      },
+      {
+        "ethnicity": "Pacific",
+        "number": 9980
+      },
+      {
+        "ethnicity": "Asian",
+        "number": 7122
+      },
+      {
+      "ethnicity": "Pākehā/Other",
+      "number": 108205
+      }
+  ],
+  "donutDataTwo":[
+      {
+          "gender": "Female",
+          "number": 81654
+      },
+      {
+          "gender": "Male",
+          "number": 89379
+      }
+  ]
+  }

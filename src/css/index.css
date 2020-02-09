@@ -1,0 +1,43 @@
+body, html, #root, .app, .home {
+  margin: 0 auto;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+.header-logo {
+  background: #95BB4D;
+  height: 10vh;
+  width: 100vw;
+}
+
+.button {
+  padding: 4% 6%;
+  border-radius: 25px;
+  font-weight: 600;
+  background-color: #95BB4D;
+  border-color: #95BB4D;
+}
+
+.home {
+  display: flex;
+  align-items: center;
+  flex-flow: column wrap;
+  background-image: url("../images/hero-original.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.heading {
+  padding-top: 8%;
+  padding-left: 8%;
+  font-size: 2em;
+  font-weight: 600;
+  color: white;
+  text-shadow: 2px 2px 2px rgba(80, 80, 80, 0.5);
+}
+
+/*# sourceMappingURL=index.css.map */
