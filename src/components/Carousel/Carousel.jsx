@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
-import { Chart } from 'react-google-charts';
 import Slider from 'react-slick';
-import Swipe from 'react-easy-swipe';
 import Slide from './Slide';
-import SlideTwo from './SlideTwo';
-import SlideThree from './SlideThree';
-import SlideFour from './SlideFour';
 import '../../css/carousel.css';
 
 // CHANGE PAGE FUNCTION
@@ -16,14 +11,14 @@ const changePage = (page) => {
   });
 };
 
-// SLIDER SETTINGS
-const settings = {
+const sliderSettings = {
   arrows: false,
   dots: true,
   infinite: false,
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
+  swipeToSlide: true,
 };
 
 const barOptions = {
@@ -81,7 +76,6 @@ class Carousel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // currentSlide: 'SlideOne',
       error: null,
       isLoaded: false,
     };
@@ -89,139 +83,115 @@ class Carousel extends Component {
 
   // API request to Node server
   componentDidMount() {
-    fetch('http://localhost:5000/data')
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          const { barData } = result;
-          let dataTable = [['Age', 'People']];
-          for (let i = 0; i < barData.length; i++) {
-            dataTable.push([barData[i].age, barData[i].people]);
-          }
-          this.setState({
-            isLoaded: true,
-            barData: dataTable,
-          });
+    try {
+      fetch('http://localhost:5000/data')
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            const { barData } = result;
+            let dataTable = [['Age', 'People']];
+            for (let i = 0; i < barData.length; i++) {
+              dataTable.push([barData[i].age, barData[i].people]);
+            }
+            this.setState({
+              isLoaded: true,
+              barData: dataTable,
+            });
 
-          const { lineData } = result;
-          dataTable = [['Year', 'Reports']];
-          for (let i = 0; i < lineData.length; i++) {
-            dataTable.push([lineData[i].year, lineData[i].reports]);
-          }
-          this.setState({
-            isLoaded: true,
-            lineData: dataTable,
-          });
+            const { lineData } = result;
+            dataTable = [['Year', 'Reports']];
+            for (let i = 0; i < lineData.length; i++) {
+              dataTable.push([lineData[i].year, lineData[i].reports]);
+            }
+            this.setState({
+              isLoaded: true,
+              lineData: dataTable,
+            });
 
-          const { donutDataOne } = result;
-          dataTable = [['Ethnicity', 'Number']];
-          for (let i = 0; i < donutDataOne.length; i++) {
-            dataTable.push([donutDataOne[i].ethnicity, donutDataOne[i].number]);
-          }
-          this.setState({
-            isLoaded: true,
-            donutDataOne: dataTable,
-          });
+            const { donutDataOne } = result;
+            dataTable = [['Ethnicity', 'Number']];
+            for (let i = 0; i < donutDataOne.length; i++) {
+              dataTable.push([donutDataOne[i].ethnicity, donutDataOne[i].number]);
+            }
+            this.setState({
+              isLoaded: true,
+              donutDataOne: dataTable,
+            });
 
-          const { donutDataTwo } = result;
-          dataTable = [['Female', 'Male']];
-          for (let i = 0; i < donutDataTwo.length; i++) {
-            dataTable.push([donutDataTwo[i].gender, donutDataTwo[i].number]);
-          }
-          this.setState({
-            isLoaded: true,
-            donutDataTwo: dataTable,
-          });
-        },
-
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error,
-          });
-        },
-      );
+            const { donutDataTwo } = result;
+            dataTable = [['Female', 'Male']];
+            for (let i = 0; i < donutDataTwo.length; i++) {
+              dataTable.push([donutDataTwo[i].gender, donutDataTwo[i].number]);
+            }
+            this.setState({
+              isLoaded: true,
+              donutDataTwo: dataTable,
+            });
+          },
+        );
+    } catch (error) {
+      this.setState({
+        isLoaded: true,
+        error,
+      });
+    }
   }
 
   render() {
     const {
       barData, lineData, donutDataOne, donutDataTwo,
     } = this.state;
+
     return (
-      <div className="graph-slide">
-        {/* <div className="header-container"> */}
-          {/* <div className="graph-background"> */}
-          <Slider {...settings}>
-            {/* <Swipe
-                onSwipeLeft={() => this.changeSlide('SlideTwo')}
-              > */}
-            <Slide
-              backgroundcolor="#866BB6"
-              content="171,033 people accessed mental health care and addiction services in 2015 - 16."
-              credit="Ministry of Health - &quot;Mental Health and Addiction: Service Use 2015/16&quot;"
-              data={barData}
-              options={barOptions}
-            />
-            {/* </Swipe>
-              <Swipe
-                onSwipeLeft={() => this.changeSlide(this, 'SlideThree')}
-                onSwipeRight={() => this.changeSlide(this, 'SlideOne')}
-              > */}
-            <SlideTwo />
-            <div className="graph-two graph-position">
-              <Chart
-                chartType="LineChart"
-                width="100%"
-                height="17.7em"
-                data={lineData}
-                options={lineOptions}
-              />
-            </div>
-            {/* </Swipe>
-              <Swipe
-                onSwipeLeft={() => this.changeSlide(this, 'SlideFour')}
-                onSwipeRight={() => this.changeSlide(this, 'SlideTwo')}
-              > */}
-            <SlideThree />
-            <div className="graph-three graph-position">
-              <Chart
-                chartType="PieChart"
-                width="100%"
-                height="17.7em"
-                data={donutDataOne}
-                options={donutOptionsOne}
-              />
-            </div>
-            {/* </Swipe>
-              <Swipe */}
-            {/* onSwipeRight={() => this.changeSlide(this, 'SlideThree')}
-              > */}
-            <SlideFour />
-            <div className="graph-four graph-position">
-              <Chart
-                chartType="PieChart"
-                width="100%"
-                height="17.7em"
-                data={donutDataTwo}
-                options={donutOptionsTwo}
-              />
-            </div>
-            {/* </Swipe> */}
-          </Slider>
-          {/* </div> */}
-          <div className="slider-background" />
-          <div className="button-container">
-            <Button
-              className="button"
-              color="success"
-              size="large"
-              onClick={() => changePage(this, 'helpPage')}
-            >
-              FIND HELP
-            </Button>
-          </div>
+      <>
+        <Slider {...sliderSettings}>
+          <Slide
+            backgroundColor="#866BB6"
+            content="171,033 people accessed mental health care and addiction services in 2015 - 16."
+            chartType="ColumnChart"
+            credit="Ministry of Health - &quot;Mental Health and Addiction: Service Use 2015/16&quot;"
+            data={barData}
+            options={barOptions}
+          />
+          <Slide
+            backgroundColor="#95BB4D"
+            content="Kiwis are reporting higher rates of psychological distress each year, 
+            meaning our mental health care services are more important than ever."
+            chartType="LineChart"
+            credit="Ministry of Health - &quot;New Zealand Health Survey&quot;"
+            data={lineData}
+            options={lineOptions}
+          />
+          <Slide
+            backgroundColor="#5A496A"
+            content="Per capita, Māori are seeking help the most often --
+            6450 people per 100,000, compared to 1125 per 100,000 Asian people."
+            chartType="PieChart"
+            credit="Ministry of Health - &quot;Mental Health and Addiction: Service Use 2015/16&quot;"
+            data={donutDataOne}
+            options={donutOptionsOne}
+          />
+          <Slide
+            backgroundColor="#866BB6"
+            content="Men and women are accessing the mental health services at about the same rate."
+            chartType="PieChart"
+            credit="Ministry of Health - &quot;Mental Health and Addiction: Service Use 2015/16&quot;"
+            data={donutDataTwo}
+            options={donutOptionsTwo}
+          />
+        </Slider>
+        <div className="slider-background" />
+        <div className="carousel__button-container">
+          <Button
+            className="button"
+            color="success"
+            size="large"
+            onClick={() => changePage(this, 'helpPage')}
+          >
+            FIND HELP
+          </Button>
         </div>
-      // </div>
+      </>
     );
   }
 }

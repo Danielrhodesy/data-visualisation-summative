@@ -4,31 +4,31 @@ import '../../css/carousel.css';
 
 const Slide = (props) => {
   const {
-    backgroundColor, credit, content, data, options
+    backgroundColor, chartType, credit, content, data, options
   } = props;
   return (
-    <>
-      <div className="header">
-        <div className="paragraph-position">
-          <p color="black" className="head-paragraph">
+    <div className="carousel__slides" background={backgroundColor}>
+      <section className="carousel__header">
+        <div className="carousel__content">
+          <h1>
             Who&apos;s getting help?
-          </p>
-          <p className="paragraph paragraph-one">
+          </h1>
+          <p>
             {content}
           </p>
-          <p className="credit">{credit}</p>
+          <p className="carousel__content--credit">{credit}</p>
         </div>
-      </div>
-      <div className="graph-one graph-position">
+      </section>
+      <section className="carousel__graph">
         <Chart
-          chartType="ColumnChart"
+          chartType={chartType}
           width="100%"
-          height="17.7em"
+          height="50%"
           data={data}
           options={options}
         />
-      </div>
-    </>
+      </section>
+    </div>
   );
 };
 
