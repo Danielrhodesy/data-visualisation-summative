@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Col, Button, Input } from 'reactstrap';
 import '../../css/help.css';
-import { uniq, pipe, map, union } from 'ramda';
+import { union } from 'ramda';
 import renderIf from 'render-if';
 
 const TextSearch = () => {
@@ -9,12 +9,14 @@ const TextSearch = () => {
   const container = document.createElement('div');
   const service = new google.maps.places.PlacesService(container);
   const [location, setLocation] = useState(null);
-  const [results, setResults] = useState([]);
   const [places, setPlaces] = useState([]);
-
+  const [loading, setLoading] = useState(false);
+  const [isRequestDone, setIsRequestDone] = useState(false);
+  
   const textRequest = {
-    radius: 100000,
     // Center on Wellington
+    // Bias results towards New Zealand
+    radius: 100000,
     location:
       {
         lat: -41.228241,
@@ -29,15 +31,23 @@ const TextSearch = () => {
 
   const placesArr = [];
 
+  const handleChange = (event) => {
+    setLocation(event.target.value);
+  };
+
   const details = places.map((place) => (
     <div className="result-container" key={place.id}>
-      <li className="result">{place.name}</li>
-      <li className="result">{place.formatted_address}</li>
-      <li className="result">{place.formatted_phone_number}</li>
-      <li className="result"><a href={place.website}>{place.website}</a></li>
+      <ul className="result-list">
+        <li className="result">{place.name}</li>
+        <li className="result">{place.formatted_address}</li>
+        <li className="result">{place.formatted_phone_number}</li>
+        <li className="result"><a href={place.website}>{place.website}</a></li>
+      </ul>
+      <hr />
     </div>
   ));
 
+  const noResults = () => <div className="result">Sorry, no results found.</div> 
 
   const fetchDetails = (r) => {
     r.map((result) => {
@@ -46,41 +56,26 @@ const TextSearch = () => {
         fields,
       }, ((place, status) => {
         if (status === 'OK') {
+          setLoading(false);
           placesArr.push(place);
-          console.log(placesArr, places);
           const uniqPlaces = union(placesArr);
           setPlaces(uniqPlaces);
-        }
+          setIsRequestDone(true);
+        } 
+        setIsRequestDone(true);
       }));
     });
   };
 
-  const items = results.map((place) => (
-    <div className="result-container" key={place.id}>
-      <ul className="results-list">
-        <li className="result">{place.name}</li>
-        <li className="result">{place.formatted_address}</li>
-        <li className="result">{place.formatted_phone_number}</li>
-        <li className="result">{place.website}</li>
-        <hr />
-      </ul>
-    </div>
-  ));
-
-  const handleChange = (event) => {
-    setLocation(event.target.value);
-  };
-
   const fetchResults = () => {
+    setLoading(true);
     service.textSearch(
       textRequest,
       ((response) => fetchDetails(response)),
     );
   };
 
-  // const fetch = pipe(fetchResults, fetchDetails);
 
-  useEffect(() => setResults(results), [results]);
   useEffect(() => setPlaces(places), [places]);
   return (
     <Col>
@@ -91,11 +86,14 @@ const TextSearch = () => {
         onChange={handleChange}
       />
       <Button onClick={() => fetchResults()}>Search</Button>
-      <section>
-        {items}
-      </section>
-      <section>
+      {renderIf(loading)(() => (
+        <div className="loader" /> 
+      ))}
+      <section className="results">
         {details}
+        {renderIf(places.length === 0 && isRequestDone === true)(() => (
+          <div className="result">Sorry, no results found. Please try entering a different place.</div>
+      ))}
       </section>
     </Col>
   );

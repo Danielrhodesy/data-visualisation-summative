@@ -21,16 +21,36 @@
   margin-left: 38vw;
 }
 
+.loader {
+  border: 16px solid #5A496A;
+  border-top: 16px solid #95BB4D;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .results {
   width: 100%;
   display: flex;
   flex-flow: column wrap;
   align-items: center;
   justify-content: center;
+  background-color: white;
+}
+.results .result-list {
+  list-style: none;
 }
 
-.results-list {
-  background-color: white;
+.result {
   width: 80%;
   justify-self: flex-start;
 }
