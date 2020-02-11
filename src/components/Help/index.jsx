@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Container, Col, Button } from 'reactstrap';
 import '../../css/help.css';
-import TextSearch from './TextSearch';
+import Search from './Search';
 
 class Help extends Component {
   changePage(page) {
@@ -14,8 +14,8 @@ class Help extends Component {
     return (
       <Container className="help">
         <Col>
-          <TextSearch />
-          <Button className="map-home-button button" color="success" size="large" onClick={() => changePage('homePage')}>HOME</Button>
+          <Search />
+          <Button className="map-home-button button" color="success" size="large" onClick={() => changePage('carouselPage')}>SEE THE STATS</Button>
         </Col>
       </Container>
     );

@@ -42,7 +42,7 @@
   width: 100%;
   display: flex;
   flex-flow: column wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   background-color: white;
 }
@@ -52,7 +52,7 @@
 
 .result {
   width: 80%;
-  justify-self: flex-start;
+  padding: 5px;
 }
 
 /*# sourceMappingURL=help.css.map */

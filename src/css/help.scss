@@ -44,7 +44,7 @@ $darkPurple: #5A496A;
   width: 100%;
   display: flex;
   flex-flow: column wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;  
   background-color: white;
     .result-list {
@@ -54,5 +54,5 @@ $darkPurple: #5A496A;
 
 .result {
   width: 80%;
-  justify-self: flex-start;
+  padding: 5px;
 }

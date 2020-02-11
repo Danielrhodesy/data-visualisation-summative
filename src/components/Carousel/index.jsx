@@ -78,7 +78,7 @@ class Carousel extends Component {
   // API request to Node server
   componentDidMount() {
     try {
-      fetch('http://localhost:5000/data')
+      fetch('https://raw.githubusercontent.com/sebknight/going-through-it/master/server/data/data.json')
         .then((res) => res.json())
         .then(
           (result) => {
