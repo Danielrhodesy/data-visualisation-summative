@@ -1,0 +1,41 @@
+$green: #95BB4D;
+$red: #EF5D60;
+$lightPurple: #866BB6;
+$darkPurple: #5A496A;
+
+.help {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $lightPurple;
+}
+
+.map {
+    margin-bottom: 5%;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column wrap;
+}
+
+.map-home-button {
+  margin-top: 5%;
+  margin-left: 38vw;
+}
+
+.results {
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.results-list {
+  background-color: white;
+  width: 80%;
+  justify-self: flex-start;
+}

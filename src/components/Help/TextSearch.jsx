@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { addIndex, map, mapObjIndexed } from 'ramda';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Col, Button, Input } from 'reactstrap';
+import '../../css/help.css';
+import { uniq, pipe, map, union } from 'ramda';
+import renderIf from 'render-if';
 
 const TextSearch = () => {
   const { google } = window;
@@ -7,6 +10,7 @@ const TextSearch = () => {
   const service = new google.maps.places.PlacesService(container);
   const [location, setLocation] = useState(null);
   const [results, setResults] = useState([]);
+  const [places, setPlaces] = useState([]);
 
   const textRequest = {
     radius: 100000,
@@ -18,17 +22,50 @@ const TextSearch = () => {
       },
     query: `mental health in ${location}`,
   };
-  
 
-  const items = results.map((result, key) => (
-    <div key={result.id}>
-      <ul>
-        <li>{result.name}</li>
-        <li>{result.formatted_address}</li>
-      </ul>
+  const fields = [
+    'name', 'formatted_address', 'formatted_phone_number', 'photos', 'website',
+  ];
+
+  const placesArr = [];
+
+  const details = places.map((place) => (
+    <div className="result-container" key={place.id}>
+      <li className="result">{place.name}</li>
+      <li className="result">{place.formatted_address}</li>
+      <li className="result">{place.formatted_phone_number}</li>
+      <li className="result"><a href={place.website}>{place.website}</a></li>
     </div>
   ));
 
+
+  const fetchDetails = (r) => {
+    r.map((result) => {
+      service.getDetails({
+        placeId: result.place_id,
+        fields,
+      }, ((place, status) => {
+        if (status === 'OK') {
+          placesArr.push(place);
+          console.log(placesArr, places);
+          const uniqPlaces = union(placesArr);
+          setPlaces(uniqPlaces);
+        }
+      }));
+    });
+  };
+
+  const items = results.map((place) => (
+    <div className="result-container" key={place.id}>
+      <ul className="results-list">
+        <li className="result">{place.name}</li>
+        <li className="result">{place.formatted_address}</li>
+        <li className="result">{place.formatted_phone_number}</li>
+        <li className="result">{place.website}</li>
+        <hr />
+      </ul>
+    </div>
+  ));
 
   const handleChange = (event) => {
     setLocation(event.target.value);
@@ -37,35 +74,30 @@ const TextSearch = () => {
   const fetchResults = () => {
     service.textSearch(
       textRequest,
-      ((textResponse, status) => {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-          setResults(textResponse);
-        }
-      }),
+      ((response) => fetchDetails(response)),
     );
   };
 
-  useEffect(() => {
-    setResults(results);
-    console.log(results);
-  }, [results]);
+  // const fetch = pipe(fetchResults, fetchDetails);
 
-  // const updateResults = useEffect(() => console.log(mapResults(results)), [mapResults, results]);
-
+  useEffect(() => setResults(results), [results]);
+  useEffect(() => setPlaces(places), [places]);
   return (
-    <>
+    <Col>
       <label htmlFor="location">Location</label>
-      <input
+      <Input
         type="text"
         name="location"
         onChange={handleChange}
       />
-      <button type="button" onClick={() => fetchResults()}>Search</button>
-      <h3>{location}</h3>
-      <ul>
+      <Button onClick={() => fetchResults()}>Search</Button>
+      <section>
         {items}
-      </ul>
-    </>
+      </section>
+      <section>
+        {details}
+      </section>
+    </Col>
   );
 };
 

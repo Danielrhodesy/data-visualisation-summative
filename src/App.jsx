@@ -53,7 +53,7 @@ class App extends Component {
 
     return (
       <main>
-        <header className="app-header">
+        <header className="header">
           <Button onClick={() => this.changePage('homePage')}>Home</Button>
         </header>
         {page}

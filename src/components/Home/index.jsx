@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 
@@ -9,7 +10,7 @@ class Home extends Component {
   render() {
     const { changePage } = this.props;
     return (
-      <div className="home">
+      <section className="home">
         <h1 className="heading">
           Going
           <br />
@@ -23,9 +24,17 @@ class Home extends Component {
         </h1>
         <Button className="button" color="success" size="large" onClick={() => changePage('carouselPage')}>CHECK OUT THE STATS</Button>
         <Button className="button" color="success" size="large" onClick={() => changePage('helpPage')}>FIND HELP NEAR YOU</Button>
-      </div>
+      </section>
     );
   }
 }
+
+Home.propTypes = {
+  changePage: PropTypes.func,
+};
+
+Home.defaultProps = {
+  changePage: PropTypes.func,
+};
 
 export default Home;
