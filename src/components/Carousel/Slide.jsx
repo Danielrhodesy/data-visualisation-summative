@@ -1,32 +1,35 @@
 import React from 'react';
 import { Chart } from 'react-google-charts';
-import '../../css/carousel.css';
+import { Col } from 'reactstrap';
 
 const Slide = (props) => {
   const {
-    backgroundColor, chartType, credit, content, data, options
+    background, color, chartType, credit, content, data, options,
   } = props;
   return (
-    <div className="carousel__slides" background={backgroundColor}>
+    <div className="carousel__slides" style={{ background }}>
       <section className="carousel__header">
         <div className="carousel__content">
-          <h1>
+          <h1 className="carousel__content--heading" style={{ color }}>
             Who&apos;s getting help?
           </h1>
-          <p>
+          <p className="carousel__content--content" style={{ color }}>
             {content}
           </p>
-          <p className="carousel__content--credit">{credit}</p>
+          <p className="carousel__content--credit" style={{color}}>{credit}</p>
         </div>
       </section>
       <section className="carousel__graph">
-        <Chart
-          chartType={chartType}
-          width="100%"
-          height="50%"
-          data={data}
-          options={options}
-        />
+        <Col>
+          <Chart
+            chartType={chartType}
+            width="75%"
+            height="75vh"
+            data={data}
+            options={options}
+          />
+
+        </Col>
       </section>
     </div>
   );

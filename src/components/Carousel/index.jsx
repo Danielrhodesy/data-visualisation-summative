@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
+import { Button, Col, Container } from 'reactstrap';
 import Slider from 'react-slick';
 import Slide from './Slide';
-import '../../css/carousel.css';
-
 
 const sliderSettings = {
   arrows: false,
@@ -78,48 +76,48 @@ class Carousel extends Component {
   // API request to Node server
   componentDidMount() {
     try {
-      fetch('https://raw.githubusercontent.com/sebknight/going-through-it/master/server/data/data.json')
+      fetch('https://raw.githubusercontent.com/sebknight/going-through-it/b0b2a4276219366aa5f5d46c8ee81af4926be692/server/data/data.json')
         .then((res) => res.json())
         .then(
           (result) => {
             const { barData } = result;
-            let dataTable = [['Age', 'People']];
+            const barDataTable = [['Age', 'People']];
             for (let i = 0; i < barData.length; i++) {
-              dataTable.push([barData[i].age, barData[i].people]);
+              barDataTable.push([barData[i].age, barData[i].people]);
             }
             this.setState({
               isLoaded: true,
-              barData: dataTable,
+              barData: barDataTable,
             });
 
             const { lineData } = result;
-            dataTable = [['Year', 'Reports']];
+            const lineDataTable = [['Year', 'Reports']];
             for (let i = 0; i < lineData.length; i++) {
-              dataTable.push([lineData[i].year, lineData[i].reports]);
+              lineDataTable.push([lineData[i].year, lineData[i].reports]);
             }
             this.setState({
               isLoaded: true,
-              lineData: dataTable,
+              lineData: lineDataTable,
             });
 
             const { donutDataOne } = result;
-            dataTable = [['Ethnicity', 'Number']];
+            const donutOneDataTable = [['Ethnicity', 'Number']];
             for (let i = 0; i < donutDataOne.length; i++) {
-              dataTable.push([donutDataOne[i].ethnicity, donutDataOne[i].number]);
+              donutOneDataTable.push([donutDataOne[i].ethnicity, donutDataOne[i].number]);
             }
             this.setState({
               isLoaded: true,
-              donutDataOne: dataTable,
+              donutDataOne: donutOneDataTable,
             });
 
             const { donutDataTwo } = result;
-            dataTable = [['Female', 'Male']];
+            const donutTwoDataTable = [['Female', 'Male']];
             for (let i = 0; i < donutDataTwo.length; i++) {
-              dataTable.push([donutDataTwo[i].gender, donutDataTwo[i].number]);
+              donutTwoDataTable.push([donutDataTwo[i].gender, donutDataTwo[i].number]);
             }
             this.setState({
               isLoaded: true,
-              donutDataTwo: dataTable,
+              donutDataTwo: donutTwoDataTable,
             });
           },
         );
@@ -142,10 +140,13 @@ class Carousel extends Component {
 
     const { changePage } = this.props;
     return (
+      // <Container className="stats">
+      //   <Col>
       <>
         <Slider {...sliderSettings}>
           <Slide
-            backgroundColor="#866BB6"
+            background="#866BB6"
+            color="white"
             content="171,033 people accessed mental health care and addiction services in 2015 - 16."
             chartType="ColumnChart"
             credit="Ministry of Health - &quot;Mental Health and Addiction: Service Use 2015/16&quot;"
@@ -153,7 +154,7 @@ class Carousel extends Component {
             options={barOptions}
           />
           <Slide
-            backgroundColor="#95BB4D"
+            background="#95BB4D"
             content="Kiwis are reporting higher rates of psychological distress each year,
             meaning our mental health care services are more important than ever."
             chartType="LineChart"
@@ -162,7 +163,7 @@ class Carousel extends Component {
             options={lineOptions}
           />
           <Slide
-            backgroundColor="#5A496A"
+            background="#EF5D60"
             content="Per capita, Māori are seeking help the most often --
             6450 people per 100,000, compared to 1125 per 100,000 Asian people."
             chartType="PieChart"
@@ -171,7 +172,8 @@ class Carousel extends Component {
             options={donutOptionsOne}
           />
           <Slide
-            backgroundColor="#866BB6"
+            background="#5A496A"
+            color="white"
             content="Men and women are accessing the mental health services at about the same rate."
             chartType="PieChart"
             credit="Ministry of Health - &quot;Mental Health and Addiction: Service Use 2015/16&quot;"
@@ -191,6 +193,8 @@ class Carousel extends Component {
           </Button>
         </div>
       </>
+      //   </Col>
+      // </Container>
     );
   }
 }

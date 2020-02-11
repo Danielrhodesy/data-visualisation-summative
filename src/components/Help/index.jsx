@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Container, Col, Button } from 'reactstrap';
-import '../../css/help.css';
 import Search from './Search';
 
 class Help extends Component {

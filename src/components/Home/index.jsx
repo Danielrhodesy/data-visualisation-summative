@@ -22,8 +22,10 @@ class Home extends Component {
           {' '}
           alone.
         </h1>
-        <Button className="button" color="success" size="large" onClick={() => changePage('carouselPage')}>CHECK OUT THE STATS</Button>
-        <Button className="button" color="success" size="large" onClick={() => changePage('helpPage')}>FIND HELP NEAR YOU</Button>
+        <div className="button-container">
+          <Button label="see stats" className="button" onClick={() => changePage('carouselPage')}>CHECK OUT THE STATS</Button>
+          <Button label="get help" className="button" onClick={() => changePage('helpPage')}>FIND HELP NEAR YOU </Button>
+        </div>
       </section>
     );
   }
