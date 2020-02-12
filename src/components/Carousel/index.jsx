@@ -4,8 +4,7 @@ import Slide from './Slide';
 
 const sliderSettings = {
   arrows: false,
-  autoplay: true,
-  autoplaySpeed: 12000,
+  autoplay: false,
   centerMode: true,
   dots: true,
   infinite: true,
