@@ -17,7 +17,7 @@ const Search = () => {
 
   // Establish initial values for the text search
   const textRequest = {
-    // Center on Wellington
+    // Center on Wellington - location is required
     // Bias results towards New Zealand
     radius: 1000000,
     location:
@@ -109,7 +109,7 @@ const Search = () => {
               <Label className="help__input-label" for="location">Location</Label>
               <Input placeholder="Wellington" className="help__input" onChange={handleChange} value={location} />
             </InputGroup>
-            <Button className="button help__button" onClick={() => fetchTextResults}>
+            <Button className="button help__button" onClick={() => fetchTextResults()}>
               SEARCH
               {renderIf(isLoading && !isRequestDone)(() => (
                 <div>
