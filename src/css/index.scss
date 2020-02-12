@@ -340,7 +340,7 @@ a {
   @include bp(tablet) {
     bottom: 25px;
   }
-  
+
   @include bp(desktop) {
     bottom: 50px;
   }
@@ -348,5 +348,4 @@ a {
 
 .flex-inner {
   min-width:0;
-  max-height:0;
 }
