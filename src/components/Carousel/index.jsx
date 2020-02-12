@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button, Col, Container } from 'reactstrap';
 import Slider from 'react-slick';
 import Slide from './Slide';
 
@@ -23,7 +22,6 @@ const barOptions = {
   colors: ['#5A496A'],
 };
 
-// LINE CHART OPTIONS
 const lineOptions = {
   curveType: 'function',
   title: 'REPORTS OF MOOD AND ANXIETY DISORDERS',
@@ -35,7 +33,6 @@ const lineOptions = {
   legend: { position: 'none' },
 };
 
-// PIE CHART 1 OPTIONS
 const donutOptionsOne = {
   pieHole: 0.32,
   title: 'SERVICE USE BY ETHNICITY',
@@ -49,7 +46,6 @@ const donutOptionsOne = {
   legend: { position: 'bottom' },
 };
 
-// PIE CHART 2 OPTIONS
 const donutOptionsTwo = {
   pieHole: 0.32,
   title: 'SERVICE USE BY GENDER',
@@ -61,9 +57,7 @@ const donutOptionsTwo = {
   },
   legend: { position: 'bottom' },
 };
-// CHART OPTIONS END
 
-// Carousel
 class Carousel extends Component {
   constructor(props) {
     super(props);
@@ -73,7 +67,7 @@ class Carousel extends Component {
     };
   }
 
-  // API request to Node server
+  // API request
   componentDidMount() {
     try {
       fetch('https://raw.githubusercontent.com/sebknight/going-through-it/b0b2a4276219366aa5f5d46c8ee81af4926be692/server/data/data.json')
@@ -138,53 +132,48 @@ class Carousel extends Component {
       barData, lineData, donutDataOne, donutDataTwo,
     } = this.state;
 
-    const { changePage } = this.props;
     return (
-      // <Container className="stats">
-      //   <Col>
       <>
         <Slider {...sliderSettings}>
           <Slide
             background="#866BB6"
             color="white"
-            content="171,033 people accessed mental health care and addiction services in 2015 - 16."
             chartType="ColumnChart"
+            content="171,033 people accessed mental health care and addiction services in 2015 - 16."
             credit="Ministry of Health - &quot;Mental Health and Addiction: Service Use 2015/16&quot;"
             data={barData}
             options={barOptions}
           />
           <Slide
             background="#95BB4D"
+            chartType="LineChart"
             content="Kiwis are reporting higher rates of psychological distress each year,
             meaning our mental health care services are more important than ever."
-            chartType="LineChart"
             credit="Ministry of Health - &quot;New Zealand Health Survey&quot;"
             data={lineData}
             options={lineOptions}
           />
           <Slide
-            background="#EF5D60"
+            background="#866BB6"
+            chartType="PieChart"
             content="Per capita, Māori are seeking help the most often --
             6450 people per 100,000, compared to 1125 per 100,000 Asian people."
-            chartType="PieChart"
             credit="Ministry of Health - &quot;Mental Health and Addiction: Service Use 2015/16&quot;"
             data={donutDataOne}
             options={donutOptionsOne}
           />
           <Slide
             background="#5A496A"
+            chartType="PieChart"
             color="white"
             content="Men and women are accessing the mental health services at about the same rate."
-            chartType="PieChart"
             credit="Ministry of Health - &quot;Mental Health and Addiction: Service Use 2015/16&quot;"
             data={donutDataTwo}
             options={donutOptionsTwo}
           />
         </Slider>
-        {/* <div className="slider-background" /> */}
+        <div className="slider-background" />
       </>
-      //   </Col>
-      // </Container>
     );
   }
 }

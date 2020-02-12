@@ -39,9 +39,8 @@ h3 {
 }
 
 a {
-  color: #95BB4D;
-  text-decoration: underline;
-  font-weight: bold;
+  color: white;
+  text-decoration: underline 2px solid #95BB4D;
 }
 a:hover {
   background-color: #95BB4D;
@@ -52,6 +51,34 @@ a:hover {
   background-color: #866bb6;
   display: flex;
   justify-content: space-evenly;
+}
+
+.nav-button {
+  border: 3px solid #5A496A;
+  color: white;
+  font-weight: 600;
+  background-color: #5A496A;
+  border-color: #5A496A;
+}
+.nav-button:hover {
+  border: 3px solid #95BB4D;
+  background-color: #5A496A;
+  color: white;
+}
+.nav-button:active {
+  border: 3px solid #95BB4D;
+  background-color: #5A496A;
+  color: white;
+}
+.nav-button:focus {
+  border: 3px solid #95BB4D;
+  background-color: #5A496A;
+  color: white;
+}
+.nav-button:link {
+  border: 3px solid #95BB4D;
+  background-color: #5A496A;
+  color: white;
 }
 
 .button {
@@ -132,16 +159,32 @@ a:hover {
 }
 .help .help__intro {
   width: 100%;
+  padding: 1rem;
+}
+.help .help__form {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .help .help__form {
+    width: 80%;
+  }
 }
 .help .help__input-group {
   margin-top: 25px;
   width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: space-evenly;
 }
 .help .help__input {
-  width: 100px;
+  width: 250px;
+  margin: 0 1rem 0 1rem;
 }
 
 .help__results {
+  display: flex;
+  flex-flow: column wrap;
   background-color: #866bb6;
   width: 100%;
   height: auto;
@@ -149,10 +192,11 @@ a:hover {
 }
 .help__results .result-list {
   list-style: none;
+  padding: 1rem;
 }
 .help__results .result {
   width: 80%;
-  padding: 5px;
+  padding: 0.5rem;
 }
 
 .loader {

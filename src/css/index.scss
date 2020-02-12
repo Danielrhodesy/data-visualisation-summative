@@ -72,9 +72,8 @@ h3 {
 }
 
 a {
-  color: $green;
-  text-decoration: underline;
-  font-weight: bold;
+  color: white;
+  text-decoration: underline 2px solid $green;
   &:hover {
     background-color: $green;
     color: $darkPurple;
@@ -87,7 +86,25 @@ a {
   justify-content: space-evenly;
 }
 
-// SHARED STYLING
+.nav-button {
+  border: 3px solid $darkPurple;
+  color: white;
+  font-weight: 600;
+  background-color: $darkPurple;
+  border-color: $darkPurple;
+  &:hover {
+    @include active-button;
+  }
+  &:active {
+    @include active-button;
+  }
+  &:focus {
+    @include active-button;
+  }
+  &:link {
+    @include active-button;
+  }
+}
 
 .button {
   border: 3px solid $darkPurple;
@@ -148,28 +165,46 @@ a {
   background-color: $lightPurple;
   color: white;
   .help__intro {
-    width: 100%
+    width: 100%;
+    padding: 1rem;
   }
+  
+  .help__form {
+    width: 100%;
+
+    @include bp(tablet) {
+      width: 80%;
+    }
+  }
+
   .help__input-group {
     margin-top: 25px;
     width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
   }
   .help__input {
-    width: 100px;
+    width: 250px;
+    margin: 0 1rem 0 1rem;
   }
 }
 
 .help__results {
+  display: flex;
+  flex-flow: column wrap;
     background-color: $lightPurple;
     width: 100%;
     height: auto;
     z-index: 2;
     .result-list {
       list-style: none;
+      padding: 1rem;
     }
     .result {
       width: 80%;
-      padding: 5px;
+      padding: 0.5rem;
       }
   }
 
@@ -230,3 +265,7 @@ a {
   @include flex-center;
   flex-flow: column nowrap;
 }
+
+// .slider-background {
+//   background-color: $green;
+// }

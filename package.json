@@ -1,12 +1,10 @@
 {
-  "name": "data-visualisation-summative",
-  "version": "0.1.0",
+  "name": "going-through-it",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "ajv": "^6.5.3",
     "bootstrap": "^4.4.1",
-    "cors": "^2.8.4",
-    "express": "^4.16.3",
     "google-map-react": "^1.0.8",
     "google-maps-react": "^2.0.2",
     "googleapis": "^47.0.0",
@@ -17,7 +15,6 @@
     "grunt-contrib-uglify": "^4.0.0",
     "grunt-sass": "^3.0.1",
     "jquery": "^3.4.1",
-    "nodemon": "^1.18.4",
     "prop-types": "^15.7.2",
     "ramda": "^0.27.0",
     "react": "^16.8.0",

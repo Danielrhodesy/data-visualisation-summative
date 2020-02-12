@@ -20,16 +20,14 @@ const Slide = (props) => {
         </div>
       </section>
       <section className="carousel__graph">
-        <Col>
-          <Chart
-            chartType={chartType}
-            width="75%"
-            height="75vh"
-            data={data}
-            options={options}
-          />
-
-        </Col>
+        <Chart
+          style={{ display: 'flex' }}
+          chartType={chartType}
+          width="100%"
+          height="66vh"
+          data={data}
+          options={options}
+        />
       </section>
     </div>
   );

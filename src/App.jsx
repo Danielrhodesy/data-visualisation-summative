@@ -57,7 +57,7 @@ class App extends Component {
           <nav className="nav">
             <Button className="nav-button" onClick={() => this.changePage('homePage')}>HOME</Button>
             <Button className="nav-button" onClick={() => this.changePage('helpPage')}>FIND HELP</Button>
-            <Button className="nav-button" onClick={() => this.changePage('carouselPage')}>SEE STATS</Button>
+            <Button className="nav-button" onClick={() => this.changePage('carouselPage')}>STATS</Button>
           </nav>
         </header>
         {page}
