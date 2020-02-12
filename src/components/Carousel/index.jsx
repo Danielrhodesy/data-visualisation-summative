@@ -149,7 +149,4 @@ class Carousel extends Component {
   }
 }
 
-// CAROUSEL COMPONENT ENDS
-
-
 export default Carousel;

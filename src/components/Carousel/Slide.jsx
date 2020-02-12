@@ -7,8 +7,8 @@ const Slide = (props) => {
     background, color, chartType, credit, content, data, options,
   } = props;
   return (
-    <div className="carousel__slides" style={{ background }}>
-      <section className="carousel__header">
+    <div className="carousel__slides" >
+      <section className="carousel__header" style={{ background }}>
         <div className="carousel__content">
           <h2 className="carousel__content--heading" style={{ color }}>
             Who&apos;s getting help?

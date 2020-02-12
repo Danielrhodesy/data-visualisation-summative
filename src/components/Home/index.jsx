@@ -17,10 +17,7 @@ class Home extends Component {
           {' '}
           through it?
           <br />
-          You&apos;re not
-          <br />
-          {' '}
-          alone.
+          You&apos;re not alone.
         </h1>
         <div className="home__button-container">
           <Button label="see stats" className="button" onClick={() => changePage('carouselPage')}>CHECK OUT THE STATS</Button>
