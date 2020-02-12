@@ -54,6 +54,7 @@ const Search = () => {
     // Clear previous results
     placesArr.length = 0;
     setPlaces(placesArr);
+    // API request
     r.map((result) => {
       service.getDetails({
         placeId: result.place_id,
@@ -61,12 +62,15 @@ const Search = () => {
       }, ((place, status) => {
         if (status === 'OK' && place.formatted_address) {
           placesArr.push(place);
+          // Avoid duplicate results
           const uniqPlaces = union(placesArr);
+          // Ensure places state updates with all received places
           setTimeout(() => { setLoading(false); setPlaces(uniqPlaces); }, 1000);
         } else if (status === 'ZERO_RESULTS') {
           setLoading(false);
           setIsRequestDone(true);
         } else {
+          // Avoid infinite load
           setTimeout(() => { setLoading(false); setIsRequestDone(true); }, 5000);
         }
       }));
@@ -80,9 +84,6 @@ const Search = () => {
       ((response) => fetchDetails(response)),
     );
   };
-
-
-  // useEffect(() => setPlaces(places), [places]);
 
   return (
     <section className="help">
