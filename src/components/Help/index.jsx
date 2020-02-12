@@ -9,11 +9,13 @@ const Search = () => {
   const { google } = window;
   const container = document.createElement('div');
   const service = new google.maps.places.PlacesService(container);
+  
   const [location, setLocation] = useState('');
   const [places, setPlaces] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const [isRequestDone, setIsRequestDone] = useState(false);
 
+  // Establish initial values for the text search
   const textRequest = {
     // Center on Wellington
     // Bias results towards New Zealand
@@ -26,15 +28,12 @@ const Search = () => {
     query: `mental health in ${location}`,
   };
 
+  // Fields for the Place Details search
   const fields = [
     'name', 'formatted_address', 'formatted_phone_number', 'website',
   ];
 
   const placesArr = [];
-
-  const handleChange = (event) => {
-    setLocation(event.target.value);
-  };
 
   const details = places.map((place, i) => (
     <div key={[i]}>
@@ -48,7 +47,8 @@ const Search = () => {
     </div>
   ));
 
-  const fetchDetails = (r) => {
+  // Place details request, gets details based on places returned in Text Search
+  const fetchPlaceDetails = (r) => {
     // Clear previous results
     placesArr.length = 0;
     setPlaces(placesArr);
@@ -76,12 +76,18 @@ const Search = () => {
     });
   };
 
-  const fetchResults = () => {
+  // Our basic text search query, fetches us places to get details of
+  const fetchTextResults = () => {
     setLoading(true);
     service.textSearch(
       textRequest,
-      ((response) => fetchDetails(response)),
+      ((response) => fetchPlaceDetails(response)),
     );
+  };
+
+  // Input event handler
+  const handleChange = (event) => {
+    setLocation(event.target.value);
   };
 
   return (
@@ -103,9 +109,9 @@ const Search = () => {
               <Label className="help__input-label" for="location">Location</Label>
               <Input placeholder="Wellington" className="help__input" onChange={handleChange} value={location} />
             </InputGroup>
-            <Button className="button help__button" onClick={() => fetchResults()}>
+            <Button className="button help__button" onClick={() => fetchTextResults}>
               SEARCH
-              {renderIf(loading && !isRequestDone)(() => (
+              {renderIf(isLoading && !isRequestDone)(() => (
                 <div>
                   <Spinner color="secondary" />
                 </div>
@@ -114,12 +120,12 @@ const Search = () => {
           </FormGroup>
         </Form>
       </div>
-      {renderIf(!loading && isRequestDone)(() => (
+      {renderIf(!isLoading && isRequestDone)(() => (
         <section className="help__results">
           <div className="help__results-container">
             <h3 className="help__results-heading">Results</h3>
             {details}
-            {renderIf(places.length === 0 && isRequestDone && !loading)(() => (
+            {renderIf(places.length === 0 && isRequestDone && !isLoading)(() => (
               <div className="result">Sorry, no results found. Please try entering a different place.</div>
             ))}
           </div>
