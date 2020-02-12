@@ -302,7 +302,7 @@ a:hover {
 }
 @media (min-width: 1200px) {
   .carousel__header {
-    height: 30%;
+    height: 25vh;
   }
 }
 
@@ -313,7 +313,7 @@ a:hover {
 }
 @media (min-width: 1200px) {
   .carousel__content {
-    padding: 2rem;
+    padding: 1rem;
   }
 }
 .carousel__content .carousel__content--credit {
@@ -326,11 +326,6 @@ a:hover {
   height: 100%;
   align-self: center;
 }
-@media (min-width: 1200px) {
-  .carousel__graph {
-    width: 100%;
-  }
-}
 
 @media (min-width: 768px) {
   .slick-dots {
@@ -341,10 +336,6 @@ a:hover {
   .slick-dots {
     bottom: 50px;
   }
-}
-
-.flex-inner {
-  min-width: 0;
 }
 
 /*# sourceMappingURL=index.css.map */

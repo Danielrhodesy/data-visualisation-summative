@@ -306,7 +306,7 @@ a {
   padding-bottom: 2rem;
 
   @include bp(desktop) {
-    height: 30%;
+    height: 25vh;
   }
 }
 
@@ -316,7 +316,7 @@ a {
   max-width: 60ch;
 
   @include bp(desktop) {
-    padding: 2rem;
+    padding: 1rem;
   }
 
   .carousel__content--credit {
@@ -329,10 +329,6 @@ a {
   width: 100%;
   height: 100%;
   align-self: center;
-
-  @include bp(desktop) {
-    width: 100%;
-  }
 }
 
 // React Slick carousel styling
@@ -344,8 +340,4 @@ a {
   @include bp(desktop) {
     bottom: 50px;
   }
-}
-
-.flex-inner {
-  min-width:0;
 }

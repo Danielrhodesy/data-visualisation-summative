@@ -3,15 +3,24 @@ import Slider from 'react-slick';
 import Slide from './Slide';
 
 const sliderSettings = {
+  arrows: false,
   autoplay: true,
-  autoplaySpeed: 10000,
+  autoplaySpeed: 8000,
+  centerMode: true,
   dots: true,
   infinite: true,
   speed: 500,
-  slidesToShow: 1,
+  slidesToShow: 2,
   slidesToScroll: 1,
   swipeToSlide: true,
-  variableWidth: true,
+  responsive: [
+    {
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 1
+      }
+    },
+  ]
 };
 
 const barOptions = {
