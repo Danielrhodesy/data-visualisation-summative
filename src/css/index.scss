@@ -296,7 +296,7 @@ a {
   justify-content: center;
   margin: 0 auto;
   padding: 0;
-  max-width: 100%;
+  width: 100%;
   height: 75%;
 }
 
@@ -331,7 +331,7 @@ a {
   align-self: center;
 
   @include bp(desktop) {
-    width: 50%;
+    width: 100%;
   }
 }
 
