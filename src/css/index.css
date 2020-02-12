@@ -301,7 +301,7 @@ a:hover {
 .carousel__header {
   width: 100%;
   height: 50%;
-  padding-bottom: 2rem;
+  padding: 2rem 0 2rem 0;
 }
 @media (min-width: 1200px) {
   .carousel__header {
@@ -309,26 +309,31 @@ a:hover {
   }
 }
 
-.carousel__heading {
-  background: url("../images/stats.jpg") no-repeat top center fixed;
+.carousel__heading--background {
+  background: black url("../images/stats.jpg") no-repeat top center fixed;
   padding: 1rem;
 }
-.carousel__heading > h2 {
+.carousel__heading--background .carousel__heading {
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.5);
+}
+.carousel__heading--background .carousel__heading .carousel__heading-header {
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
   color: white;
-  padding: 2rem;
+  padding: 1rem;
+}
+@media (min-width: 768px) {
+  .carousel__heading--background .carousel__heading .carousel__heading-header {
+    padding: 2rem;
+  }
 }
 
 .carousel__content {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 1rem;
   max-width: 60ch;
-}
-@media (min-width: 1200px) {
-  .carousel__content {
-    padding: 1rem;
-  }
 }
 .carousel__content .carousel__content--credit {
   margin-top: 1rem;

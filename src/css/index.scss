@@ -307,32 +307,39 @@ a {
 .carousel__header {
   width: 100%;
   height: 50%;
-  padding-bottom: 2rem;
+  padding: 2rem 0 2rem 0;
 
   @include bp(desktop) {
     height: 25%;
   }
 }
 
-.carousel__heading {
-  background: url("../images/stats.jpg") no-repeat top center fixed;
+.carousel__heading--background {
+  background: black url("../images/stats.jpg") no-repeat top center fixed;
   padding: 1rem;
-  > h2 {
+  
+  .carousel__heading {
+    @include zero-margin;
+    width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 2rem;
+  
+    .carousel__heading-header {
+      text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 1rem;
+      
+      @include bp(tablet) {
+        padding: 2rem;
+      }
+    }
   }
 }
 
-.carousel__content {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  max-width: 60ch;
 
-  @include bp(desktop) {
-    padding: 1rem;
-  }
+.carousel__content {
+  padding: 1rem;
+  max-width: 60ch;
 
   .carousel__content--credit {
     margin-top: 1rem;

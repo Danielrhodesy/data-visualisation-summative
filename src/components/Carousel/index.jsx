@@ -13,14 +13,14 @@ const sliderSettings = {
   slidesToShow: 1,
   slidesToScroll: 1,
   swipeToSlide: true,
-  // responsive: [
-  //   {
-  //     breakpoint: 1200,
-  //     settings: {
-  //       slidesToShow: 1
-  //     }
-  //   },
-  // ]
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        centerMode: false,
+      },
+    },
+  ],
 };
 
 const barOptions = {
@@ -124,10 +124,12 @@ class Carousel extends Component {
 
     return (
       <>
-        <div className="carousel__heading">
-          <h2>
-            Who&apos;s getting help?
-          </h2>
+        <div className="carousel__heading--background">
+          <div className="carousel__heading">
+            <h2 className="carousel__heading-header">
+              Who&apos;s getting help?
+            </h2>
+          </div>
         </div>
         <Slider {...sliderSettings}>
           <Slide
