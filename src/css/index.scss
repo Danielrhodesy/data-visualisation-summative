@@ -61,7 +61,7 @@ body, html, #root, main {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 600;
 }
 
@@ -77,7 +77,7 @@ h3 {
 }
 
 a {
-  color: $darkPurple;
+  color: $lightPurple;
   text-decoration: underline 2px solid $green;
   &:hover {
     background-color: $darkPurple;
@@ -149,12 +149,6 @@ a {
 }
 
 //HOME PAGE
-
-.image-wrapper {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
 
 .home {
   @include zero-margin;
@@ -307,10 +301,11 @@ a {
 .carousel__header {
   width: 100%;
   height: 50%;
-  padding: 2rem 0 2rem 0;
+  padding: 1rem 0 1rem 0;
 
   @include bp(desktop) {
     height: 25%;
+    padding: 2rem;
   }
 }
 

@@ -10,22 +10,20 @@ class Home extends Component {
   render() {
     const { changePage } = this.props;
     return (
-      <div className="image-wrapper">
-        <section className="home">
-          <h1 className="home__heading">
-            Going
-            <br />
-            {' '}
-            through it?
-            <br />
-            You&apos;re not alone.
-          </h1>
-          <div className="home__button-container">
-            <Button label="see stats" className="button" onClick={() => changePage('carouselPage')}>CHECK OUT THE STATS</Button>
-            <Button label="get help" className="button" onClick={() => changePage('helpPage')}>FIND HELP NEAR YOU </Button>
-          </div>
-        </section>
-      </div>
+      <section className="home">
+        <h1 className="home__heading">
+          Going
+          <br />
+          {' '}
+          through it?
+          <br />
+          You&apos;re not alone.
+        </h1>
+        <div className="home__button-container">
+          <Button label="see stats" className="button" onClick={() => changePage('carouselPage')}>CHECK OUT THE STATS</Button>
+          <Button label="get help" className="button" onClick={() => changePage('helpPage')}>FIND HELP NEAR YOU </Button>
+        </div>
+      </section>
     );
   }
 }

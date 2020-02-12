@@ -23,7 +23,7 @@ body, html, #root, main {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 600;
 }
 
@@ -40,7 +40,7 @@ h3 {
 }
 
 a {
-  color: #5A496A;
+  color: #866bb6;
   text-decoration: underline 2px solid #95BB4D;
 }
 a:hover {
@@ -128,12 +128,6 @@ a:hover {
   border: 3px solid #95BB4D;
   background-color: #5A496A;
   color: white;
-}
-
-.image-wrapper {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
 }
 
 .home {
@@ -301,11 +295,12 @@ a:hover {
 .carousel__header {
   width: 100%;
   height: 50%;
-  padding: 2rem 0 2rem 0;
+  padding: 1rem 0 1rem 0;
 }
 @media (min-width: 1200px) {
   .carousel__header {
     height: 25%;
+    padding: 2rem;
   }
 }
 
