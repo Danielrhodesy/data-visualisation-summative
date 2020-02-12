@@ -33,19 +33,21 @@ h2 {
   font-size: 2rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  font-weight: 600;
 }
 
 h3 {
   font-size: 1.5rem;
+  font-weight: 600;
 }
 
 a {
-  color: white;
+  color: #5A496A;
   text-decoration: underline 2px solid #95BB4D;
 }
 a:hover {
-  background-color: #95BB4D;
-  color: #5A496A;
+  background-color: #5A496A;
+  color: white;
 }
 
 .nav {
@@ -230,9 +232,22 @@ a:hover {
   display: flex;
   flex-flow: column wrap;
   background-color: #5A496A;
-  color: white;
   width: 100%;
   padding-top: 2rem;
+}
+.help__results .help__results-container {
+  padding: 1rem;
+  background-color: white;
+}
+@media (min-width: 1200px) {
+  .help__results .help__results-container {
+    width: 50%;
+    align-self: center;
+  }
+}
+.help__results .help__results-heading {
+  padding-left: 0.75rem;
+  padding-bottom: 1rem;
 }
 .help__results .result-list {
   list-style: none;

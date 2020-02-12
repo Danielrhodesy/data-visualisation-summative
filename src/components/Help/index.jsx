@@ -37,7 +37,7 @@ const Search = () => {
   };
 
   const details = places.map((place, i) => (
-    <div key={[i]} className="result-container">
+    <div key={[i]}>
       <ul key={place.id} className="result-list">
         <li key={place.name} className="result">{place.name}</li>
         <li key={place.formatted_address} className="result">{place.formatted_address}</li>
@@ -64,7 +64,7 @@ const Search = () => {
           // Avoid duplicate results
           const uniqPlaces = union(placesArr);
           // Ensure places state updates with all received places
-          setTimeout(() => { setLoading(false); setPlaces(uniqPlaces); }, 1000);
+          setTimeout(() => { setLoading(false); setIsRequestDone(true); setPlaces(uniqPlaces); }, 1000);
         } else if (status === 'ZERO_RESULTS') {
           setLoading(false);
           setIsRequestDone(true);
@@ -105,7 +105,7 @@ const Search = () => {
             </InputGroup>
             <Button className="button help__button" onClick={() => fetchResults()}>
               SEARCH
-              {renderIf(loading)(() => (
+              {renderIf(loading && !isRequestDone)(() => (
                 <div>
                   <Spinner color="secondary" />
                 </div>
@@ -115,12 +115,15 @@ const Search = () => {
         </Form>
       </div>
       {renderIf(!loading && isRequestDone)(() => (
-        <div className="help__results">
-          {details}
-          {renderIf(places.length === 0 && isRequestDone && !loading)(() => (
-            <div className="result">Sorry, no results found. Please try entering a different place.</div>
-          ))}
-        </div>
+        <section className="help__results">
+          <div className="help__results-container">
+            <h3 className="help__results-heading">Results</h3>
+            {details}
+            {renderIf(places.length === 0 && isRequestDone && !loading)(() => (
+              <div className="result">Sorry, no results found. Please try entering a different place.</div>
+            ))}
+          </div>
+        </section>
       ))}
     </section>
   );
