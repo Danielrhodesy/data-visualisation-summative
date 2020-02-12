@@ -11,12 +11,12 @@ body, html, #root, main {
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
 }
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   body html, html html, #root html, main html {
     font-size: 28px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 768px) {
   body html, html html, #root html, main html {
     font-size: 26px;
   }
@@ -24,6 +24,7 @@ body, html, #root, main {
 
 h1 {
   font-size: 3rem;
+  font-weight: 600;
 }
 
 h2 {
@@ -189,6 +190,7 @@ a:hover {
   padding: 1rem;
   color: white;
   background: rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 @media (min-width: 1200px) {
   .help .help__intro {
@@ -201,12 +203,12 @@ a:hover {
 }
 @media (min-width: 768px) {
   .help .help__form {
-    width: 80%;
+    width: 60%;
   }
 }
 @media (min-width: 1200px) {
   .help .help__form {
-    width: 50%;
+    width: 70%;
   }
 }
 .help .help__input-group {
@@ -227,7 +229,8 @@ a:hover {
   box-shadow: 0 0 0 0.2rem rgba(134, 107, 182, 0.5);
 }
 .help .help__input-label {
-  margin-top: 10px;
+  margin-top: 15px;
+  font-size: 14px;
 }
 .help .help__button {
   margin-left: 5rem;
@@ -302,8 +305,19 @@ a:hover {
 }
 @media (min-width: 1200px) {
   .carousel__header {
-    height: 25vh;
+    height: 25%;
   }
+}
+
+.carousel__heading {
+  background: url("../images/stats.jpg") no-repeat top center fixed;
+  padding: 1rem;
+}
+.carousel__heading > h2 {
+  background: rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 2rem;
 }
 
 .carousel__content {

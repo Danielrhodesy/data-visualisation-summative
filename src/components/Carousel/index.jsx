@@ -5,22 +5,22 @@ import Slide from './Slide';
 const sliderSettings = {
   arrows: false,
   autoplay: true,
-  autoplaySpeed: 8000,
+  autoplaySpeed: 12000,
   centerMode: true,
   dots: true,
   infinite: true,
   speed: 500,
-  slidesToShow: 2,
+  slidesToShow: 1,
   slidesToScroll: 1,
   swipeToSlide: true,
-  responsive: [
-    {
-      breakpoint: 1200,
-      settings: {
-        slidesToShow: 1
-      }
-    },
-  ]
+  // responsive: [
+  //   {
+  //     breakpoint: 1200,
+  //     settings: {
+  //       slidesToShow: 1
+  //     }
+  //   },
+  // ]
 };
 
 const barOptions = {
@@ -124,6 +124,11 @@ class Carousel extends Component {
 
     return (
       <>
+        <div className="carousel__heading">
+          <h2>
+            Who&apos;s getting help?
+          </h2>
+        </div>
         <Slider {...sliderSettings}>
           <Slide
             background="#866BB6"

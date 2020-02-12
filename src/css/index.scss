@@ -52,17 +52,19 @@ body, html, #root, main {
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
   font-size: 20px;
-  @media (max-width: 900px) {
+  @media (max-width: 1200px) {
     html { font-size: 28px; }
   }
-  @media (max-width: 400px) {
+  @media (max-width: 768px) {
     html { font-size: 26px; }
   }
 }
 
 h1 {
   font-size: 3rem;
+  font-weight: 600;
 }
+
 h2 {
   font-size: 2rem;
   margin-top: 1rem;
@@ -147,6 +149,7 @@ a {
 }
 
 //HOME PAGE
+
 .image-wrapper {
   width: 100%;
   height: 100%;
@@ -195,6 +198,7 @@ a {
     padding: 1rem;   
     color: white; 
     background: rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
     @include bp(desktop) {
       width: 50%;
       align-self: center;
@@ -204,11 +208,10 @@ a {
   .help__form {
     width: 100%;
     @include bp(tablet) {
-      width: 80%;
+      width: 60%;
     }
-
     @include bp(desktop) {
-      width: 50%;
+      width: 70%;
     }
   }
 
@@ -232,7 +235,8 @@ a {
   }
 
   .help__input-label {
-    margin-top: 10px;
+    margin-top: 15px;
+    font-size: 14px;
   }
 
   .help__button {
@@ -306,7 +310,18 @@ a {
   padding-bottom: 2rem;
 
   @include bp(desktop) {
-    height: 25vh;
+    height: 25%;
+  }
+}
+
+.carousel__heading {
+  background: url("../images/stats.jpg") no-repeat top center fixed;
+  padding: 1rem;
+  > h2 {
+    background: rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 2rem;
   }
 }
 

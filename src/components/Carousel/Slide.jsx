@@ -9,10 +9,7 @@ const Slide = (props) => {
     <div className="carousel__slides" >
       <section className="carousel__header" style={{ background }}>
         <div className="carousel__content">
-          <h2 className="carousel__content--heading" style={{ color }}>
-            Who&apos;s getting help?
-          </h2>
-          <p className="carousel__content--content" style={{ color }}>
+          <p style={{ color }}>
             {content}
           </p>
           <p className="carousel__content--credit" style={{ color }}>{credit}</p>
