@@ -12,6 +12,7 @@ body, html, #root, main {
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
+  overflow: hidden;
 }
 @media (max-width: 900px) {
   body html, html html, #root html, main html {
@@ -138,16 +139,12 @@ a:hover {
   max-width: 100%;
   height: 100%;
   width: 100%;
-  max-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  padding: 1rem;
+  justify-content: space-between;
+  padding: 3rem;
   flex-flow: column nowrap;
-  background-color: black;
-  background-image: url("../images/hero.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
+  background: black url("../images/hero.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -161,6 +158,7 @@ a:hover {
 
 .home__button-container {
   width: 100%;
+  margin-bottom: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;

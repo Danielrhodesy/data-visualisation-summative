@@ -54,6 +54,7 @@ body, html, #root, main {
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
   font-size: 20px;
+  overflow: hidden;
   @media (max-width: 900px) {
     html { font-size: 28px; }
   }
@@ -151,16 +152,12 @@ a {
 .home {
   @include zero-margin;
   @include fill-container;
-  max-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  padding: 1rem;
+  justify-content: space-between;
+  padding: 3rem;
   flex-flow: column nowrap;
-  background-color: black;
-  background-image: url("../images/hero.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
+  background: black url("../images/hero.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -174,6 +171,7 @@ a {
 
 .home__button-container {
   width: 100%;
+  margin-bottom: 5rem;
   @include flex-center;
   flex-flow: column nowrap;
 }
