@@ -50,11 +50,17 @@ a:hover {
 .nav {
   background-color: #866bb6;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+}
+@media (min-width: 768px) {
+  .nav {
+    justify-content: flex-end;
+  }
 }
 
 .nav-button {
   border: 3px solid #5A496A;
+  border-radius: 0;
   color: white;
   font-weight: 600;
   background-color: #5A496A;
@@ -79,6 +85,17 @@ a:hover {
   border: 3px solid #95BB4D;
   background-color: #5A496A;
   color: white;
+}
+@media (min-width: 768px) {
+  .nav-button {
+    margin-left: 3px;
+    justify-content: flex-end;
+  }
+}
+@media (min-width: 1200px) {
+  .nav-button {
+    margin-left: 10px;
+  }
 }
 
 .button {
@@ -121,11 +138,10 @@ a:hover {
   max-width: 100%;
   height: 100%;
   width: 100%;
-  height: 100vh !important;
-  overflow: hidden;
+  max-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-around;
   padding: 1rem;
   flex-flow: column nowrap;
   background-image: url("../images/hero.jpg");
@@ -136,9 +152,18 @@ a:hover {
 
 .home__heading {
   background: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
   font-weight: 600;
   color: white;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.home__button-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column nowrap;
 }
 
 .help {
@@ -154,12 +179,16 @@ a:hover {
   align-items: center;
   justify-content: flex-start;
   flex-flow: column nowrap;
-  background-color: #866bb6;
-  color: white;
+  background-color: #95BB4D;
 }
 .help .help__intro {
-  width: 100%;
   padding: 1rem;
+}
+@media (min-width: 1200px) {
+  .help .help__intro {
+    width: 50%;
+    align-self: center;
+  }
 }
 .help .help__form {
   width: 100%;
@@ -167,6 +196,11 @@ a:hover {
 @media (min-width: 768px) {
   .help .help__form {
     width: 80%;
+  }
+}
+@media (min-width: 1200px) {
+  .help .help__form {
+    width: 50%;
   }
 }
 .help .help__input-group {
@@ -178,30 +212,46 @@ a:hover {
   justify-content: space-evenly;
 }
 .help .help__input {
-  width: 250px;
   margin: 0 1rem 0 1rem;
+}
+.help .help__input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(134, 107, 182, 0.5);
+}
+.help .help__input:active {
+  box-shadow: 0 0 0 0.2rem rgba(134, 107, 182, 0.5);
+}
+.help .help__input-label {
+  margin-top: 10px;
+}
+.help .help__button {
+  margin-left: 5rem;
 }
 
 .help__results {
   display: flex;
   flex-flow: column wrap;
-  background-color: #866bb6;
+  background-color: #5A496A;
+  color: white;
   width: 100%;
-  height: auto;
-  z-index: 2;
+  padding-top: 2rem;
 }
 .help__results .result-list {
   list-style: none;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 .help__results .result {
   width: 80%;
-  padding: 0.5rem;
+  padding: 0.25rem;
+}
+@media (min-width: 1200px) {
+  .help__results .result-container {
+    margin-left: 25%;
+  }
 }
 
 .loader {
   border: 16px solid #5A496A;
-  border-top: 16px solid #95BB4D;
+  border-top: 16px solid #866bb6;
   border-radius: 50%;
   width: 120px;
   height: 120px;
@@ -250,20 +300,41 @@ a:hover {
 
 .carousel__header {
   width: 100%;
-  height: 33%;
+  height: 40vh;
+}
+@media (min-width: 1200px) {
+  .carousel__header {
+    height: 30%;
+  }
+}
+
+.carousel__content {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: 60ch;
+}
+@media (min-width: 1200px) {
+  .carousel__content {
+    padding: 2rem;
+  }
+}
+.carousel__content .carousel__content--credit {
+  margin-top: 1rem;
+  font-size: 14px;
 }
 
 .carousel__graph {
   width: 100%;
   height: 100%;
 }
+@media (min-width: 1200px) {
+  .carousel__graph {
+    width: 80%;
+  }
+}
 
-.button-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-flow: column nowrap;
+.slick-dots {
+  bottom: 50px;
 }
 
 /*# sourceMappingURL=index.css.map */

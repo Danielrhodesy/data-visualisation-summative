@@ -59,13 +59,10 @@ const Search = () => {
         placeId: result.place_id,
         fields,
       }, ((place, status) => {
-        if (status === 'OK') {
-          setLoading(false);
+        if (status === 'OK' && place.formatted_address) {
           placesArr.push(place);
           const uniqPlaces = union(placesArr);
-          setPlaces(uniqPlaces);
-          // Prevent no results message showing preemptively
-          setTimeout(() => setIsRequestDone(true), 250);
+          setTimeout(() => { setLoading(false); setPlaces(uniqPlaces); }, 1000);
         } else if (status === 'ZERO_RESULTS') {
           setLoading(false);
           setIsRequestDone(true);
@@ -85,7 +82,7 @@ const Search = () => {
   };
 
 
-  useEffect(() => setPlaces(places), [places]);
+  // useEffect(() => setPlaces(places), [places]);
 
   return (
     <section className="help">
@@ -94,7 +91,6 @@ const Search = () => {
         <Form className="help__form">
           <p>
             We know finding help is hard when you&apos;re in a tough spot.
-            <br />
             Use this search to find mental health support in your area.
             <br />
             <br />
@@ -104,10 +100,10 @@ const Search = () => {
           <br />
           <FormGroup>
             <InputGroup className="help__input-group">
-              <Label className="label" for="location">Location</Label>
+              <Label className="help__input-label" for="location">Location</Label>
               <Input placeholder="Wellington" className="help__input" onChange={handleChange} value={location} />
             </InputGroup>
-            <Button className="button" onClick={() => fetchResults()}>SEARCH</Button>
+            <Button className="button help__button" onClick={() => fetchResults()}>SEARCH</Button>
           </FormGroup>
         </Form>
       </div>
@@ -115,12 +111,14 @@ const Search = () => {
       {renderIf(loading)(() => (
         <div className="loader" />
       ))}
-      <div className="help__results">
-        {details}
-        {renderIf(places.length === 0 && isRequestDone === true)(() => (
-          <div className="result">Sorry, no results found. Please try entering a different place.</div>
-        ))}
-      </div>
+      {renderIf(!loading && isRequestDone)(() => (
+        <div className="help__results">
+          {details}
+          {renderIf(places.length === 0 && isRequestDone && !loading)(() => (
+            <div className="result">Sorry, no results found. Please try entering a different place.</div>
+          ))}
+        </div>
+      ))}
     </section>
   );
 };

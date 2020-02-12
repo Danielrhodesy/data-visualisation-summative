@@ -3,9 +3,10 @@ import Slider from 'react-slick';
 import Slide from './Slide';
 
 const sliderSettings = {
-  arrows: false,
+  autoplay: true,
+  autoplaySpeed: 10000,
   dots: true,
-  infinite: false,
+  infinite: true,
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
@@ -20,17 +21,6 @@ const barOptions = {
   },
   legend: { position: 'none' },
   colors: ['#5A496A'],
-};
-
-const lineOptions = {
-  curveType: 'function',
-  title: 'REPORTS OF MOOD AND ANXIETY DISORDERS',
-  titleTextStyle: { color: 'grey', fontName: 'Montserrat' },
-  colors: ['#EF5D60'],
-  chartArea: {
-    left: 65, top: 50, width: '70%', height: '65%',
-  },
-  legend: { position: 'none' },
 };
 
 const donutOptionsOne = {
@@ -84,16 +74,6 @@ class Carousel extends Component {
               barData: barDataTable,
             });
 
-            const { lineData } = result;
-            const lineDataTable = [['Year', 'Reports']];
-            for (let i = 0; i < lineData.length; i++) {
-              lineDataTable.push([lineData[i].year, lineData[i].reports]);
-            }
-            this.setState({
-              isLoaded: true,
-              lineData: lineDataTable,
-            });
-
             const { donutDataOne } = result;
             const donutOneDataTable = [['Ethnicity', 'Number']];
             for (let i = 0; i < donutDataOne.length; i++) {
@@ -129,7 +109,7 @@ class Carousel extends Component {
 
   render() {
     const {
-      barData, lineData, donutDataOne, donutDataTwo,
+      barData, donutDataOne, donutDataTwo,
     } = this.state;
 
     return (
@@ -146,15 +126,6 @@ class Carousel extends Component {
           />
           <Slide
             background="#95BB4D"
-            chartType="LineChart"
-            content="Kiwis are reporting higher rates of psychological distress each year,
-            meaning our mental health care services are more important than ever."
-            credit="Ministry of Health - &quot;New Zealand Health Survey&quot;"
-            data={lineData}
-            options={lineOptions}
-          />
-          <Slide
-            background="#866BB6"
             chartType="PieChart"
             content="Per capita, Māori are seeking help the most often --
             6450 people per 100,000, compared to 1125 per 100,000 Asian people."
