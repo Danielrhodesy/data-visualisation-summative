@@ -142,10 +142,15 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 3rem;
+  padding: 1rem;
   flex-flow: column nowrap;
   background: black url("../images/hero.jpg") no-repeat center center fixed;
   background-size: cover;
+}
+@media (min-width: 768px) {
+  .home {
+    padding: 3rem;
+  }
 }
 
 .home__heading {
@@ -157,11 +162,11 @@ a:hover {
 }
 
 .home__button-container {
-  width: 100%;
-  margin-bottom: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  margin-bottom: 5rem;
   flex-flow: column nowrap;
 }
 
