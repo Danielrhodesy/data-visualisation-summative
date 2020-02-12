@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Button, Form, InputGroup, Input, Label, FormGroup,
+  Button, Form, InputGroup, Input, Label, FormGroup, Spinner,
 } from 'reactstrap';
 import { union } from 'ramda';
 import renderIf from 'render-if';
@@ -103,14 +103,17 @@ const Search = () => {
               <Label className="help__input-label" for="location">Location</Label>
               <Input placeholder="Wellington" className="help__input" onChange={handleChange} value={location} />
             </InputGroup>
-            <Button className="button help__button" onClick={() => fetchResults()}>SEARCH</Button>
+            <Button className="button help__button" onClick={() => fetchResults()}>
+              SEARCH
+              {renderIf(loading)(() => (
+                <div>
+                  <Spinner color="secondary" />
+                </div>
+              ))}
+            </Button>
           </FormGroup>
         </Form>
       </div>
-      <hr />
-      {renderIf(loading)(() => (
-        <div className="loader" />
-      ))}
       {renderIf(!loading && isRequestDone)(() => (
         <div className="help__results">
           {details}
