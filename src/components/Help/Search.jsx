@@ -51,6 +51,9 @@ const Search = () => {
   ));
 
   const fetchDetails = (r) => {
+    // Clear previous results
+    placesArr.length = 0;
+    setPlaces(placesArr);    
     r.map((result) => {
       service.getDetails({
         placeId: result.place_id,
@@ -104,7 +107,7 @@ const Search = () => {
           <FormGroup>
             <InputGroup className="help__input-group">
               <Label for="location">Location</Label>
-              <Input className="help__input" onChange={handleChange} value={location} />
+              <Input placeholder="Wellington" className="help__input" onChange={handleChange} value={location} />
               <Button className="button" onClick={() => fetchResults()}>SEARCH</Button>
             </InputGroup>
           </FormGroup>
