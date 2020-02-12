@@ -11,6 +11,47 @@ body, html, #root, main {
   min-width: 100%;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+}
+@media (max-width: 900px) {
+  body html, html html, #root html, main html {
+    font-size: 28px;
+  }
+}
+@media (max-width: 400px) {
+  body html, html html, #root html, main html {
+    font-size: 26px;
+  }
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+h2 {
+  font-size: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 2.5rem;
+}
+
+a {
+  color: #95BB4D;
+  text-decoration: underline;
+  font-weight: bold;
+}
+a:hover {
+  background-color: #95BB4D;
+  color: #5A496A;
+}
+
+.nav {
+  background-color: #866bb6;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .button {
@@ -21,6 +62,22 @@ body, html, #root, main {
   font-weight: 600;
   background-color: #95BB4D;
   border-color: #95BB4D;
+}
+.button:hover {
+  background-color: #5A496A;
+  color: white;
+}
+.button:active {
+  background-color: #5A496A;
+  color: white;
+}
+.button:focus {
+  background-color: #5A496A;
+  color: white;
+}
+.button:link {
+  background-color: #5A496A;
+  color: white;
 }
 
 .home {
@@ -33,14 +90,14 @@ body, html, #root, main {
   height: 100%;
   width: 100%;
   flex-flow: column nowrap;
-  background-image: url("../images/hero-original.jpg");
+  background-image: url("../images/hero.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .heading {
-  font-size: 2em;
+  font-size: 4rem;
   font-weight: 600;
   color: white;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
@@ -55,19 +112,36 @@ body, html, #root, main {
   max-width: 100%;
   height: 100%;
   width: 100%;
-  background-color: #866bb6;
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-flow: column wrap;
+  justify-content: flex-start;
+  flex-flow: column nowrap;
+  background-color: #866bb6;
+  color: white;
 }
-
-.help__input {
+.help .help__intro {
+  width: 100%;
+}
+.help .help__input-group {
   margin-top: 25px;
+  width: 100%;
+}
+.help .help__input {
+  width: 100px;
 }
 
-.help__input-group {
-  width: 25%;
+.help__results {
+  background-color: #866bb6;
+  width: 100%;
+  height: auto;
+  z-index: 2;
+}
+.help__results .result-list {
+  list-style: none;
+}
+.help__results .result {
+  width: 80%;
+  padding: 5px;
 }
 
 .loader {
@@ -87,23 +161,6 @@ body, html, #root, main {
     transform: rotate(360deg);
   }
 }
-.results {
-  width: 100%;
-  overflow: scroll;
-  display: flex;
-  flex-flow: column wrap;
-  align-items: flex-start;
-  justify-content: center;
-}
-.results .result-list {
-  list-style: none;
-}
-
-.result {
-  width: 80%;
-  padding: 5px;
-}
-
 .stats {
   margin: 0 auto;
   padding: 0;
@@ -144,7 +201,7 @@ body, html, #root, main {
 
 .carousel__graph {
   width: 100%;
-  height: 50%;
+  height: 100%;
 }
 
 .carousel__button-container {

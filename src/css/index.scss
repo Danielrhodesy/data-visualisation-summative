@@ -1,10 +1,20 @@
 // VARIABLES
-
 $green: #95BB4D;
 $red: #EF5D60;
 $lightPurple: #866bb6;
 $darkPurple: #5A496A;
 
+// BREAKPOINTS
+@mixin bp($point) {
+@if $point == tablet {
+    @media (min-width: 768px) { @content; }
+  }
+  @else if $point == desktop {
+    @media (min-width: 1200px) { @content; }
+  }
+}
+
+// MIXINS
 @mixin zero-margin {
   margin: 0 auto;
   padding: 0;
@@ -25,6 +35,11 @@ $darkPurple: #5A496A;
   justify-content: center;
 }
 
+@mixin active-button {
+  background-color: $darkPurple;
+  color: white;
+}
+
 // PAGE STRUCTURE AND STATIC CONTENT
 
 body, html, #root, main {
@@ -34,8 +49,42 @@ body, html, #root, main {
   min-width: 100%;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  @media (max-width: 900px) {
+    html { font-size: 28px; }
+  }
+  @media (max-width: 400px) {
+    html { font-size: 26px; }
+  }
 }
 
+h1 {
+  font-size: 4rem;
+}
+h2 {
+  font-size: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+h3 {
+  font-size: 2.5rem;
+}
+
+a {
+  color: $green;
+  text-decoration: underline;
+  font-weight: bold;
+  &:hover {
+    background-color: $green;
+    color: $darkPurple;
+  }
+}
+
+.nav {
+  background-color: $lightPurple;
+  display: flex;
+  justify-content: space-evenly;
+}
 
 // SHARED STYLING
 
@@ -47,6 +96,18 @@ body, html, #root, main {
   font-weight: 600;
   background-color: $green;
   border-color: $green;
+  &:hover {
+    @include active-button;
+  }
+  &:active {
+    @include active-button;
+  }
+  &:focus {
+    @include active-button;
+  }
+  &:link {
+    @include active-button;
+  }
 }
 
 // HOME PAGE
@@ -55,14 +116,14 @@ body, html, #root, main {
   @include zero-margin;
   @include fill-container;
   flex-flow: column nowrap;
-  background-image: url("../images/hero-original.jpg");
+  background-image: url("../images/hero.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .heading {
-  font-size: 2em; 
+  font-size: 4rem;
   font-weight: 600;
   color: white;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5)
@@ -72,51 +133,51 @@ body, html, #root, main {
 .help {
   @include zero-margin;
   @include fill-container;
-  background-color: $lightPurple;
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-flow: column wrap;
+  justify-content: flex-start;
+  flex-flow: column nowrap;
+  background-color: $lightPurple;
+  color: white;
+  .help__intro {
+    width: 100%
+  }
+  .help__input-group {
+    margin-top: 25px;
+    width: 100%;
+  }
+  .help__input {
+    width: 100px;
+  }
 }
 
-.help__input {
-  margin-top: 25px;
-}
+.help__results {
+    background-color: $lightPurple;
+    width: 100%;
+    height: auto;
+    z-index: 2;
+    .result-list {
+      list-style: none;
+    }
+    .result {
+      width: 80%;
+      padding: 5px;
+      }
+  }
 
-.help__input-group {
-  width: 25%;
-}
 
 .loader {
-border: 16px solid $darkPurple;
-border-top: 16px solid $green;
-border-radius: 50%;
-width: 120px;
-height: 120px;
-animation: spin 2s linear infinite;
+  border: 16px solid $darkPurple;
+  border-top: 16px solid $green;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
-
-.results {
-width: 100%;
-overflow: scroll;
-display: flex;
-flex-flow: column wrap;
-align-items: flex-start;
-justify-content: center;  
-// background-color: white;
-  .result-list {
-    list-style: none;
-  }
-}
-
-.result {
-width: 80%;
-padding: 5px;
 }
 
 // STATS PAGE
@@ -154,7 +215,7 @@ padding: 5px;
 
 .carousel__graph {
   width: 100%;
-  height: 50%;
+  height: 100%;
 }
 
 .carousel__button-container {

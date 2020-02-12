@@ -181,17 +181,7 @@ class Carousel extends Component {
             options={donutOptionsTwo}
           />
         </Slider>
-        <div className="slider-background" />
-        <div className="carousel__button-container">
-          <Button
-            className="button"
-            color="success"
-            size="large"
-            onClick={() => changePage('helpPage')}
-          >
-            FIND HELP
-          </Button>
-        </div>
+        {/* <div className="slider-background" /> */}
       </>
       //   </Col>
       // </Container>

@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, {
+  useState, useEffect, useLayoutEffect, useRef,
+} from 'react';
 import {
-  Col, Container, Button, InputGroup, Input, InputGroupAddon,
+  Col, Container, Button, Form, InputGroup, Input, Label, FormGroup,
 } from 'reactstrap';
 import { union } from 'ramda';
 import renderIf from 'render-if';
@@ -36,13 +38,13 @@ const Search = () => {
     setLocation(event.target.value);
   };
 
-  const details = places.map((place) => (
-    <div className="result-container" key={place.id}>
-      <ul className="result-list">
-        <li className="result">{place.name}</li>
-        <li className="result">{place.formatted_address}</li>
-        <li className="result">{place.formatted_phone_number}</li>
-        <li className="result"><a href={place.website}>{place.website}</a></li>
+  const details = places.map((place, i) => (
+    <div key={[i]} className="result-container">
+      <ul key={place.id} className="result-list">
+        <li key={place.name} className="result">{place.name}</li>
+        <li key={place.formatted_address} className="result">{place.formatted_address}</li>
+        <li key={place.formatted_phone_number} className="result">{place.formatted_phone_number}</li>
+        <li key={place.website} className="result"><a href={place.website}>{place.website}</a></li>
       </ul>
       <hr />
     </div>
@@ -81,29 +83,43 @@ const Search = () => {
 
 
   useEffect(() => setPlaces(places), [places]);
+
   return (
-    <Container className="help">
-      <Col>
-      <section className="help__intro">
-        <h2>FIND HELP NEAR YOU</h2>
-        <p>We know finding help is hard when you&apos;re in a tough spot. Enter your location to see what's available in your area.</p>
-      </section>
-        <InputGroup className="help__input-group">
-          <label>Please enter your location. (Your nearest town or city will do).</label>
-          <Input className="help__input" onChange={handleChange} value={location} />
-          <Button className="button" onClick={() => fetchResults()}>SEARCH</Button>
-        </InputGroup>
-        {renderIf(loading)(() => (
-          <div className="loader" />
+    // <Container className="help">
+    //   <Col>
+    <section className="help">
+      <div className="help__intro">
+        <h2>Find help near you</h2>
+        <p>
+          We know finding help is hard when you&apos;re in a tough spot.
+          <br />
+          Use this search to find mental health support in your area.
+          <br />
+          <br />
+          Please enter your location (your nearest town or city will do).
+        </p>
+        <br />
+        <br />
+        <Form>
+          <FormGroup>
+            <InputGroup className="help__input-group">
+              <Label for="location">Location</Label>
+              <Input className="help__input" onChange={handleChange} value={location} />
+              <Button className="button" onClick={() => fetchResults()}>SEARCH</Button>
+            </InputGroup>
+          </FormGroup>
+        </Form>
+        </div>
+      {renderIf(loading)(() => (
+        <div className="loader" />
+      ))}
+      <div className="help__results">
+        {details}
+        {renderIf(places.length === 0 && isRequestDone === true)(() => (
+          <div className="result">Sorry, no results found. Please try entering a different place.</div>
         ))}
-        <section className="results">
-          {details}
-          {renderIf(places.length === 0 && isRequestDone === true)(() => (
-            <div className="result">Sorry, no results found. Please try entering a different place.</div>
-          ))}
-        </section>
-      </Col>
-    </Container>
+      </div>
+    </section>
   );
 };
 

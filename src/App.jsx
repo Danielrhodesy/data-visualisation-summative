@@ -53,8 +53,12 @@ class App extends Component {
 
     return (
       <main>
-        <header className="header">
-          <Button onClick={() => this.changePage('homePage')}>Home</Button>
+        <header>
+          <nav className="nav">
+            <Button className="button" onClick={() => this.changePage('homePage')}>HOME</Button>
+            <Button className="button" onClick={() => this.changePage('helpPage')}>FIND HELP</Button>
+            <Button className="button" onClick={() => this.changePage('carouselPage')}>SEE STATS</Button>
+          </nav>
         </header>
         {page}
       </main>

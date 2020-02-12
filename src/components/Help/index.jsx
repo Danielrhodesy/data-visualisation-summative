@@ -11,12 +11,7 @@ class Help extends Component {
   render() {
     const { changePage } = this.props;
     return (
-      <Container className="help">
-        <Col>
-          <Search />
-          <Button className="map-home-button button" color="success" size="large" onClick={() => changePage('carouselPage')}>SEE THE STATS</Button>
-        </Col>
-      </Container>
+      <Search />
     );
   }
 }
