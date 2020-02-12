@@ -1,8 +1,6 @@
-import React, {
-  useState, useEffect, useLayoutEffect, useRef,
-} from 'react';
+import React, { useState } from 'react';
 import {
-  Col, Container, Button, Form, InputGroup, Input, Label, FormGroup,
+  Button, Form, InputGroup, Input, Label, FormGroup,
 } from 'reactstrap';
 import { union } from 'ramda';
 import renderIf from 'render-if';
@@ -54,7 +52,8 @@ const Search = () => {
     // Clear previous results
     placesArr.length = 0;
     setPlaces(placesArr);
-    // API request
+    // API request - ignore warning about returning value
+    // eslint-disable-next-line
     r.map((result) => {
       service.getDetails({
         placeId: result.place_id,

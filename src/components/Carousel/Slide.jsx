@@ -1,6 +1,5 @@
 import React from 'react';
 import { Chart } from 'react-google-charts';
-import { Col } from 'reactstrap';
 
 const Slide = (props) => {
   const {
