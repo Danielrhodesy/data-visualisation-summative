@@ -11,6 +11,7 @@ const sliderSettings = {
   slidesToShow: 1,
   slidesToScroll: 1,
   swipeToSlide: true,
+  variableWidth: true,
 };
 
 const barOptions = {

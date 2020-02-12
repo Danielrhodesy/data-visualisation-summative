@@ -49,12 +49,9 @@ $darkPurple: #5A496A;
 body, html, #root, main {
   @include zero-margin;
   @include fill-container;
-  min-height: 100%;
-  min-width: 100%;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
   font-size: 20px;
-  overflow: hidden;
   @media (max-width: 900px) {
     html { font-size: 28px; }
   }
@@ -87,7 +84,7 @@ a {
 }
 
 .nav {
-  background-color: $lightPurple;
+  background-color: $green;
   display: flex;
   justify-content: space-between;
 
@@ -149,7 +146,12 @@ a {
   }
 }
 
-// HOME PAGE
+//HOME PAGE
+.image-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 
 .home {
   @include zero-margin;
@@ -187,11 +189,12 @@ a {
   align-items: center;
   justify-content: flex-start;
   flex-flow: column nowrap;
-  background-color: $green;
+  background: $green url("../images/search.jpg") no-repeat bottom center fixed;
   
   .help__intro {
-    padding: 1rem;
-    
+    padding: 1rem;   
+    color: white; 
+    background: rgba(0, 0, 0, 0.5);
     @include bp(desktop) {
       width: 50%;
       align-self: center;
@@ -282,12 +285,6 @@ a {
 }
 
 .carousel {
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  padding: 0;
   width: 100%;
   height: 100%;
 }
@@ -296,15 +293,17 @@ a {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
+  justify-content: center;
   margin: 0 auto;
   padding: 0;
-  width: 100%;
+  max-width: 100%;
   height: 75%;
 }
 
 .carousel__header {
   width: 100%;
-  height: 40vh;
+  height: 50%;
+  padding-bottom: 2rem;
 
   @include bp(desktop) {
     height: 30%;
@@ -329,12 +328,25 @@ a {
 .carousel__graph {
   width: 100%;
   height: 100%;
+  align-self: center;
 
   @include bp(desktop) {
-    width: 80%;
+    width: 50%;
   }
 }
 
+// React Slick carousel styling
 .slick-dots {
-  bottom: 50px;
+  @include bp(tablet) {
+    bottom: 25px;
+  }
+  
+  @include bp(desktop) {
+    bottom: 50px;
+  }
+}
+
+.flex-inner {
+  min-width:0;
+  max-height:0;
 }
