@@ -25,17 +25,17 @@ body, html, #root, main {
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 2rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
 h3 {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
 }
 
 a {
@@ -55,27 +55,32 @@ a:hover {
 }
 
 .button {
-  color: #5A496A;
-  padding: 15px;
-  margin: 20px;
+  border: 3px solid #5A496A;
+  color: white;
+  padding: 10px;
+  margin: 15px;
   border-radius: 25px;
   font-weight: 600;
-  background-color: #95BB4D;
-  border-color: #95BB4D;
+  background-color: #5A496A;
+  border-color: #5A496A;
 }
 .button:hover {
+  border: 3px solid #95BB4D;
   background-color: #5A496A;
   color: white;
 }
 .button:active {
+  border: 3px solid #95BB4D;
   background-color: #5A496A;
   color: white;
 }
 .button:focus {
+  border: 3px solid #95BB4D;
   background-color: #5A496A;
   color: white;
 }
 .button:link {
+  border: 3px solid #95BB4D;
   background-color: #5A496A;
   color: white;
 }
@@ -89,6 +94,12 @@ a:hover {
   max-width: 100%;
   height: 100%;
   width: 100%;
+  height: 100vh !important;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
   flex-flow: column nowrap;
   background-image: url("../images/hero.jpg");
   background-position: center;
@@ -96,8 +107,8 @@ a:hover {
   background-size: cover;
 }
 
-.heading {
-  font-size: 4rem;
+.home__heading {
+  background: rgba(0, 0, 0, 0.5);
   font-weight: 600;
   color: white;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
@@ -187,7 +198,6 @@ a:hover {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
-  justify-content: center;
   margin: 0 auto;
   padding: 0;
   width: 100%;
@@ -204,9 +214,12 @@ a:hover {
   height: 100%;
 }
 
-.carousel__button-container {
+.button-container {
   width: 100%;
-  height: 33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column nowrap;
 }
 
 /*# sourceMappingURL=index.css.map */

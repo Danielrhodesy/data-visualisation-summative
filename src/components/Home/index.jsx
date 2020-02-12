@@ -11,7 +11,7 @@ class Home extends Component {
     const { changePage } = this.props;
     return (
       <section className="home">
-        <h1 className="heading">
+        <h1 className="home__heading">
           Going
           <br />
           {' '}
