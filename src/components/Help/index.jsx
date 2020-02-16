@@ -109,7 +109,7 @@ const Search = () => {
               <Label className="help__input-label" for="location">Location</Label>
               <Input placeholder="Wellington" className="help__input" onChange={handleChange} value={location} />
             </InputGroup>
-            <Button className="button help__button" onClick={() => fetchTextResults()}>
+            <Button type="submit" className="button help__button" onClick={(e) => {e.preventDefault(); fetchTextResults()}}>
               SEARCH
               {renderIf(isLoading && !isRequestDone)(() => (
                 <div>
