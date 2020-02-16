@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   Button, Form, InputGroup, Input, Label, FormGroup, Spinner,
 } from 'reactstrap';
@@ -47,6 +47,15 @@ const Search = () => {
     </div>
   ));
 
+  // Allow scrolling to results
+  const resultsRef = useRef(null);
+
+  const scrollToRef = (ref) => {
+    window.scrollTo(0, ref.current.offsetTop);
+  }
+  
+  const executeScroll = () => scrollToRef(resultsRef);
+
   // Place details request, gets details based on places returned in Text Search
   const fetchPlaceDetails = (r) => {
     // Clear previous results
@@ -64,7 +73,7 @@ const Search = () => {
           // Avoid duplicate results
           const uniqPlaces = union(placesArr);
           // Ensure places state updates with all received places
-          setTimeout(() => { setLoading(false); setIsRequestDone(true); setPlaces(uniqPlaces); }, 1000);
+          setTimeout(() => { setLoading(false); setIsRequestDone(true); setPlaces(uniqPlaces); executeScroll(resultsRef); }, 1000);
         } else if (status === 'ZERO_RESULTS') {
           setLoading(false);
           setIsRequestDone(true);
@@ -109,7 +118,7 @@ const Search = () => {
               <Label className="help__input-label" for="location">Location</Label>
               <Input placeholder="Wellington" className="help__input" onChange={handleChange} value={location} />
             </InputGroup>
-            <Button type="submit" className="button help__button" onClick={(e) => {e.preventDefault(); fetchTextResults()}}>
+            <Button type="submit" className="button help__button" onClick={(e) => {e.preventDefault(); fetchTextResults();}}>
               SEARCH
               {renderIf(isLoading && !isRequestDone)(() => (
                 <div>
@@ -121,7 +130,7 @@ const Search = () => {
         </Form>
       </div>
       {renderIf(!isLoading && isRequestDone)(() => (
-        <section className="help__results">
+        <section className="help__results" ref={resultsRef}>
           <div className="help__results-container">
             <h3 className="help__results-heading">Results</h3>
             {details}
