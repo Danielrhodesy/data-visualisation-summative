@@ -35,13 +35,13 @@ const Help = () => {
 
   return (
     <section className="flex flex-col items-center justify-center w-screen">
-      <div className="flex flex-col items-center justify-center w-10/12">
+      <div className="flex flex-col items-start justify-start mt-5 w-10/12 md:w-6/12">
         <h1 className="prose prose-2xl font-semibold">Find help near you</h1>
         <p className="prose">
           We know finding help is hard when you're in a tough spot.
           Use this search to find mental health support in your area.
         </p>
-        <div className="flex flex-col sm:flex-row items-center justify-start self-center w-full sm:w-96 mt-5">
+        <div className="flex flex-col sm:flex-row justify-start self-start w-full mt-5">
           <SearchBox />
         </div>
       </div>
