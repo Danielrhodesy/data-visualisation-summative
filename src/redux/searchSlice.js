@@ -4,7 +4,10 @@ import { map, isNil } from "ramda";
 
 // Fields for the Place Details search
 const fields = [
-  "name", "formatted_address", "formatted_phone_number", "website",
+  "name",
+  "formatted_address",
+  "formatted_phone_number",
+  "website"
 ];
 
 // Use place ID to get details
@@ -12,19 +15,20 @@ const fetchPlaceDetails = createAsyncThunk(
   "search/fetchPlaceDetailsStatus",
   async (placeId, { dispatch, rejectWithValue }) => {
     try {
-      const result = await service.getDetails(
+      await service.getDetails(
         {
           placeId: placeId,
           fields
-        }, response => dispatch(storePlaceDetails(response))
-      )
-      return result;
+        },
+        response => dispatch(storePlaceDetails(response))
+      );
+    } catch (error) {
+      return rejectWithValue([], error);
     }
-    catch (error) {
-      return rejectWithValue([], error)
-    }
-  })
+  }
+);
 
+// Fetch all places based on mental health Text Search
 export const fetchPlaces = createAsyncThunk(
   "search/fetchPlaceStatus",
   async (location, { dispatch, rejectWithValue }) => {
@@ -33,24 +37,21 @@ export const fetchPlaces = createAsyncThunk(
         {
           // Bias results towards NZ
           radius: 1000000,
-          // Set initial location to Wellington
-          location:
-          {
+          // Required: Set initial location to Wellington
+          location: {
             lat: -41.228241,
-            lng: 174.905120,
+            lng: 174.90512
           },
           query: `mental health in ${location}`
         },
         // Get place details for each returned place
-        map(response => 
-          dispatch(fetchPlaceDetails(response.place_id))
-        )
-      )
+        map(response => dispatch(fetchPlaceDetails(response.place_id)))
+      );
+    } catch (error) {
+      return rejectWithValue([], error);
     }
-    catch (error) {
-      return rejectWithValue([], error)
-    }
-  })
+  }
+);
 
 export const searchSlice = createSlice({
   name: "search",
@@ -58,7 +59,7 @@ export const searchSlice = createSlice({
     places: [],
     loading: false,
     error: false,
-    isDone: false,
+    isDone: false
   },
   reducers: {
     storePlaceDetails: (state, action) => {
@@ -72,29 +73,29 @@ export const searchSlice = createSlice({
   },
   extraReducers: {
     // Clear previous places
-    [fetchPlaces.pending]: (state) => {
+    [fetchPlaces.pending]: state => {
       state.places.length = 0;
       state.error = false;
       state.loading = true;
     },
-    [fetchPlaces.fulfilled]: (state) => {
+    [fetchPlaces.fulfilled]: state => {
       state.error = false;
-      state.loading = false;
+      state.loading = true;
     },
-    [fetchPlaces.rejected]: (state) => {
+    [fetchPlaces.rejected]: state => {
       state.places.length = 0;
       state.loading = false;
       state.error = true;
     },
-    [fetchPlaceDetails.pending]: (state) => {
+    [fetchPlaceDetails.pending]: state => {
       state.error = false;
       state.loading = true;
     },
-    [fetchPlaceDetails.fulfilled]: (state) => {
+    [fetchPlaceDetails.fulfilled]: state => {
       state.error = false;
-      state.loading = false;
+      state.loading = true;
     },
-    [fetchPlaceDetails.rejected]: (state) => {
+    [fetchPlaceDetails.rejected]: state => {
       state.places.length = 0;
       state.loading = false;
       state.error = true;
@@ -106,12 +107,12 @@ export const searchSlice = createSlice({
 const { storePlaceDetails } = searchSlice.actions;
 
 // Selectors
-export const selectIsSearchLoading = (state) => state.search.loading;
+export const selectIsSearchLoading = state => state.search.loading;
 
-export const selectIsSearchError = (state) => state.search.error;
+export const selectIsSearchError = state => state.search.error;
 
-export const selectPlaceDetails = (state) => state.search.places;
+export const selectPlaceDetails = state => state.search.places;
 
-export const selectIsRequestDone = (state) => state.search.isDone;
+export const selectIsRequestDone = state => state.search.isDone;
 
 export default searchSlice.reducer;

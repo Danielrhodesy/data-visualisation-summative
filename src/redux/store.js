@@ -1,6 +1,4 @@
-import {
-  combineReducers, configureStore
-} from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import searchSlice from "./searchSlice";
 // import createSagaMiddleware from "redux-saga";
 // import rootSaga from "./sagas";
@@ -10,14 +8,14 @@ import searchSlice from "./searchSlice";
 // const sagaMiddleware = createSagaMiddleware();
 
 const reducer = combineReducers({
-  search: searchSlice,
+  search: searchSlice
   // page: pageSlice,
   // carousel: carouselSlice
 });
 
 export const store = configureStore({
   reducer,
-  devTools: process.env.NODE_ENV !== 'production',
+  devTools: process.env.NODE_ENV !== "production"
 });
 
 // sagaMiddleware.run(rootSaga)

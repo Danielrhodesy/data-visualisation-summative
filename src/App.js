@@ -1,5 +1,4 @@
-import Help from './components/Help';
-import './App.css';
+import Help from "./components/Help";
 
 function App() {
   return (

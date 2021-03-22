@@ -1,76 +1,68 @@
-import React, { useMemo, useState } from "react";
-import {
-  Button, Form, InputGroup, Input, Label, FormGroup, Spinner
-} from "reactstrap";
+import React from "react";
 import renderIf from "render-if";
-import { fetchPlaces } from "../../redux/searchSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { selectIsSearchLoading, selectIsSearchError, selectPlaceDetails, selectIsRequestDone } from "../../redux/searchSlice";
+import { useSelector } from "react-redux";
+import {
+  selectIsSearchLoading,
+  selectIsSearchError,
+  selectPlaceDetails,
+  selectIsRequestDone
+} from "../../redux/searchSlice";
 import SearchBox from "../SearchBox";
 
 const Help = () => {
-  const dispatch = useDispatch();
-
   const isLoading = useSelector(selectIsSearchLoading);
   const isError = useSelector(selectIsSearchError);
   const isDone = useSelector(selectIsRequestDone);
   const places = useSelector(selectPlaceDetails);
 
-  const [location, setLocation] = useState("");
-
-  // Input event handler
-  const handleChange = (event) => {
-    setLocation(event.target.value);
-  };
-
   // Render results
-  const details = useMemo(() => places.map((place, i) => (
-    <div key={`result-${[i]}`}>
-      <ul key={place.id} className="result-list">
-        <li key={place.name} className="result">{place.name}</li>
-        <li key={place.formatted_address} className="result">{place.formatted_address}</li>
-        <li key={place.formatted_phone_number} className="result">{place.formatted_phone_number}</li>
-        <li key={place.website} className="result"><a href={place.website}>{place.website}</a></li>
-      </ul>
-      <hr />
+  const details = places.map((place, i) => (
+    <div
+      key={`result-${[i]}`}
+      className="w-full md:w-6/12 bg-white border-2 border-gray-300 py-5 sm:p-5 rounded-md tracking-wide shadow-lg mb-6">
+      <div className="flex">
+        <div className="flex flex-col mx-5 w-full md:w-10/12">
+          <h4 className="prose prose-l font-semibold mb-2">{place.name}</h4>
+          <p className="text-gray-800 mt-2">{place.formatted_address}</p>
+          <p className="text-gray-800 mt-2">{place.formatted_phone_number}</p>
+          <p className="text-purple-600 mt-2">
+            <a href={place.website}>{place.website}</a>
+          </p>
+        </div>
+      </div>
     </div>
-  )), [places]);
+  ));
 
   return (
-    <section className="help">
-      <div className="help__intro">
-        <h2>Find help near you</h2>
-        <Form className="help__form">
-          <p>
-            We know finding help is hard when you're in a tough spot.
-            Use this search to find mental health support in your area.
-            <br />
-            <br />
-            Please enter your location (your nearest suburb, town, or city).
-          </p>
-          <br />
-          <br />
-          <FormGroup>
-            <SearchBox />
-          </FormGroup>
-        </Form>
-      </div>
-      <section className="help__results">
-        <div className="help__results-container">
-          {renderIf(!isLoading)(() => (
-            <>
-              <h3 className="help__results-heading">Results</h3>
-              {details}
-              {renderIf(isError)(() => (
-                <div className="result">Sorry, something has gone wrong. Please try again.</div>
-              ))}
-              {renderIf(isDone && places.length === 0)(() => (
-                <div className="result">No results found. Please try a different location.</div>
-              ))}
-            </>
-          ))}
+    <section className="flex flex-col items-center justify-center w-screen">
+      <div className="flex flex-col items-center justify-center w-10/12">
+        <h1 className="prose prose-2xl font-semibold">Find help near you</h1>
+        <p className="prose">
+          We know finding help is hard when you're in a tough spot.
+          Use this search to find mental health support in your area.
+        </p>
+        <div className="flex flex-col sm:flex-row items-center justify-start self-center w-full sm:w-96 mt-5">
+          <SearchBox />
         </div>
-      </section>
+      </div>
+      {renderIf(!isLoading && isDone)(() => (
+        <section className="flex flex-col items-center justify-center w-screen mt-5">
+          <div className="flex flex-col items-center justify-center w-full">
+            <h3 className="prose prose-xl font-semibold mb-5">Results</h3>
+            {details}
+            {renderIf(isError)(() => (
+              <div className="">
+                Sorry, something has gone wrong. Please try again.
+              </div>
+            ))}
+            {renderIf(isDone && places.length === 0)(() => (
+              <div className="">
+                No results found. Please try a different location.
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
     </section>
   );
 };
