@@ -1,6 +1,9 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/server/node_modules/
+/node_modules
+/.pnp
+.pnp.js
 
 # testing
 /coverage
@@ -18,12 +21,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.history
-
-/.sass-cache
-
-/src/help/backups
-/src/apiKey.mjs
-
-.env
-node_modules
