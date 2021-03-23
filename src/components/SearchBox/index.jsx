@@ -55,9 +55,11 @@ const SearchBox = () => {
       } = suggestion;
 
       return (
-        <li className="w-80 sm:w-96 py-2 hover:bg-gray-300" key={place_id} onClick={handleSelect(suggestion)}>
+        <li
+          className="w-80 sm:w-96 py-2 hover:bg-lightBlue-300 mb-2"
+          key={place_id}
+          onClick={handleSelect(suggestion)}>
           <strong>{main_text}</strong> <small>{secondary_text}</small>
-          <hr className="mt-2" />
         </li>
       );
     });
@@ -67,7 +69,7 @@ const SearchBox = () => {
       <div ref={ref}>
         <label htmlFor="location">Please enter your location.</label>
         <input
-          className="flex w-80 sm:w-96 border-2 border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent my-2 sm:my-0 sm:mt-2 pl-2 py-2 h-10"
+          className="flex w-80 sm:w-96 border-2 border-lightBlue-300 rounded focus:outline-none focus:ring-2 focus:ring-lightBlue-700 focus:border-transparent my-2 sm:my-0 sm:mt-2 pl-2 py-2 h-10"
           value={value}
           onChange={handleInput}
           disabled={!ready}
@@ -79,7 +81,7 @@ const SearchBox = () => {
       <button
         type="submit"
         disabled={isDisabled}
-        className="flex items-center justify-center sm:self-end disabled:opacity-50 border border-gray-700 bg-gray-700 text-white w-24 rounded-md px-4 py-2 mt-2 sm:mt-0 sm:ml-2 transition duration-500 ease select-none hover:bg-gray-800 focus:outline-none focus:shadow-outline h-10"
+        className="flex items-center justify-center disabled:opacity-50 border border-lightBlue-700 bg-lightBlue-900 text-white w-24 rounded-md px-4 py-2 mt-2 sm:mt-8 sm:ml-2 transition duration-500 ease select-none hover:bg-lightBlue-500 focus:outline-none focus:shadow-outline h-10"
         onClick={e => {
           e.preventDefault();
           dispatch(fetchPlaces(value));

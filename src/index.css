@@ -1,3 +1,47 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Have to put apply on each line to avoid VSCode linting complaining */
+.active {
+  @apply outline-none;
+  @apply bg-lightBlue-900;
+  @apply text-white;
+}
+
+.btn {
+  @apply flex;
+  @apply items-center;
+  @apply justify-center; 
+  @apply border; 
+  @apply border-lightBlue-700;
+  @apply bg-lightBlue-500;
+  @apply text-lightBlue-900;
+  @apply w-24;
+  @apply h-10;
+  @apply px-4;
+  @apply py-2;
+  @apply mt-2;
+  @apply transition;
+  @apply duration-500;
+  @apply select-none;
+  @apply rounded-md;
+}
+
+.btn:hover {
+  @apply bg-lightBlue-900;
+  @apply text-white;
+}
+
+.btn:focus {
+  @apply outline-none;
+}
+
+.btn:disabled {
+  @apply opacity-50; 
+}
+
+.btn:sm {
+  @apply mt-8;
+  @apply ml-2;
+}
