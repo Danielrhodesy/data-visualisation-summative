@@ -27,12 +27,12 @@ const Help = () => {
         <div className="flex flex-col mx-5 w-full md:w-10/12">
           <h4 className="prose prose-l font-semibold mb-2">{place.name}</h4>
           <p className="text-gray-800 mt-2">{place.formatted_address}</p>
-          <p className="text-purple-600 hover:text-green-800 mt-2">
+          <p className="text-lightBlue-700 hover:text-lightBlue-500 underline mt-2">
             <a href={`tel:${place.formatted_phone_number}`}>
               {place.formatted_phone_number}
             </a>
           </p>
-          <p className="text-purple-600 hover:text-green-800 mt-2">
+          <p className="text-lightBlue-700 hover:text-lightBlue-500 underline mt-2">
             <a href={place.website}>{place.website}</a>
           </p>
         </div>

@@ -14,9 +14,13 @@
   @apply items-center;
   @apply justify-center; 
   @apply border; 
-  @apply border-lightBlue-700;
-  @apply bg-lightBlue-500;
+  @apply font-bold;
+  @apply text-xs;
+  @apply uppercase;
+  @apply leading-snug;
+  @apply bg-lightBlue-300;
   @apply text-lightBlue-900;
+  @apply border-lightBlue-900;
   @apply w-24;
   @apply h-10;
   @apply px-4;
@@ -29,6 +33,7 @@
 }
 
 .btn:hover {
+  @apply border-lightBlue-300;
   @apply bg-lightBlue-900;
   @apply text-white;
 }
@@ -41,7 +46,12 @@
   @apply opacity-50; 
 }
 
-.btn:sm {
-  @apply mt-8;
-  @apply ml-2;
+/* Carousel styles */
+.carousel__slide {
+  padding-bottom: 10% !important;
+}
+
+/* Custom styles */
+.bg-translucent {
+  background-color: rgba(0, 0, 0, 0.5);
 }

@@ -108,11 +108,8 @@ const { storePlaceDetails } = searchSlice.actions;
 
 // Selectors
 export const selectIsSearchLoading = state => state.search.loading;
-
 export const selectIsSearchError = state => state.search.error;
-
 export const selectPlaceDetails = state => state.search.places;
-
 export const selectIsRequestDone = state => state.search.isDone;
 
 export default searchSlice.reducer;
