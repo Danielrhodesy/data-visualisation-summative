@@ -1,16 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import WebFont from "webfontloader";
-import "./index.min.css";
+import "./index.css";
 import App from "./App";
-import registerServiceWorker from "./registerServiceWorker";
-import Carousel from "./components/carousel/carousel";
+import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
-WebFont.load({
-    google: {
-        families: ["Montserrat:400,600,700", "sans-serif"]
-    }
-})
+ReactDOM.render(
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
+  document.getElementById("root")
+);
 
-ReactDOM.render(<App />, document.getElementById("root"));
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
