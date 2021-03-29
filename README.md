@@ -7,7 +7,7 @@ A simple React SPA utilising Google Places and Charts to find mental health help
 In the project directory, you can run:
 
 ### `npm intall`
-This will get you up and running.\
+This will get you up and running.
 
 ### `npm start`
 
@@ -19,7 +19,7 @@ You will also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
+Launches the test runner in the interactive watch mode.
 
 ### `npm run build`
 
