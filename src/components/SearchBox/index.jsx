@@ -1,3 +1,4 @@
+import { dropLast } from "ramda";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import usePlacesAutocomplete from "use-places-autocomplete";
@@ -47,8 +48,9 @@ const SearchBox = () => {
     clearSuggestions();
   };
 
-  const renderSuggestions = () =>
-    data.map(suggestion => {
+  const renderSuggestions = () => {
+    const selectedData = dropLast(3, data);
+    return selectedData.map(suggestion => {
       const {
         place_id,
         structured_formatting: { main_text, secondary_text }
@@ -56,49 +58,52 @@ const SearchBox = () => {
 
       return (
         <li
-          className="w-80 sm:w-96 p-2 mb2 border hover:bg-lightBlue-300"
+          className="w-72 lg:w-96 p-2 mb2 border bg-white hover:bg-lightBlue-300"
           key={place_id}
           onClick={handleSelect(suggestion)}>
           <strong>{main_text}</strong> <small>{secondary_text}</small>
         </li>
       );
     });
+  }
 
   return (
     <div className="flex flex-col lg:flex-row">
       <div ref={ref}>
-        <label htmlFor="location">Please enter your location.</label>
+        <label htmlFor="location" className="text-white">Please enter your location.</label>
         <input
-          className="flex w-72 lg:w-96 border-2 border-lightBlue-300 rounded focus:outline-none focus:ring-2 focus:ring-lightBlue-700 focus:border-transparent my-2 sm:my-0 sm:mt-2 pl-2 py-2 h-10"
+          className="flex w-72 lg:w-96 border-2 border-lightBlue-300 rounded focus:outline-none focus:ring-2 focus:ring-lightBlue-700 focus:border-transparent my-2 sm:my-0 sm:mt-2 pl-2 py-2 h-10 text-black"
           value={value}
           onChange={handleInput}
           disabled={!ready}
-          placeholder="Wellington, New Zealand"
+          placeholder="Location..."
         />
         {/* We can use the "status" to decide whether we should display the dropdown or not */}
         {status === "OK" && <ul>{renderSuggestions()}</ul>}
       </div>
-      <button
-        className="btn lg:mt-8 lg:ml-2"
-        type="submit"
-        disabled={isDisabled}
-        onClick={e => {
-          e.preventDefault();
-          dispatch(fetchPlaces(value));
-          preventResubmit();
-        }}>
-        {renderIf(!isLoading)(() => (
-          "Search"
-        ))}
-        {renderIf(isLoading)(() => (
-          <LoadingIndicator
-            title="Loading indicator"
-            stroke="white"
-            fill="white"
-            className="animate-spin"
-          />
-        ))}
-      </button>
+      {renderIf(value)(() => (
+        <button
+          className="btn lg:mt-8 lg:ml-2"
+          type="submit"
+          disabled={isDisabled}
+          onClick={e => {
+            e.preventDefault();
+            dispatch(fetchPlaces(value));
+            preventResubmit();
+          }}>
+          {renderIf(!isLoading)(() => (
+            "Search"
+          ))}
+          {renderIf(isLoading)(() => (
+            <LoadingIndicator
+              title="Loading indicator"
+              stroke="white"
+              fill="white"
+              className="animate-spin"
+            />
+          ))}
+        </button>
+      ))}
     </div>
   );
 };

@@ -55,3 +55,15 @@
 .bg-translucent {
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+.h-625-px {
+  height: 625px;
+}
+
+.h-425-px {
+  height: 425px;
+}
+
+body {
+  scroll-behavior: smooth;
+}

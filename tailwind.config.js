@@ -16,7 +16,7 @@ module.exports = {
       backgroundImage: theme => ({
         'home': "url('./assets/home.jpg')",
         'help': "url('./assets/help.jpg')",
-      })
+      }),
     }
   },
   variants: {
