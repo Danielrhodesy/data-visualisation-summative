@@ -4,11 +4,11 @@ import Home from "./components/Home";
 
 function App() {
   return (
-    <div className="App">
+    <main>
       <Home />
       <Help />
       {/* <Stats /> */}
-    </div>
+    </main>
   );
 }
 

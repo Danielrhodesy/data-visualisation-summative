@@ -12,9 +12,9 @@ const Home = () => {
   return (
     <>
       {renderIf(page === "home")(() => (
-        <main className="h-screen overflow-y-hidden w-screen bg-home bg-cover bg-top">
+        <section className="h-screen overflow-y-hidden w-screen bg-home bg-cover bg-top">
           <Nav />
-          <section className="h-full w-full flex justify-center">
+          <div className="h-full w-full flex justify-center">
             <div className="h-44 bg-translucent mt-20 py-28 px-10 flex flex-col justify-center items-center rounded-md">
               <h1 className="font-semibold prose prose-2xl text-white">
                 Going through it?
@@ -28,8 +28,8 @@ const Home = () => {
                 Find help
               </button>
             </div>
-          </section>
-        </main>
+          </div>
+        </section>
       ))}
     </>
   );

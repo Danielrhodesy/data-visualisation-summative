@@ -18,6 +18,7 @@ const Help = () => {
   const places = useSelector(selectPlaceDetails);
   const page = useSelector(selectPage);
 
+
   // Render results
   const details = places.map((place, i) => (
     <div
@@ -26,7 +27,7 @@ const Help = () => {
       <div className="flex">
         <div className="flex flex-col mx-5 w-full md:w-10/12">
           <h4 className="prose prose-l font-semibold mb-2">{place.name}</h4>
-          <p className="text-gray-800 mt-2">{place.formatted_address}</p>
+          <p className="mt-2">{place.formatted_address}</p>
           <p className="text-lightBlue-700 hover:text-lightBlue-500 underline mt-2">
             <a href={`tel:${place.formatted_phone_number}`}>
               {place.formatted_phone_number}
@@ -43,10 +44,10 @@ const Help = () => {
   return (
     <>
       {renderIf(page === "help")(() => (
-        <main>
+        <>
           <Nav />
           <section className="flex flex-col items-center justify-center w-screen bg-help bg-bottom bg-cover pb-16">
-            <div className="flex flex-col items-start justify-start mt-16 p-10 w-10/12 md:w-6/12 rounded-md bg-translucent text-white">
+            <div className="flex flex-col items-start justify-start mt-16 p-10 w-10/12 md:w-8/12 lg:6/12 min-h-425-px rounded-md bg-translucent">
               <h1 className="prose prose-2xl font-semibold text-white">
                 Find help near you
             </h1>
@@ -59,23 +60,25 @@ const Help = () => {
               </div>
             </div>
           </section>
-          {renderIf(!isLoading && isDone)(() => (
-            <section className="flex flex-col items-center justify-center w-screen">
-              <div className="flex flex-col items-center justify-center w-full">
-                <h3 className="prose prose-xl font-semibold mt-10 mb-5">
-                  Results
+          <section className="flex flex-col items-center justify-center w-screen">
+            {renderIf(!isLoading && isDone)(() =>
+              (
+                <div className="flex flex-col items-center justify-center w-full">
+                  <h3 className="prose prose-xl font-semibold mt-10 mb-5">
+                    Results
                 </h3>
-                {details}
-                {renderIf(isError)(() => (
-                  <div>Sorry, something has gone wrong. Please try again.</div>
-                ))}
-                {renderIf(isDone && places.length === 0)(() => (
-                  <div>No results found. Please try a different location.</div>
-                ))}
-              </div>
-            </section>
-          ))}
-        </main>
+                  {details}
+                  {renderIf(isError)(() => (
+                    <div>Sorry, something has gone wrong. Please try again.</div>
+                  ))}
+                  {renderIf(isDone && places.length === 0)(() => (
+                    <div>No results found. Please try a different location.</div>
+                  ))}
+                </div>
+              )
+            )}
+          </section>
+        </>
       ))}
     </>
   );
