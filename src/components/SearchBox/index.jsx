@@ -65,11 +65,11 @@ const SearchBox = () => {
     });
 
   return (
-    <div className="flex flex-col sm:flex-row">
+    <div className="flex flex-col lg:flex-row">
       <div ref={ref}>
         <label htmlFor="location">Please enter your location.</label>
         <input
-          className="flex w-80 sm:w-96 border-2 border-lightBlue-300 rounded focus:outline-none focus:ring-2 focus:ring-lightBlue-700 focus:border-transparent my-2 sm:my-0 sm:mt-2 pl-2 py-2 h-10"
+          className="flex w-72 lg:w-96 border-2 border-lightBlue-300 rounded focus:outline-none focus:ring-2 focus:ring-lightBlue-700 focus:border-transparent my-2 sm:my-0 sm:mt-2 pl-2 py-2 h-10"
           value={value}
           onChange={handleInput}
           disabled={!ready}
@@ -79,7 +79,7 @@ const SearchBox = () => {
         {status === "OK" && <ul>{renderSuggestions()}</ul>}
       </div>
       <button
-        className="btn sm:mt-8 sm:ml-2"
+        className="btn lg:mt-8 lg:ml-2"
         type="submit"
         disabled={isDisabled}
         onClick={e => {

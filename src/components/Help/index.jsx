@@ -45,12 +45,12 @@ const Help = () => {
       {renderIf(page === "help")(() => (
         <main>
           <Nav />
-          <section className="flex flex-col items-center justify-center w-screen">
-            <div className="flex flex-col items-start justify-start mt-5 w-10/12 md:w-6/12">
-              <h1 className="prose prose-2xl font-semibold">
+          <section className="flex flex-col items-center justify-center w-screen bg-help bg-bottom bg-cover pb-16">
+            <div className="flex flex-col items-start justify-start mt-16 p-10 w-10/12 md:w-6/12 rounded-md bg-translucent text-white">
+              <h1 className="prose prose-2xl font-semibold text-white">
                 Find help near you
             </h1>
-              <p className="prose">
+              <p className="prose text-white">
                 We know finding help is hard when you're in a tough spot. Use this
                 search to find mental health support in your area.
             </p>
@@ -58,23 +58,23 @@ const Help = () => {
                 <SearchBox />
               </div>
             </div>
-            {renderIf(!isLoading && isDone)(() => (
-              <section className="flex flex-col items-center justify-center w-screen mt-5">
-                <div className="flex flex-col items-center justify-center w-full">
-                  <h3 className="prose prose-xl font-semibold mt-10 mb-5">
-                    Results
-                </h3>
-                  {details}
-                  {renderIf(isError)(() => (
-                    <div>Sorry, something has gone wrong. Please try again.</div>
-                  ))}
-                  {renderIf(isDone && places.length === 0)(() => (
-                    <div>No results found. Please try a different location.</div>
-                  ))}
-                </div>
-              </section>
-            ))}
           </section>
+          {renderIf(!isLoading && isDone)(() => (
+            <section className="flex flex-col items-center justify-center w-screen">
+              <div className="flex flex-col items-center justify-center w-full">
+                <h3 className="prose prose-xl font-semibold mt-10 mb-5">
+                  Results
+                </h3>
+                {details}
+                {renderIf(isError)(() => (
+                  <div>Sorry, something has gone wrong. Please try again.</div>
+                ))}
+                {renderIf(isDone && places.length === 0)(() => (
+                  <div>No results found. Please try a different location.</div>
+                ))}
+              </div>
+            </section>
+          ))}
         </main>
       ))}
     </>
