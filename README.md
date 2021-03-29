@@ -6,7 +6,7 @@ A simple React SPA utilising Google Places and Charts to find mental health help
 
 In the project directory, you can run:
 
-### `npm intall`
+### `npm install`
 This will get you up and running.
 
 ### `npm start`
