@@ -33,7 +33,7 @@ const Help = () => {
               {place.formatted_phone_number}
             </a>
           </p>
-          <p className="text-lightBlue-700 hover:text-lightBlue-500 underline mt-2">
+          <p className="text-lightBlue-700 hover:text-lightBlue-500 underline mt-2 break-words">
             <a href={place.website}>{place.website}</a>
           </p>
         </div>
@@ -46,18 +46,17 @@ const Help = () => {
       {renderIf(page === "help")(() => (
         <>
           <Nav />
-          <section className="flex flex-col items-center justify-center w-screen bg-help bg-bottom bg-cover pb-16">
-            <div className="flex flex-col items-start justify-start mt-16 p-10 w-10/12 md:w-8/12 lg:6/12 min-h-425-px rounded-md bg-translucent">
+          <section className="flex flex-col items-center justify-center w-screen bg-help bg-bottom bg-cover pb-16 h-96">
+            <div className="flex flex-col flex-nowrap items-start justify-start mt-16 p-10 w-10/12 md:w-6/12 rounded-md bg-translucent">
               <h1 className="prose prose-2xl font-semibold text-white">
                 Find help near you
             </h1>
               <p className="prose text-white">
                 We know finding help is hard when you're in a tough spot. Use this
                 search to find mental health support in your area.
-            </p>
-              <div className="flex flex-col sm:flex-row justify-start self-start w-full mt-5">
-                <SearchBox />
-              </div>
+             </p>
+              <br />
+              <SearchBox />
             </div>
           </section>
           <section className="flex flex-col items-center justify-center w-screen">
