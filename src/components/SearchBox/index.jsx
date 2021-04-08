@@ -49,6 +49,7 @@ const SearchBox = () => {
   };
 
   const renderSuggestions = () => {
+    // Show fewer results for layout's sake
     const selectedData = dropLast(3, data);
     return selectedData.map(suggestion => {
       const {
@@ -73,15 +74,22 @@ const SearchBox = () => {
         <label htmlFor="location" className="text-white">Please enter your location.</label>
         <input
           className="flex w-72 lg:w-96 border-2 border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-lightBlue-300 focus:border-transparent my-2 sm:my-0 sm:mt-2 pl-2 py-2 h-10 text-black"
+          data-testid="SearchBox-input"
           value={value}
           onChange={handleInput}
           disabled={!ready}
           placeholder="Location..."
         />
         {/* We can use the "status" to decide whether we should display the dropdown or not */}
-        {status === "OK" && <ul className="absolute">{renderSuggestions()}</ul>}
+        {status === "OK" && <ul
+          data-testid="SearchBox-list"
+          className="absolute"
+        >
+          {renderSuggestions()}
+        </ul>}
       </div>
       <button
+        data-testid="SearchBox-button"
         className="btn lg:mt-8 lg:ml-2"
         type="submit"
         disabled={isDisabled}
@@ -95,6 +103,7 @@ const SearchBox = () => {
         ))}
         {renderIf(isLoading)(() => (
           <LoadingIndicator
+            data-testid="SearchBox-loader"
             title="Loading indicator"
             stroke="white"
             fill="white"

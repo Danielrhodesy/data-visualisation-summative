@@ -46,7 +46,10 @@ const Help = () => {
       {renderIf(page === "help")(() => (
         <>
           <Nav />
-          <section className="flex flex-col items-center justify-center w-screen bg-help bg-bottom bg-cover pb-16 h-96">
+          <section
+            data-testid="Help-header"
+            className="flex flex-col items-center justify-center w-screen bg-help bg-bottom bg-cover pb-16 h-96"
+          >
             <div className="flex flex-col flex-nowrap items-start justify-start mt-16 p-10 w-10/12 md:w-6/12 rounded-md bg-translucent">
               <h1 className="prose prose-2xl font-semibold text-white">
                 Find help near you
@@ -59,7 +62,8 @@ const Help = () => {
               <SearchBox />
             </div>
           </section>
-          <section className="flex flex-col items-center justify-center w-screen">
+          <section data-testid="Help-results"
+            className="flex flex-col items-center justify-center w-screen">
             {renderIf(!isLoading && isDone)(() =>
               (
                 <div className="flex flex-col items-center justify-center w-full">
