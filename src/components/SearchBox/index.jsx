@@ -24,7 +24,7 @@ const SearchBox = () => {
         }}
       >
         <input
-          className="flex w-72 lg:w-96 border-2 border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-lightBlue-300 focus:border-transparent my-2 sm:my-0 sm:mt-2 pl-2 py-2 h-10 text-black"
+          className="flex w-72 lg:w-96 border-2 border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-transparent my-2 sm:my-0 sm:mt-2 pl-2 py-2 h-10 text-black"
           data-testid="SearchBox-input"
           value={value}
           onChange={handleInput}

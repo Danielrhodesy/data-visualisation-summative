@@ -7,7 +7,7 @@
   to avoid VSCode linting complaining */
 .active {
   @apply outline-none;
-  @apply bg-lightBlue-900;
+  @apply bg-sky-900;
   @apply text-white;
 }
 
@@ -20,9 +20,9 @@
   @apply text-xs;
   @apply uppercase;
   @apply leading-snug;
-  @apply bg-lightBlue-300;
-  @apply text-lightBlue-900;
-  @apply border-lightBlue-900;
+  @apply bg-sky-300;
+  @apply text-sky-900;
+  @apply border-sky-900;
   @apply w-24;
   @apply h-10;
   @apply px-4;
@@ -35,8 +35,8 @@
 }
 
 .btn:hover {
-  @apply border-lightBlue-300;
-  @apply bg-lightBlue-900;
+  @apply border-sky-300;
+  @apply bg-sky-900;
   @apply text-white;
 }
 

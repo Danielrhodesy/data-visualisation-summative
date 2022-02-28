@@ -10,7 +10,7 @@ module.exports = {
       black: colors.black,
       white: colors.white,
       gray: colors.trueGray,
-      lightBlue: colors.lightBlue
+      sky: colors.sky
     },
     extend: {
       backgroundImage: theme => ({
