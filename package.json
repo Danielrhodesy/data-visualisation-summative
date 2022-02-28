@@ -2,7 +2,7 @@
   "name": "going-through-it",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001",
+  "proxy": "http://going-through-it.herokuapp.com",
   "dependencies": {
     "@craco/craco": "^5.9.0",
     "@fortawesome/fontawesome-svg-core": "^1.3.0",
