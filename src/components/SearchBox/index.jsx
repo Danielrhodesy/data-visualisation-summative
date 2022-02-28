@@ -1,11 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import renderIf from "render-if";
 import { fetchPlaces, selectIsSearchLoading } from "../../redux/searchSlice";
 import { ReactComponent as LoadingIndicator } from "../../assets/loading.svg";
 
 const SearchBox = () => {
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState("")
   const dispatch = useDispatch()
   const isLoading = useSelector(selectIsSearchLoading)
 
