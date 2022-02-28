@@ -14,7 +14,7 @@ export const fetchPlaces = createAsyncThunk(
   "search/fetchPlaceStatus",
   async (place, { dispatch, rejectWithValue }) => {
     try {
-      await fetch('http://localhost:3001/places', requestOptions(place))
+      await fetch('http://going-through-it.herokuapp.com/places', requestOptions(place))
         .then(response => response.json())
         .then(data => dispatch(storePlaces(data)))
     } catch (error) {
