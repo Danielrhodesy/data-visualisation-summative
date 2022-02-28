@@ -14,9 +14,9 @@ module.exports = {
     },
     extend: {
       backgroundImage: theme => ({
+        'home': "url('./assets/home.jpg')",
         'help': "url('./assets/help.jpg')",
-        // 'footer-texture': "url('/img/footer-texture.png')",
-      })
+      }),
     }
   },
   variants: {

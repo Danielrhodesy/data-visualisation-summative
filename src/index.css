@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Have to put apply on each line to avoid VSCode linting complaining */
+/* Tailwind styles
+  Have to put apply on each line
+  to avoid VSCode linting complaining */
 .active {
   @apply outline-none;
   @apply bg-lightBlue-900;
@@ -46,12 +48,14 @@
   @apply opacity-50; 
 }
 
-/* Carousel styles */
-.carousel__slide {
-  padding-bottom: 10% !important;
-}
-
 /* Custom styles */
 .bg-translucent {
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+/* TODO: Implement stats 
+Carousel styles 
+.carousel__slide {
+  important needed to override inline style from lib
+  padding-bottom: 10% !important;
+} */

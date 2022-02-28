@@ -1,52 +1,22 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { service } from "../utils/utils";
-import { map, isNil } from "ramda";
+import { isNil, flatten } from "ramda";
 
-// Fields for the Place Details search
-const fields = [
-  "name",
-  "formatted_address",
-  "formatted_phone_number",
-  "website"
-];
-
-// Use place ID to get details
-const fetchPlaceDetails = createAsyncThunk(
-  "search/fetchPlaceDetailsStatus",
-  async (placeId, { dispatch, rejectWithValue }) => {
-    try {
-      await service.getDetails(
-        {
-          placeId: placeId,
-          fields
-        },
-        response => dispatch(storePlaceDetails(response))
-      );
-    } catch (error) {
-      return rejectWithValue([], error);
-    }
+const requestOptions = place => {
+  return {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    mode: 'cors',
+    body: JSON.stringify(place)
   }
-);
+}
 
-// Fetch all places based on mental health Text Search
 export const fetchPlaces = createAsyncThunk(
   "search/fetchPlaceStatus",
-  async (location, { dispatch, rejectWithValue }) => {
+  async (place, { dispatch, rejectWithValue }) => {
     try {
-      await service.textSearch(
-        {
-          // Bias results towards NZ
-          radius: 1000000,
-          // Required: Set initial location to Wellington
-          location: {
-            lat: -41.228241,
-            lng: 174.90512
-          },
-          query: `mental health in ${location}`
-        },
-        // Get place details for each returned place
-        map(response => dispatch(fetchPlaceDetails(response.place_id)))
-      );
+      await fetch('http://going-through-it.herokuapp.com/places', requestOptions(place))
+        .then(response => response.json())
+        .then(data => dispatch(storePlaces(data)))
     } catch (error) {
       return rejectWithValue([], error);
     }
@@ -62,9 +32,10 @@ export const searchSlice = createSlice({
     isDone: false
   },
   reducers: {
-    storePlaceDetails: (state, action) => {
+    storePlaces: (state, action) => {
       if (!isNil(action.payload)) {
-        state.places.push(action.payload);
+        state.places = [...action.payload]
+        flatten(state.places)
       }
       state.loading = false;
       state.error = false;
@@ -80,31 +51,19 @@ export const searchSlice = createSlice({
     },
     [fetchPlaces.fulfilled]: state => {
       state.error = false;
-      state.loading = true;
+      state.loading = false;
+      state.isDone = true;
     },
     [fetchPlaces.rejected]: state => {
       state.places.length = 0;
       state.loading = false;
       state.error = true;
     },
-    [fetchPlaceDetails.pending]: state => {
-      state.error = false;
-      state.loading = true;
-    },
-    [fetchPlaceDetails.fulfilled]: state => {
-      state.error = false;
-      state.loading = true;
-    },
-    [fetchPlaceDetails.rejected]: state => {
-      state.places.length = 0;
-      state.loading = false;
-      state.error = true;
-    }
   }
 });
 
 // Actions
-const { storePlaceDetails } = searchSlice.actions;
+const { storePlaces } = searchSlice.actions;
 
 // Selectors
 export const selectIsSearchLoading = state => state.search.loading;
