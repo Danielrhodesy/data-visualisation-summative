@@ -11,16 +11,16 @@ const Nav = () => {
 
   return (
     <>
-      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-lightBlue-300 shadow-md">
+      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-sky-300 shadow-md">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <button
-              className="text-lightBlue-900 font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap focus:outline-none hover:opacity-75"
+              className="text-sky-900 font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap focus:outline-none hover:opacity-75"
               onClick={() => dispatch(changePage("home"))}>
               Going through it?
             </button>
             <button
-              className="text-lightBlue-900 cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+              className="text-sky-900 cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
               type="button"
               onClick={() => setNavOpen(!navOpen)}>
               <FontAwesomeIcon icon={faBars} />
@@ -33,7 +33,7 @@ const Nav = () => {
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="nav-item">
                 <button
-                  className={`text-lightBlue-900 rounded-md px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75 focus:outline-none ${
+                  className={`text-sky-900 rounded-md px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75 focus:outline-none ${
                     page === "help" ? "active" : ""
                     }`}
                   onClick={() => dispatch(changePage("help"))}>
@@ -42,7 +42,7 @@ const Nav = () => {
               </li>
               {/* <li className="nav-item">
                 <button
-                  className={`text-lightBlue-900 rounded-md px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75 focus:outline-none ${
+                  className={`text-sky-900 rounded-md px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75 focus:outline-none ${
                     page === "stats" ? "active" : ""
                     }`}
                   onClick={() => dispatch(changePage("stats"))}>
