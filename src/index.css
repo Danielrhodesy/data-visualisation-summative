@@ -53,8 +53,9 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* Carousel styles */
+/* TODO: Implement stats 
+Carousel styles 
 .carousel__slide {
-  /* important needed to override inline style from lib */
+  important needed to override inline style from lib
   padding-bottom: 10% !important;
-}
+} */

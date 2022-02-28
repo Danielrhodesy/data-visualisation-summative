@@ -18,7 +18,6 @@ const Help = () => {
   const places = useSelector(selectPlaceDetails);
   const page = useSelector(selectPage);
 
-
   // Render results
   const details = places.map((place, i) => (
     <div
@@ -26,20 +25,23 @@ const Help = () => {
       className="w-full md:w-6/12 bg-white border-2 border-gray-300 py-5 sm:p-5 rounded-md tracking-wide shadow-lg mb-6">
       <div className="flex">
         <div className="flex flex-col mx-5 w-full md:w-10/12">
-          <h4 className="prose prose-l font-semibold mb-2">{place.name}</h4>
-          <p className="mt-2">{place.formatted_address}</p>
+          <h4 className="prose prose-l font-semibold mb-2">{place.result.name}</h4>
+          <p className="mt-2">{place.result.formatted_address}</p>
           <p className="text-lightBlue-700 hover:text-lightBlue-500 underline mt-2">
-            <a href={`tel:${place.formatted_phone_number}`}>
-              {place.formatted_phone_number}
+            <a href={`tel:${place.result.formatted_phone_number}`}>
+              {place.result.formatted_phone_number}
             </a>
           </p>
           <p className="text-lightBlue-700 hover:text-lightBlue-500 underline mt-2 break-words">
-            <a href={place.website}>{place.website}</a>
+            <a href={place.result.website}>{place.result.website}</a>
           </p>
         </div>
       </div>
     </div>
-  ));
+  )
+  );
+
+  console.log(places)
 
   return (
     <>
@@ -74,7 +76,7 @@ const Help = () => {
                   {renderIf(isError)(() => (
                     <div>Sorry, something has gone wrong. Please try again.</div>
                   ))}
-                  {renderIf(isDone && places.length === 0)(() => (
+                  {renderIf(isDone && places.length === 0 && !isError)(() => (
                     <div>No results found. Please try a different location.</div>
                   ))}
                 </div>
