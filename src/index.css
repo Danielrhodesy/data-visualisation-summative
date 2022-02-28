@@ -14,8 +14,8 @@
 .btn {
   @apply flex;
   @apply items-center;
-  @apply justify-center; 
-  @apply border; 
+  @apply justify-center;
+  @apply border;
   @apply font-bold;
   @apply text-xs;
   @apply uppercase;
@@ -52,10 +52,3 @@
 .bg-translucent {
   background-color: rgba(0, 0, 0, 0.5);
 }
-
-/* TODO: Implement stats 
-Carousel styles 
-.carousel__slide {
-  important needed to override inline style from lib
-  padding-bottom: 10% !important;
-} */

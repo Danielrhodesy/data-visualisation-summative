@@ -3,9 +3,9 @@ import { isNil, flatten } from "ramda";
 
 const requestOptions = place => {
   return {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    mode: 'cors',
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    mode: "cors",
     body: JSON.stringify(place)
   }
 }
@@ -14,7 +14,7 @@ export const fetchPlaces = createAsyncThunk(
   "search/fetchPlaceStatus",
   async (place, { dispatch, rejectWithValue }) => {
     try {
-      await fetch('http://going-through-it.herokuapp.com/places', requestOptions(place))
+      await fetch("https://going-through-it.herokuapp.com/places", requestOptions(place))
         .then(response => response.json())
         .then(data => dispatch(storePlaces(data)))
     } catch (error) {
